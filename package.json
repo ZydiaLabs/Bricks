@@ -1,0 +1,22 @@
+{
+  "name": "NutBang",
+  "version": "0.0.1",
+  "description": "HTML5 Framework.",
+  "author": {
+    "name": "Giovanny Andres Gongora Granada",
+    "site": "nutbang.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NutBang/NutBang"
+  },
+  "license": { 
+    "type": "GPLv3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-cssmin": "~0.6.2"
+  }
+}
