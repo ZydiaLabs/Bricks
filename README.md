@@ -23,17 +23,17 @@ This is a more lightweight alternative to libraries such as jQuery, Prototype an
 If you think that NutBang needs a certain method please create an issue and tell us why!
 
 ### Licensing
-Lungo is licensed under GPLv3 licensed. See [LICENSE](https://github.com/NutBang/NutBang/blob/master/LICENSE.md) for more information.
+NutBang is licensed under GPLv3 licensed. See [LICENSE](https://github.com/NutBang/NutBang/blob/master/LICENSE.md) for more information.
 
 ### Help us on being better
-If you think that we have to support a new feature or if you have found a bug, use [GitHub issues](https://github.com/tapquo/lungo.js/issues). Feel free to get in contact with us.
+If you think that we have to support a new feature or if you have found a bug, use [GitHub issues](https://github.com/NutBang/NutBang/issues). Feel free to get in contact with us.
 
 MOBILE PROTOTYPE
 ================
 
 Structure
 ---------
-Here you have the dependencies of your Lungo application's body. It must contain at least:
+Here you have the dependencies of your NutBang application's body. It must contain at least:
 
 ``` html
 <link rel="stylesheet" href="css/NutBang.min.css">
@@ -45,7 +45,7 @@ DESKTOP PROTOTYPE
 
 Structure
 ---------
-Here you have the dependencies of your Lungo application's body. It must contain at least:
+Here you have the dependencies of your NutBang application's body. It must contain at least:
 
 ``` html
 <link rel="stylesheet" href="css/NutBang.min.css">
@@ -57,24 +57,24 @@ JavaScript
 
 Core
 ----
-Lungo has several methods that are used inside its engine. Here you have them if you need to include some of their functionality in your application.
+NutBang has several methods that are used inside its engine. Here you have them if you need to include some of their functionality in your application.
 
 #### $()
-$() is just a shortcut for nutbang(), nb() and NutBang().
+**$()** is just a shortcut for **nutbang()**, **nb()** and **NutBang()**.
 
-NutBang support the basic selectors, but in a modern browser advanced selectors are supported as well via document.querySelectorAll.
+NutBang support the basic selectors, but in a modern browser advanced selectors are supported as well via **document.querySelectorAll**.
 
 The function will take two parameters, the first is a selector and the second is the context (or attribute object) where you are searching for the DOM node. If no context is given the context will be document. If a tire collection is given it will just return the given collection.
 
-If a function is given it will be used as a callback for the dom ready event. $(function () {}) is a shortcut for $.ready() or $().ready. When the dom is ready, the function is executed.
+If a function is given it will be used as a callback for the dom ready event. **$(function () {})** is a shortcut for **$.ready()** or **$().ready**. When the dom is ready, the function is executed.
 
 **Parameters**
-```
+``` javascript
 $(selector [, context])
 ```
 
 *Example*
-``` javascipt
+``` javascript
 $('#test') // returns the element with the id foo
 $('.test') // returns all elements with the class name bar.
 $('p') // returns all elements with the tag name p.
