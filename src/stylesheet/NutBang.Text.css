@@ -1,0 +1,246 @@
+/* Text */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2;
+	font-weight: normal;
+	margin-bottom: 16px;
+	padding-top: 16px;
+}
+h1 {
+	font-size: 24px;
+	padding-top: 8px;
+}
+h2 {
+	font-size: 21px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4, 
+h5, 
+h6 {
+	font-size: 14px;
+	font-style: italic;
+}
+
+h4 {
+	text-transform: uppercase;
+}
+
+/*  Lines */
+
+hr {
+	margin: 32px auto;
+	border: 0;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #ffffff;
+}
+
+/*  Bold */
+
+strong {
+	font-weight: bold;
+}
+
+/*  Italics */
+
+em {
+	font-style: italic;
+}
+
+/*  Subscript & Superscript */
+
+sub,
+sup {
+	position: relative;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 0;
+	vertical-align: baseline;
+	margin-left: .3em;
+}
+
+sup {
+	top: 8px;
+}
+
+sub {
+	bottom: 4px;
+}
+
+/*  Highlighting colors */
+
+.text-select::selection {
+	color: #ffffff;
+	background: #64D35E;
+}
+
+.text-select::-moz-selection {
+	color: #ffffff;
+	background: #64D35E;
+}
+
+/*  Blockquotes */
+
+blockquote {
+	border-left: 3px solid #e5e5e5;
+	margin-bottom: 24px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+/* Code y Pre */
+
+code,
+pre {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+	font-size: 13px;
+	border-radius: 1px;
+}
+
+code {
+	color: #d14;
+	background-color: #f7f7f9;
+	padding: 3px;
+}
+
+pre {
+	display: block;
+	margin-bottom: 24px;
+	line-height: 24px;
+	background-color: #292A2B;
+	padding: 13px;
+	-moz-tab-size: 4;
+	  -o-tab-size: 4;
+	     tab-size: 4;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+pre code {
+	font-size: 16px;
+	padding: 0;
+	color: #FFF;
+	background-color: transparent;
+	border: 0;
+}
+
+/* Skins for Pre tag */
+
+pre.skin-a {
+  background: #009966;
+}
+
+pre.skin-b {
+  background: #ff6633;
+}
+
+pre.skin-c {
+  background: #00c5d9;
+}
+
+pre.skin-d {
+  background: #005466;
+}
+
+/*  Text alignment */
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+/*  Floats */
+
+.float-left {
+	float: left;
+}
+
+.float-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.float-right {
+	float: right;
+}
+
+
+/*  Spacing */
+
+.no-space {
+	margin: 0;
+	padding: 0;
+}
+
+.no-space-bottom {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.no-space-top {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.space-bottom {
+	margin-bottom: 32px;
+}
+
+.space-bottom-small {
+	margin-bottom: 7px;
+	padding-bottom: 0;
+}
+
+.space-top {
+	padding-top: 13px;
+}
+
+
+/*  Screen Reader Text */
+
+.screen-reader {
+	position: absolute;
+	top: -9999em;
+	left:-9999em;
+}
+
+/*  Clearfix */
+
+.group:before,
+.group:after,
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+	display: table;
+	content: "";
+}
+
+.group:after,
+.container:after,
+.row:after {
+	clear: both;
+}

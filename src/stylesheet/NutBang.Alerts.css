@@ -1,0 +1,21 @@
+/*Those are alert boxes*/
+
+.alert {
+    padding:15px;
+    border-radius:3px;
+}
+.alert.error {
+    color: #5b090e;
+    background-color: #f9c6c9;
+    border: 1px solid #F48E93;
+}
+.alert.success {
+    color: #255521;
+    background-color: #d9f0d7;
+    border: 1px solid #b3e0b0;
+}
+.alert.warning {
+    color: #255521;
+    background-color: #d9f0d7;
+    border: 1px solid #b3e0b0;
+}

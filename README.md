@@ -28,7 +28,7 @@ NutBang is licensed under GPLv3 licensed. See [LICENSE](https://github.com/NutBa
 ### Help us on being better
 If you think that we have to support a new feature or if you have found a bug, use [GitHub issues](https://github.com/NutBang/NutBang/issues). Feel free to get in contact with us.
 
-MOBILE PROTOTYPE
+Mobile Prototype
 ================
 
 Structure
@@ -40,7 +40,7 @@ Here you have the dependencies of your NutBang application's body. It must conta
 <script src="js/NutBang.min.js"></script>
 ```
 
-DESKTOP PROTOTYPE
+Desktop Prototype
 =================
 
 Structure
@@ -59,8 +59,9 @@ Core
 ----
 NutBang has several methods that are used inside its engine. Here you have them if you need to include some of their functionality in your application.
 
-#### $()
 **$()** is just a shortcut for **nutbang()**, **nb()** and **NutBang()**.
+
+#### $()
 
 NutBang support the basic selectors, but in a modern browser advanced selectors are supported as well via **document.querySelectorAll**.
 
@@ -83,4 +84,204 @@ $('a, div') // returns all a and div elements;
 $('ul li') // returns all li elements that are inside an ul tag.
 $('ol > li') // the same as above but for ol tag.
 $('<a />', { href: '#', title: 'a' }); // Add attributes to the tag (1.1.1+).
+```
+
+#### $.contains
+Check to see if a DOM element is a descendant of another DOM element.
+
+**Parameters**
+``` javascript
+$.contains(container, contained)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.each
+Iterate over array items or object key-value pairs. 
+
+**Parameters**
+``` javascript
+$.each(object, callback)
+```
+
+*Example*
+``` javascript
+$.each([1, 2, 3], function (index, item) {
+  // Item is 1, 2, 3 and so on. Index is the position in the array
+});
+
+$.each({ hello: 'world' }, function (key, value) {
+  // Key is `hello` and value is `world`
+});
+```
+#### $.extend
+Extends target with members of other objects.
+
+**Parameters**
+``` javascript
+$.extend(target, [source [, source2, ..]])
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isArray
+Returns true if the given object is an array. 
+
+**Parameters**
+``` javascript
+$.isArray(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isFunction
+Returns true if the given object is a function.
+
+**Parameters**
+``` javascript
+$.isFunction(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isNumeric
+Returns true if the given object is a number.
+
+**Parameters**
+``` javascript
+$.isNumeric(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isString
+Returns true if the given object is a string.
+
+**Parameters**
+``` javascript
+$.isString(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isObject
+Returns true if the given object is an object.
+
+**Parameters**
+``` javascript
+$.isObject(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isPlainObject
+Returns true if the given object is a plain object.
+
+**Parameters**
+``` javascript
+$.isPlainObject(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.isWindow
+Returns true if the given object is the window object.
+
+**Parameters**
+``` javascript
+$.isWindow(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.matches
+Returns true if the given object is an object.
+
+**Parameters**
+``` javascript
+$.isObject(object)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.trim
+The trim method returns the string stripped of whitespace from both ends. It does not affect the value of the string.
+
+**Parameters**
+``` javascript
+$.trim(string)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### $.parseJSON
+Parse JSON string to JSON object. This will also work for older browsers that don't include **JSON**.
+
+**Parameters**
+``` javascript
+$.parseJSON(string)
+```
+
+*Example*
+``` javascript
+$.parseJSON('{"a":"b"}') // Returns { "a": "b"} as an object
+```
+
+#### addClass
+Add class name to the selected elements. Multiple class names can be given in a space-separated string.
+
+**Parameters**
+``` javascript
+.addClass(name)
+```
+
+*Example*
+``` javascript
+TBD
+```
+
+#### append
+Append html to the DOM inside each element in the collection. The html can be a HTML string or Tire collection.
+
+**Parameters**
+``` javascript
+.append(html)
+```
+
+*Example*
+``` javascript
+TBD
 ```
