@@ -1,5 +1,5 @@
 /*
-*  NutBang v0.0.1 27-01-2014 
+*  NutBang v0.0.1 31-01-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License GPLv3 
 *  nutbang.github.io
@@ -258,6 +258,23 @@ nutbang.extend({
 
     try { return (new Function('return ' + str))(); }
     catch (e) { return null; }
+  },
+
+  noConflict: function (name) {
+    if (name) {
+      window.nutbang = _nutbang;
+    }
+
+    window.$ = _$;
+    return nutbang;
+  },
+
+  pluck: function (prop) {
+    var result = [];
+    this.each(function () {
+      if (this[prop]) result.push(this[prop]);
+    });
+    return result;
   },
 
   trim: function (str) {

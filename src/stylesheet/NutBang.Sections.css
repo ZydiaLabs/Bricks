@@ -3,26 +3,32 @@
 .bg {
     width: 100%;
 }
+
 .bg.blue {
     color: #ffffff;
     background-color: #4527CB;
 }
+
 .bg.red {
     color: #ffffff;
     background-color: #F32951;
 }
+
 .bg.yellow {
     color: #000000;
     background-color: #E5EB35;
 }
+
 .bg.green {
     color: #ffffff;
     background-color: #35EB42;
 }
+
 .bg.light {
     color: #000000;
     background-color: #ffffff;
 }
+
 .bg.dark {
     color: #ffffff;
     background-color: #000000;

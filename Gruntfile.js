@@ -23,11 +23,11 @@ module.exports = function(grunt) {
       },
       js: {
         src: ['<%= source.js %>'],
-        dest: '<%= meta.build %>/<%= pkg.name %>.js'
+        dest: '<%= meta.build %>/js/<%= pkg.name %>.js'
       },
       css: {
         src: ['<%= source.css %>'],
-        dest: '<%= meta.build %>/<%= pkg.name %>.css'
+        dest: '<%= meta.build %>/css/<%= pkg.name %>.css'
       }
     },
     uglify: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= meta.build %>/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+          '<%= meta.build %>/js/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
         }
       }
     },
@@ -58,24 +58,13 @@ module.exports = function(grunt) {
                 '*/\n\n'
         },
         files:{
-          '<%= meta.build %>/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
+          '<%= meta.build %>/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
         }
-      }
-    },
-    watch: {
-      stylesheets: {
-        files: 'src/stylesheet/*',
-        tasks: [ 'cssmin' ]
-      },
-      scripts: {
-        files: 'src/javascript/*',
-        tasks: [ 'concat' ]
       }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default', ['concat','uglify', 'cssmin', 'watch']);
+  grunt.registerTask('default', ['concat','uglify', 'cssmin']);
 };

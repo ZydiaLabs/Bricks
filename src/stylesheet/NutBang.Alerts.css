@@ -1,21 +1,22 @@
-/*Those are alert boxes*/
+/* ALERTS */
 
-.alert {
+.alert{
     padding:15px;
+    margin:10px 0;
     border-radius:3px;
 }
-.alert.error {
-    color: #5b090e;
-    background-color: #f9c6c9;
-    border: 1px solid #F48E93;
+
+.alert.primary {
+    background: #E8EFF3;
+    border: 1px solid #C5D7E3;
 }
+
 .alert.success {
-    color: #255521;
-    background-color: #d9f0d7;
-    border: 1px solid #b3e0b0;
+    background: #DAEEE4;
+    border: 1px solid #B6DFCA;
 }
-.alert.warning {
-    color: #255521;
-    background-color: #d9f0d7;
-    border: 1px solid #b3e0b0;
+
+.alert.danger {
+    background: #FDF4F1;
+    border: 1px solid #F7CFC4;
 }

@@ -253,6 +253,23 @@ nutbang.extend({
     catch (e) { return null; }
   },
 
+  noConflict: function (name) {
+    if (name) {
+      window.nutbang = _nutbang;
+    }
+
+    window.$ = _$;
+    return nutbang;
+  },
+
+  pluck: function (prop) {
+    var result = [];
+    this.each(function () {
+      if (this[prop]) result.push(this[prop]);
+    });
+    return result;
+  },
+
   trim: function (str) {
     return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   }
