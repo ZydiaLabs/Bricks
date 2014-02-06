@@ -1,1 +1,39 @@
 /* Navigation */
+
+nav {
+  height: 2.5rem;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  float: left;
+}
+
+nav li.left {
+  display: inline;
+  float: left;
+}
+
+nav li.right {
+  display: inline;
+  float: right;
+}
+
+nav a {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0;
+  color: #eeeeee;
+  text-decoration: none;
+}

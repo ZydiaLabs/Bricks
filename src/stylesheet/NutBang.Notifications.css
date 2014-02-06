@@ -10,6 +10,7 @@
     background-color: #3F3F49;
     padding: 4px 6px;
     border-radius: 3px;
+    display: inline-block;
 }
 
 .notification {
@@ -23,6 +24,7 @@
     background-color: #999999;
     padding: 5px 8px 4px 8px;
     border-radius: 25px;
+    display: inline-block;
 }
 
 .label.red,

@@ -1,5 +1,5 @@
 /*
-*  NutBang v0.0.1 31-01-2014 
+*  NutBang v0.0.1 06-02-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License GPLv3 
 *  nutbang.github.io
