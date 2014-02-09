@@ -5,11 +5,11 @@ module.exports = function(grunt) {
       build: "dist"
     },
     source: {
-      js: ['src/javascript/BriickLess.Main.js'
+      js: ['src/javascript/Bricks.Main.js'
           ,'src/javascript/core/*'
           ,'src/javascript/modules/*'
           ,'src/javascript/plugins/*'
-          , 'src/javascript/BriickLess.Window.js'],
+          , 'src/javascript/Bricks.Window.js'],
       css: ['src/stylesheet/*']
     },
     clean: {
