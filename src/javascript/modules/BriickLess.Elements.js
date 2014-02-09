@@ -1,29 +1,29 @@
-nutbang.fn.extend({
+briickless.fn.extend({
 
   filter: function (obj) {
-    if (nutbang.isFunction(obj)) {
+    if (briickless.isFunction(obj)) {
       var els = [];
       this.each(function (index, el) {
         if (obj.call(el, index)) {
           els.push(el);
         }
       });
-      return nutbang(els);
+      return briickless(els);
     } else {
       return this.filter(function () {
-        return nutbang.matches(this, obj);
+        return briickless.matches(this, obj);
       });
     }
   },
 
   not: function (selector) {
     return this.filter(function () {
-      return !nutbang.matches(this, selector);
+      return !briickless.matches(this, selector);
     });
   },
 
   eq: function (index) {
-    return index === -1 ? nutbang(slice.call(this, this.length -1)) : nutbang(slice.call(this, index, index + 1));
+    return index === -1 ? briickless(slice.call(this, this.length -1)) : briickless(slice.call(this, index, index + 1));
   },
 
   get: function (index) {
@@ -35,7 +35,7 @@ nutbang.fn.extend({
     this.each(function () {
       els.push(this.cloneNode(true));
     });
-    return nutbang(els);
+    return briickless(els);
   },
 
   toggle: function (state) {
@@ -48,8 +48,8 @@ nutbang.fn.extend({
   toggleClass: function (name, state) {
     return this.each(function (i) {
       var el = $(this);
-      name = nutbang.isFunction(name) ? name.call(this, i, el.attr('class'), state) : nutbang.isString(name) ? name : '';
-      nutbang.each(name.split(/\s+/g), function (i, klass) {
+      name = briickless.isFunction(name) ? name.call(this, i, el.attr('class'), state) : briickless.isString(name) ? name : '';
+      briickless.each(name.split(/\s+/g), function (i, klass) {
         el[(state === undefined ? !el.hasClass(klass) : state) ? 'addClass' : 'removeClass'](klass);
       });
     });

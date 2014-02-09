@@ -4,14 +4,14 @@ function ajaxJSONP (url, options) {
     , abortTimeout = null
     , cleanUp = function () {
         if (abortTimeout !== null) clearTimeout(abortTimeout);
-        nutbang(el).remove();
+        briickless(el).remove();
         try { delete window[name]; }
         catch (e) { window[name] = undefined; }
       }
     , abort = function (error) {
         cleanUp();
         if (error === 'timeout') window[name] = noop;
-        if (nutbang.isFunction(options.error)) options.error(error, options);
+        if (briickless.isFunction(options.error)) options.error(error, options);
       };
 
   el.onerror = function () {
@@ -25,35 +25,35 @@ function ajaxJSONP (url, options) {
   }
 
   window[name] = function (data) {
-    nutbang(el).remove();
+    briickless(el).remove();
     try { delete window[name]; }
     catch (e) { window[name] = undefined; }
-    nutbang.ajaxSuccess(data, null, options);
+    briickless.ajaxSuccess(data, null, options);
   };
 
-  options.data = nutbang.param(options.data);
+  options.data = briickless.param(options.data);
   el.src = url.replace(/\=\?/, '=' + name);
-  nutbang('head')[0].appendChild(el);
+  briickless('head')[0].appendChild(el);
 }
 
-nutbang.extend({
+briickless.extend({
 
   ajax: function (url, options) {
-    options = options || nutbang.ajaxSettings;
+    options = options || briickless.ajaxSettings;
 
-    if (nutbang.isObject(url)) {
-      if (nutbang.isFunction(options)) {
+    if (briickless.isObject(url)) {
+      if (briickless.isFunction(options)) {
         url.success = url.success || options;
       }
       options = url;
       url = options.url;
     }
 
-    if (nutbang.isFunction(options)) options = { success: options };
+    if (briickless.isFunction(options)) options = { success: options };
 
-    for (var opt in nutbang.ajaxSettings) {
+    for (var opt in briickless.ajaxSettings) {
       if (!options.hasOwnProperty(opt)) {
-        options[opt] = nutbang.ajaxSettings[opt];
+        options[opt] = briickless.ajaxSettings[opt];
       }
     }
 
@@ -69,7 +69,7 @@ nutbang.extend({
           xml: 'application/xml, text/xml',
           json: 'application/json'
         }
-      , params = nutbang.param(options.data) !== '' ? nutbang.param(options.data) : options.data;
+      , params = briickless.param(options.data) !== '' ? briickless.param(options.data) : options.data;
 
     for (var k in mime) {
       if (url.indexOf('.' + k) !== -1 && !options.dataType) options.dataType = k;
@@ -80,7 +80,7 @@ nutbang.extend({
       return ajaxJSONP(url, options);
     }
 
-    if (nutbang.isFunction(options.beforeOpen)) {
+    if (briickless.isFunction(options.beforeOpen)) {
       var bc = options.beforeOpen(xhr, options);
       if (!bc) {
         xhr.abort();
@@ -119,7 +119,7 @@ nutbang.extend({
         if (xhr.readyState === 4) {
           if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
             if (options.success !== undefined) {
-              nutbang.ajaxSuccess(null, xhr, options);
+              briickless.ajaxSuccess(null, xhr, options);
             }
           } else if (options.error !== undefined) {
             if (abortTimeout !== null) clearTimeout(abortTimeout);
@@ -128,7 +128,7 @@ nutbang.extend({
         }
       };
 
-      if (nutbang.isFunction(options.beforeSend)) {
+      if (briickless.isFunction(options.beforeSend)) {
         var bs = options.beforeSend(xhr, options);
         if (bs !== false) {
           xhr.send(params);
@@ -171,19 +171,19 @@ nutbang.extend({
   ajaxSuccess: function (data, xhr, options) {
     var res;
     if (xhr) {
-      if ((options.dataType === 'json' || false) && (res = nutbang.parseJSON(xhr.responseText)) === null) res = xhr.responseText;
+      if ((options.dataType === 'json' || false) && (res = briickless.parseJSON(xhr.responseText)) === null) res = xhr.responseText;
       if (options.dataType === 'xml') res = xhr.responseXML;
       res = res || xhr.responseText;
     }
     if (!res && data) res = data;
-    if (nutbang.isFunction(options.success)) options.success(res);
+    if (briickless.isFunction(options.success)) options.success(res);
   },
 
   param: function (obj, prefix) {
     var str = [];
     this.each(obj, function (p, v) {
       var k = prefix ? prefix + '[' + p + ']' : p;
-      str.push(nutbang.isObject(v) ? nutbang.param(v, k) : encodeURIComponent(k) + '=' + encodeURIComponent(v));
+      str.push(briickless.isObject(v) ? briickless.param(v, k) : encodeURIComponent(k) + '=' + encodeURIComponent(v));
     });
     return str.join('&').replace('%20', '+');
   }

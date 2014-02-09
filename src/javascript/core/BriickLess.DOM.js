@@ -44,13 +44,13 @@ var domReady = (function () {
     isReady = true;
 
     for (var i = 0; i < fns.length; i++) {
-      fns[i].call(document, nutbang);
+      fns[i].call(document, briickless);
     }
   }
 
   return function (callback) {
-    return isReady ? callback.call(document, nutbang) : fns.push(callback);
+    return isReady ? callback.call(document, briickless) : fns.push(callback);
   };
 })();
 
-nutbang.ready = nutbang.fn.ready = domReady;
+briickless.ready = briickless.fn.ready = domReady;

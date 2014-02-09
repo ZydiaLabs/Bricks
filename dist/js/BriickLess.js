@@ -1,14 +1,14 @@
 /*
-*  NutBang v0.0.1 06-02-2014 
+*  BriickLess v0.0.5 09-02-2014 
 *  Created by Giovanny Andres Gongora Granada 
-*  License GPLv3 
-*  nutbang.github.io
+*  License MIT 
+*  briickless.github.io
 */
 
 (function (window, undefined) {
 
 var document   = window.document
-  , _nutbang   = window.nutbang
+  , _briickless   = window.briickless
   , _$         = window.$
   , idExp      = /^#([\w\-]*)$/
   , classExp   = /^\.([\w\-]*)$/
@@ -32,11 +32,11 @@ try {
   };
 }
 
-var nutbang = function (selector, context) {
-  return new nutbang.fn.find(selector, context);
+var briickless = function (selector, context) {
+  return new briickless.fn.find(selector, context);
 };
 
-nutbang.fn = nutbang.prototype = {
+briickless.fn = briickless.prototype = {
 
   length: 0,
 
@@ -59,9 +59,9 @@ nutbang.fn = nutbang.prototype = {
         if (callback.call(target[i], i, target[i]) === false) break;
       }
     } else {
-      if (target instanceof nutbang) {
-        return nutbang.each(slice.call(target), callback);
-      } else if (nutbang.isObject(target)) {
+      if (target instanceof briickless) {
+        return briickless.each(slice.call(target), callback);
+      } else if (briickless.isObject(target)) {
         for (key in target) {
           if (target.hasOwnProperty(key) && callback.call(target[key], key, target[key]) === false) break;
         }
@@ -72,7 +72,7 @@ nutbang.fn = nutbang.prototype = {
   },
 
   set: function (elements) {
-    var i = 0, set = nutbang();
+    var i = 0, set = briickless();
     set.selector = this.selector;
     set.context = this.context;
     for (; i < elements.length; i++) {
@@ -89,8 +89,8 @@ nutbang.fn = nutbang.prototype = {
       return this;
     }
 
-    if (nutbang.isFunction(selector)) {
-      return nutbang.ready(selector);
+    if (briickless.isFunction(selector)) {
+      return briickless.ready(selector);
     }
 
     if (selector.nodeType) {
@@ -106,23 +106,23 @@ nutbang.fn = nutbang.prototype = {
 
     context = this.context ? this.context : (context || document);
 
-    if (nutbang.isPlainObject(context)) {
+    if (briickless.isPlainObject(context)) {
       attrs = context;
       context = document;
     }
 
-    if (context instanceof nutbang) {
+    if (context instanceof briickless) {
       context = context.context;
     }
 
-    if (nutbang.isString(selector)) {
+    if (briickless.isString(selector)) {
       this.selector = selector;
       if (idExp.test(selector) && context.nodeType === context.DOCUMENT_NODE) {
         els = (els = context.getElementById(selector.substr(1))) ? [els] : [];
       } else if (context.nodeType !== 1 && context.nodeType !== 9) {
         els = [];
       } else if (tagExp.test(selector)) {
-        nutbang.each(normalize(selector), function () {
+        briickless.each(normalize(selector), function () {
           els.push(this);
         });
       } else {
@@ -134,7 +134,7 @@ nutbang.fn = nutbang.prototype = {
       }
     } else if (selector.nodeName || selector === window) {
       els = [selector];
-    } else if (nutbang.isArray(selector)) {
+    } else if (briickless.isArray(selector)) {
       els = selector;
     }
 
@@ -142,7 +142,7 @@ nutbang.fn = nutbang.prototype = {
       this.selector = selector.selector;
       this.context = selector.context;
     } else if (this.context === undefined) {
-      if (els[0] !== undefined && !nutbang.isString(els[0])) {
+      if (els[0] !== undefined && !briickless.isString(els[0])) {
         this.context = els[0];
       } else {
         this.context = document;
@@ -150,12 +150,12 @@ nutbang.fn = nutbang.prototype = {
     }
 
     return this.set(els).each(function () {
-      return attrs && nutbang(this).attr(attrs);
+      return attrs && briickless(this).attr(attrs);
     });
   }
 };
 
-nutbang.extend = function () {
+briickless.extend = function () {
   var target = arguments[0] || {};
 
   if (typeof target !== 'object' && typeof target !== 'function') {
@@ -164,7 +164,7 @@ nutbang.extend = function () {
 
   if (arguments.length === 1) target = this;
 
-  nutbang.fn.each(slice.call(arguments), function (i, value) {
+  briickless.fn.each(slice.call(arguments), function (i, value) {
     for (var key in value) {
       if (target[key] !== value[key]) target[key] = value[key];
     }
@@ -173,11 +173,11 @@ nutbang.extend = function () {
   return target;
 };
 
-nutbang.fn.find.prototype = nutbang.fn;
+briickless.fn.find.prototype = briickless.fn;
 
-nutbang.extend({
+briickless.extend({
 
-  each: nutbang.fn.each,
+  each: briickless.fn.each,
 
   isFunction: function (obj) {
     return typeof obj === 'function';
@@ -262,11 +262,11 @@ nutbang.extend({
 
   noConflict: function (name) {
     if (name) {
-      window.nutbang = _nutbang;
+      window.briickless = _briickless;
     }
 
     window.$ = _$;
-    return nutbang;
+    return briickless;
   },
 
   pluck: function (prop) {
@@ -328,20 +328,20 @@ var domReady = (function () {
     isReady = true;
 
     for (var i = 0; i < fns.length; i++) {
-      fns[i].call(document, nutbang);
+      fns[i].call(document, briickless);
     }
   }
 
   return function (callback) {
-    return isReady ? callback.call(document, nutbang) : fns.push(callback);
+    return isReady ? callback.call(document, briickless) : fns.push(callback);
   };
 })();
 
-nutbang.ready = nutbang.fn.ready = domReady;
-nutbang.fn.extend({
+briickless.ready = briickless.fn.ready = domReady;
+briickless.fn.extend({
 
   addClass: function (value) {
-    if (value && nutbang.isString(value)) {
+    if (value && briickless.isString(value)) {
       return this.each(function (index, el) {
         if (el.nodeType === 1) {
           var classNames = value.split(/\s+/);
@@ -356,7 +356,7 @@ nutbang.fn.extend({
               }
             }
 
-            el.className = nutbang.trim(className);
+            el.className = briickless.trim(className);
           }
         }
       });
@@ -365,7 +365,7 @@ nutbang.fn.extend({
 
   removeClass: function (value) {
     return this.each(function (index, el) {
-      if (value && nutbang.isString(value)) {
+      if (value && briickless.isString(value)) {
         var classNames = value.split(/\s+/);
         if (el.nodeType === 1 && el.className) {
           if (classNames.length === 1) {
@@ -376,7 +376,7 @@ nutbang.fn.extend({
             }
           }
 
-          el.className = nutbang.trim(el.className.replace(/\s{2}/g, ' '));
+          el.className = briickless.trim(el.className.replace(/\s{2}/g, ' '));
 
           if (el.className === '') {
             el.removeAttribute('class');
@@ -397,7 +397,7 @@ nutbang.fn.extend({
         hasClasses = this.hasClass.call(this, values[i]);
       }
       return hasClasses;
-    } else if (nutbang.isString(value)) {
+    } else if (briickless.isString(value)) {
       for (i = 0; i < classNames.length; i++) {
         if (classNames[i] === value) return true;
       }
@@ -406,7 +406,7 @@ nutbang.fn.extend({
   },
 
   attr: function (name, value) {
-    if (nutbang.isObject(name)) {
+    if (briickless.isObject(name)) {
       return this.each(function () {
         for (var key in name) {
           if (this.setAttribute) {
@@ -414,13 +414,13 @@ nutbang.fn.extend({
           }
         }
       });
-    } else if ((value || value === null || value === false) && nutbang.isString(name)) {
+    } else if ((value || value === null || value === false) && briickless.isString(name)) {
       return this.each(function () {
         if (this.setAttribute) {
           this.setAttribute(name, value === null ? value + '' : value);
         }
       });
-    } else if (nutbang.isString(name)) {
+    } else if (briickless.isString(name)) {
       var attribute;
       for (var i = 0; i < this.length; i++) {
         if (this[i].getAttribute !== undefined && (attribute = this[i].getAttribute(name)) !== null) {
@@ -435,7 +435,7 @@ nutbang.fn.extend({
 
   data: function (name, value) {
     value = this.attr('data-' + name, serializeValue(value));
-    return value instanceof nutbang ? value : deserializeValue(value);
+    return value instanceof briickless ? value : deserializeValue(value);
   },
 
   removeAttr: function (name) {
@@ -452,7 +452,7 @@ nutbang.fn.extend({
 
 function serializeValue (value) {
   try {
-    return value ? (nutbang.isPlainObject(value) || nutbang.isArray(value)) &&
+    return value ? (briickless.isPlainObject(value) || briickless.isArray(value)) &&
     JSON.stringify ? JSON.stringify(value) : value : value;
   } catch (e) {
     return value;
@@ -464,37 +464,37 @@ function deserializeValue (value) {
   try {
     return value ? value === 'true' || (value === 'false' ? false :
     value === 'null' ? null : !isNaN(num = Number(value)) ? num :
-    /^[\[\{]/.test(value) ? nutbang.parseJSON(value) : value) : value;
+    /^[\[\{]/.test(value) ? briickless.parseJSON(value) : value) : value;
   } catch (e) {
     return value;
   }
 }
-nutbang.fn.extend({
+briickless.fn.extend({
 
   filter: function (obj) {
-    if (nutbang.isFunction(obj)) {
+    if (briickless.isFunction(obj)) {
       var els = [];
       this.each(function (index, el) {
         if (obj.call(el, index)) {
           els.push(el);
         }
       });
-      return nutbang(els);
+      return briickless(els);
     } else {
       return this.filter(function () {
-        return nutbang.matches(this, obj);
+        return briickless.matches(this, obj);
       });
     }
   },
 
   not: function (selector) {
     return this.filter(function () {
-      return !nutbang.matches(this, selector);
+      return !briickless.matches(this, selector);
     });
   },
 
   eq: function (index) {
-    return index === -1 ? nutbang(slice.call(this, this.length -1)) : nutbang(slice.call(this, index, index + 1));
+    return index === -1 ? briickless(slice.call(this, this.length -1)) : briickless(slice.call(this, index, index + 1));
   },
 
   get: function (index) {
@@ -506,7 +506,7 @@ nutbang.fn.extend({
     this.each(function () {
       els.push(this.cloneNode(true));
     });
-    return nutbang(els);
+    return briickless(els);
   },
 
   toggle: function (state) {
@@ -519,8 +519,8 @@ nutbang.fn.extend({
   toggleClass: function (name, state) {
     return this.each(function (i) {
       var el = $(this);
-      name = nutbang.isFunction(name) ? name.call(this, i, el.attr('class'), state) : nutbang.isString(name) ? name : '';
-      nutbang.each(name.split(/\s+/g), function (i, klass) {
+      name = briickless.isFunction(name) ? name.call(this, i, el.attr('class'), state) : briickless.isString(name) ? name : '';
+      briickless.each(name.split(/\s+/g), function (i, klass) {
         el[(state === undefined ? !el.hasClass(klass) : state) ? 'addClass' : 'removeClass'](klass);
       });
     });
@@ -590,7 +590,7 @@ function getEventHandlers (id, event) {
     for (event in c[id]) {
       tmp = c[id][event];
       for (var i = 0, l = tmp.length; i < l; i++) {
-        if (tmp[i] && ns.length && tmp[i].ns.length && nutbang.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
+        if (tmp[i] && ns.length && tmp[i].ns.length && briickless.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
           handlers.push(tmp[i]);
         }
       }
@@ -609,7 +609,7 @@ function createEventHandler (el, event, callback, _callback) {
   var fn = function (event) {
     if (!event.liveTarget) event.liveTarget = event.target || event.srcElement;
     var data = event.data;
-    if (nutbang.isString(data) && /^[\[\{]/.test(data)) data = nutbang.parseJSON(event.data);
+    if (briickless.isString(data) && /^[\[\{]/.test(data)) data = briickless.parseJSON(event.data);
     var result = cb.apply(el, [event].concat(data));
     if (result === false) {
       if (event.stopPropagation) event.stopPropagation();
@@ -646,15 +646,15 @@ function createProxy (event) {
 function addEvent (el, events, callback, selector) {
   var fn, _callback;
 
-  if (nutbang.isString(selector)) {
+  if (briickless.isString(selector)) {
     _callback = callback;
     fn = function () {
       return (function (el, callback, selector) {
         return function (e) {
-          var match = nutbang(el).find(e.target || e.srcElement);
+          var match = briickless(el).find(e.target || e.srcElement);
           match = match.get(0) === el ? match.find(selector) : match;
           if (match.is(selector)) {
-            var event = nutbang.extend(createProxy(e), {
+            var event = briickless.extend(createProxy(e), {
               currentTarget: match.get(0)
             });
 
@@ -668,7 +668,7 @@ function addEvent (el, events, callback, selector) {
     selector = undefined;
   }
 
-  nutbang.each(events.split(/\s/), function (index, event) {
+  briickless.each(events.split(/\s/), function (index, event) {
     var parts = getEventParts(event);
 
     if (_callback !== undefined && parts.ev in mouse) {
@@ -676,7 +676,7 @@ function addEvent (el, events, callback, selector) {
       fn = function () {
         return function (e) {
           var related = e.relatedTarget;
-          if (!related || (related !== this && !nutbang.contains(this, related))) {
+          if (!related || (related !== this && !briickless.contains(this, related))) {
             return _fn.apply(this, arguments);
           }
         }
@@ -708,12 +708,12 @@ function testEventHandler (parts, callback, selector, handler) {
 function removeEvent (el, events, callback, selector) {
   var id = getEventId(el);
 
-  if (callback === undefined && nutbang.isFunction(selector)) {
+  if (callback === undefined && briickless.isFunction(selector)) {
     callback = selector;
     selector = undefined;
   }
 
-  nutbang.each(events.split(/\s/), function (index, event) {
+  briickless.each(events.split(/\s/), function (index, event) {
     var handlers = getEventHandlers(id, event)
       , parts = getEventParts(event);
 
@@ -726,7 +726,7 @@ function removeEvent (el, events, callback, selector) {
           el.removeEventListener(event, handlers[i], false);
         } else if (el.detachEvent) {
           var name = 'on' + event;
-          if (nutbang.isString(el[name])) el[name] = null;
+          if (briickless.isString(el[name])) el[name] = null;
           el.detachEvent(name, handlers[i]);
           if (opcCache[el.nodeName]) { // Remove custom event handler on IE8.
             el.detachEvent('onpropertychange', opcHandler);
@@ -743,9 +743,9 @@ function removeEvent (el, events, callback, selector) {
   delete c[id];
 }
 
-nutbang.events = nutbang.events || {};
+briickless.events = briickless.events || {};
 
-nutbang.fn.extend({
+briickless.fn.extend({
 
   on: function (events, selector, callback) {
     return this.each(function () {
@@ -765,10 +765,10 @@ nutbang.fn.extend({
 
       var parts = getEventParts(event.type || event);
 
-      event = nutbang.Event(event)
+      event = briickless.Event(event)
       event.data = data || {};
 
-      if (nutbang.isString(event.data) && !nutbang.isString(data) && JSON.stringify) {
+      if (briickless.isString(event.data) && !briickless.isString(data) && JSON.stringify) {
         event.data = JSON.stringify(data);
       }
 
@@ -785,7 +785,7 @@ nutbang.fn.extend({
                   var handlers = getEventHandlers(ev.srcElement._eventId, ev.eventName);
                   if (handlers.length) {
                     for (var i = 0, l = handlers.length; i < l; i++) {
-                      if (nutbang.isFunction(handlers[i])) handlers[i](ev);
+                      if (briickless.isFunction(handlers[i])) handlers[i](ev);
                     }
                   }
                 }
@@ -801,9 +801,9 @@ nutbang.fn.extend({
       if (!event.isPropagationStopped()) {
         var parent = el.parentNode || el.ownerDocument;
         if (parent && parent._eventId > 0) {
-          // nutbang use `liveTarget` instead of creating a own Event object that modifies `target` property.
+          // briickless use `liveTarget` instead of creating a own Event object that modifies `target` property.
           event.liveTarget = el;
-          nutbang(parent).trigger(event, data);
+          briickless(parent).trigger(event, data);
         } else {
           event.stopPropagation();
         }
@@ -813,8 +813,8 @@ nutbang.fn.extend({
 
 });
 
-nutbang.Event = function (type, props) {
-  if (!nutbang.isString(type)) {
+briickless.Event = function (type, props) {
+  if (!briickless.isString(type)) {
     if (type.type) return type;
     props = type;
     type = props.type;
@@ -879,7 +879,7 @@ function isNode (node) {
 }
 
 function normalize (node) {
-  if (node instanceof nutbang) {
+  if (node instanceof briickless) {
     var els = [];
     node.each(function (i, el) {
       el = normalize(el);
@@ -888,7 +888,7 @@ function normalize (node) {
     });
     return els;
   }
-  return nutbang.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
+  return briickless.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
 }
 
 function wrap (node) {
@@ -913,11 +913,11 @@ function target (el, html) {
     el;
 }
 
-nutbang.fn.extend({
+briickless.fn.extend({
 
   append: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         target(el, node).appendChild(this);
       });
     });
@@ -926,7 +926,7 @@ nutbang.fn.extend({
   prepend: function (node) {
     return this.each(function (i, el) {
       var first = target(el, node).firstChild;
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         if (first) {
           first.parentNode.insertBefore(this, first);
         } else {
@@ -938,7 +938,7 @@ nutbang.fn.extend({
 
   before: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el);
       });
     });
@@ -946,7 +946,7 @@ nutbang.fn.extend({
 
   after: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el.nextSibling);
       });
     });
@@ -965,45 +965,45 @@ nutbang.fn.extend({
 
     return this.each(function () {
       try {
-        if ((nutbang.isString(html) || nutbang.isNumeric(html)) && !wrapTags.test(this.tagName)) {
+        if ((briickless.isString(html) || briickless.isNumeric(html)) && !wrapTags.test(this.tagName)) {
           return this.innerHTML = html;
         }
       } catch (e) {}
       var el = this;
-      nutbang.each(normalize(this), function () {
+      briickless.each(normalize(this), function () {
         return el.appendChild(this);
       });
     });
   },
 
   is: function (selector) {
-    return this[0] && nutbang.matches(this[0], selector);
+    return this[0] && briickless.matches(this[0], selector);
   },
 
   closest: function (selector, context) {
     var node = this[0];
 
-    while (node && !nutbang.matches(node, selector)) {
+    while (node && !briickless.matches(node, selector)) {
       node = node.parentNode;
       if (!node || !node.ownerDocument || node === context || node.nodeType === 11) break;
     }
 
-    return nutbang(node);
+    return briickless(node);
   },
 
   parent: function (selector) {
     var parent = this.pluck('parentNode');
-    return selector === undefined ? nutbang(parent) : nutbang(parent).filter(selector);
+    return selector === undefined ? briickless(parent) : briickless(parent).filter(selector);
   },
 
   children: function (selector) {
     var children = [];
     this.each(function () {
-      nutbang.each(slice.call(this.children), function (i, value) {
+      briickless.each(slice.call(this.children), function (i, value) {
         children.push(value);
       });
     });
-    return selector === undefined ? nutbang(children) : nutbang(children).filter(selector);
+    return selector === undefined ? briickless(children) : briickless(children).filter(selector);
   },
 
   text: function (text) {
@@ -1031,7 +1031,7 @@ nutbang.fn.extend({
           return;
         } else if (value === null || value === undefined) {
           value = '';
-        } else if (nutbang.isNumeric(value)) {
+        } else if (briickless.isNumeric(value)) {
           value += '';
         }
         this.value = value;
@@ -1049,14 +1049,14 @@ nutbang.fn.extend({
 
 });
 
-nutbang.each({
+briickless.each({
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
 }, function (key, value) {
-  nutbang.fn[key] = function (selector) {
-    return nutbang(selector)[value](this);
+  briickless.fn[key] = function (selector) {
+    return briickless(selector)[value](this);
   };
 });
 function ajaxJSONP (url, options) {
@@ -1065,14 +1065,14 @@ function ajaxJSONP (url, options) {
     , abortTimeout = null
     , cleanUp = function () {
         if (abortTimeout !== null) clearTimeout(abortTimeout);
-        nutbang(el).remove();
+        briickless(el).remove();
         try { delete window[name]; }
         catch (e) { window[name] = undefined; }
       }
     , abort = function (error) {
         cleanUp();
         if (error === 'timeout') window[name] = noop;
-        if (nutbang.isFunction(options.error)) options.error(error, options);
+        if (briickless.isFunction(options.error)) options.error(error, options);
       };
 
   el.onerror = function () {
@@ -1086,35 +1086,35 @@ function ajaxJSONP (url, options) {
   }
 
   window[name] = function (data) {
-    nutbang(el).remove();
+    briickless(el).remove();
     try { delete window[name]; }
     catch (e) { window[name] = undefined; }
-    nutbang.ajaxSuccess(data, null, options);
+    briickless.ajaxSuccess(data, null, options);
   };
 
-  options.data = nutbang.param(options.data);
+  options.data = briickless.param(options.data);
   el.src = url.replace(/\=\?/, '=' + name);
-  nutbang('head')[0].appendChild(el);
+  briickless('head')[0].appendChild(el);
 }
 
-nutbang.extend({
+briickless.extend({
 
   ajax: function (url, options) {
-    options = options || nutbang.ajaxSettings;
+    options = options || briickless.ajaxSettings;
 
-    if (nutbang.isObject(url)) {
-      if (nutbang.isFunction(options)) {
+    if (briickless.isObject(url)) {
+      if (briickless.isFunction(options)) {
         url.success = url.success || options;
       }
       options = url;
       url = options.url;
     }
 
-    if (nutbang.isFunction(options)) options = { success: options };
+    if (briickless.isFunction(options)) options = { success: options };
 
-    for (var opt in nutbang.ajaxSettings) {
+    for (var opt in briickless.ajaxSettings) {
       if (!options.hasOwnProperty(opt)) {
-        options[opt] = nutbang.ajaxSettings[opt];
+        options[opt] = briickless.ajaxSettings[opt];
       }
     }
 
@@ -1130,7 +1130,7 @@ nutbang.extend({
           xml: 'application/xml, text/xml',
           json: 'application/json'
         }
-      , params = nutbang.param(options.data) !== '' ? nutbang.param(options.data) : options.data;
+      , params = briickless.param(options.data) !== '' ? briickless.param(options.data) : options.data;
 
     for (var k in mime) {
       if (url.indexOf('.' + k) !== -1 && !options.dataType) options.dataType = k;
@@ -1141,7 +1141,7 @@ nutbang.extend({
       return ajaxJSONP(url, options);
     }
 
-    if (nutbang.isFunction(options.beforeOpen)) {
+    if (briickless.isFunction(options.beforeOpen)) {
       var bc = options.beforeOpen(xhr, options);
       if (!bc) {
         xhr.abort();
@@ -1180,7 +1180,7 @@ nutbang.extend({
         if (xhr.readyState === 4) {
           if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
             if (options.success !== undefined) {
-              nutbang.ajaxSuccess(null, xhr, options);
+              briickless.ajaxSuccess(null, xhr, options);
             }
           } else if (options.error !== undefined) {
             if (abortTimeout !== null) clearTimeout(abortTimeout);
@@ -1189,7 +1189,7 @@ nutbang.extend({
         }
       };
 
-      if (nutbang.isFunction(options.beforeSend)) {
+      if (briickless.isFunction(options.beforeSend)) {
         var bs = options.beforeSend(xhr, options);
         if (bs !== false) {
           xhr.send(params);
@@ -1232,34 +1232,34 @@ nutbang.extend({
   ajaxSuccess: function (data, xhr, options) {
     var res;
     if (xhr) {
-      if ((options.dataType === 'json' || false) && (res = nutbang.parseJSON(xhr.responseText)) === null) res = xhr.responseText;
+      if ((options.dataType === 'json' || false) && (res = briickless.parseJSON(xhr.responseText)) === null) res = xhr.responseText;
       if (options.dataType === 'xml') res = xhr.responseXML;
       res = res || xhr.responseText;
     }
     if (!res && data) res = data;
-    if (nutbang.isFunction(options.success)) options.success(res);
+    if (briickless.isFunction(options.success)) options.success(res);
   },
 
   param: function (obj, prefix) {
     var str = [];
     this.each(obj, function (p, v) {
       var k = prefix ? prefix + '[' + p + ']' : p;
-      str.push(nutbang.isObject(v) ? nutbang.param(v, k) : encodeURIComponent(k) + '=' + encodeURIComponent(v));
+      str.push(briickless.isObject(v) ? briickless.param(v, k) : encodeURIComponent(k) + '=' + encodeURIComponent(v));
     });
     return str.join('&').replace('%20', '+');
   }
 });
 
-nutbang.fn.extend({
+briickless.fn.extend({
 
   css: function (prop, value) {
-    if (nutbang.isString(prop) && value === undefined) {
+    if (briickless.isString(prop) && value === undefined) {
       return this.length > 0 ? getPropertyValue(this[0], prop) : undefined;
     }
 
     return this.each(function () {
       if (this.style !== undefined) {
-        if (nutbang.isString(prop)) {
+        if (briickless.isString(prop)) {
           this.style[prop] = value;
         } else {
           for (var key in prop) {
@@ -1304,6 +1304,6 @@ function getPropertyValue(el, prop) {
   return !!value ? value : '';
 }
 
-  window.$ = window.nutbang = window.nb = window.NutBang = nutbang;
+  window.$ = window.briickless = window.bl = window.BriickLess = window.ii = window.ss = briickless;
 
 })(window);

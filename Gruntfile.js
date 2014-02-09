@@ -5,12 +5,17 @@ module.exports = function(grunt) {
       build: "dist"
     },
     source: {
-      js: ['src/javascript/NutBang.Main.js'
+      js: ['src/javascript/BriickLess.Main.js'
           ,'src/javascript/core/*'
           ,'src/javascript/modules/*'
           ,'src/javascript/plugins/*'
-          , 'src/javascript/NutBang.Window.js'],
+          , 'src/javascript/BriickLess.Window.js'],
       css: ['src/stylesheet/*']
+    },
+    clean: {
+      build: {
+        src: ['<%= meta.build %>/*']
+      }
     },
     concat: { 
       options: {
@@ -61,10 +66,22 @@ module.exports = function(grunt) {
           '<%= meta.build %>/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
         }
       }
+    },
+    copy: {
+      font: {
+        expand: true,
+        cwd: 'src/fonts/',
+        src: '**',
+        dest: '<%= meta.build %>/fonts/',
+        flatten: true,
+        filter: 'isFile'
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.registerTask('default', ['concat','uglify', 'cssmin']);
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.registerTask('default', ['clean', 'concat','uglify', 'cssmin', 'copy']);
 };

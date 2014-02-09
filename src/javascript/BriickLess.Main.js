@@ -1,7 +1,7 @@
 (function (window, undefined) {
 
 var document   = window.document
-  , _nutbang   = window.nutbang
+  , _briickless   = window.briickless
   , _$         = window.$
   , idExp      = /^#([\w\-]*)$/
   , classExp   = /^\.([\w\-]*)$/
@@ -25,11 +25,11 @@ try {
   };
 }
 
-var nutbang = function (selector, context) {
-  return new nutbang.fn.find(selector, context);
+var briickless = function (selector, context) {
+  return new briickless.fn.find(selector, context);
 };
 
-nutbang.fn = nutbang.prototype = {
+briickless.fn = briickless.prototype = {
 
   length: 0,
 
@@ -52,9 +52,9 @@ nutbang.fn = nutbang.prototype = {
         if (callback.call(target[i], i, target[i]) === false) break;
       }
     } else {
-      if (target instanceof nutbang) {
-        return nutbang.each(slice.call(target), callback);
-      } else if (nutbang.isObject(target)) {
+      if (target instanceof briickless) {
+        return briickless.each(slice.call(target), callback);
+      } else if (briickless.isObject(target)) {
         for (key in target) {
           if (target.hasOwnProperty(key) && callback.call(target[key], key, target[key]) === false) break;
         }
@@ -65,7 +65,7 @@ nutbang.fn = nutbang.prototype = {
   },
 
   set: function (elements) {
-    var i = 0, set = nutbang();
+    var i = 0, set = briickless();
     set.selector = this.selector;
     set.context = this.context;
     for (; i < elements.length; i++) {
@@ -82,8 +82,8 @@ nutbang.fn = nutbang.prototype = {
       return this;
     }
 
-    if (nutbang.isFunction(selector)) {
-      return nutbang.ready(selector);
+    if (briickless.isFunction(selector)) {
+      return briickless.ready(selector);
     }
 
     if (selector.nodeType) {
@@ -99,23 +99,23 @@ nutbang.fn = nutbang.prototype = {
 
     context = this.context ? this.context : (context || document);
 
-    if (nutbang.isPlainObject(context)) {
+    if (briickless.isPlainObject(context)) {
       attrs = context;
       context = document;
     }
 
-    if (context instanceof nutbang) {
+    if (context instanceof briickless) {
       context = context.context;
     }
 
-    if (nutbang.isString(selector)) {
+    if (briickless.isString(selector)) {
       this.selector = selector;
       if (idExp.test(selector) && context.nodeType === context.DOCUMENT_NODE) {
         els = (els = context.getElementById(selector.substr(1))) ? [els] : [];
       } else if (context.nodeType !== 1 && context.nodeType !== 9) {
         els = [];
       } else if (tagExp.test(selector)) {
-        nutbang.each(normalize(selector), function () {
+        briickless.each(normalize(selector), function () {
           els.push(this);
         });
       } else {
@@ -127,7 +127,7 @@ nutbang.fn = nutbang.prototype = {
       }
     } else if (selector.nodeName || selector === window) {
       els = [selector];
-    } else if (nutbang.isArray(selector)) {
+    } else if (briickless.isArray(selector)) {
       els = selector;
     }
 
@@ -135,7 +135,7 @@ nutbang.fn = nutbang.prototype = {
       this.selector = selector.selector;
       this.context = selector.context;
     } else if (this.context === undefined) {
-      if (els[0] !== undefined && !nutbang.isString(els[0])) {
+      if (els[0] !== undefined && !briickless.isString(els[0])) {
         this.context = els[0];
       } else {
         this.context = document;
@@ -143,12 +143,12 @@ nutbang.fn = nutbang.prototype = {
     }
 
     return this.set(els).each(function () {
-      return attrs && nutbang(this).attr(attrs);
+      return attrs && briickless(this).attr(attrs);
     });
   }
 };
 
-nutbang.extend = function () {
+briickless.extend = function () {
   var target = arguments[0] || {};
 
   if (typeof target !== 'object' && typeof target !== 'function') {
@@ -157,7 +157,7 @@ nutbang.extend = function () {
 
   if (arguments.length === 1) target = this;
 
-  nutbang.fn.each(slice.call(arguments), function (i, value) {
+  briickless.fn.each(slice.call(arguments), function (i, value) {
     for (var key in value) {
       if (target[key] !== value[key]) target[key] = value[key];
     }
@@ -166,11 +166,11 @@ nutbang.extend = function () {
   return target;
 };
 
-nutbang.fn.find.prototype = nutbang.fn;
+briickless.fn.find.prototype = briickless.fn;
 
-nutbang.extend({
+briickless.extend({
 
-  each: nutbang.fn.each,
+  each: briickless.fn.each,
 
   isFunction: function (obj) {
     return typeof obj === 'function';
@@ -255,11 +255,11 @@ nutbang.extend({
 
   noConflict: function (name) {
     if (name) {
-      window.nutbang = _nutbang;
+      window.briickless = _briickless;
     }
 
     window.$ = _$;
-    return nutbang;
+    return briickless;
   },
 
   pluck: function (prop) {

@@ -1,7 +1,7 @@
-nutbang.fn.extend({
+briickless.fn.extend({
 
   addClass: function (value) {
-    if (value && nutbang.isString(value)) {
+    if (value && briickless.isString(value)) {
       return this.each(function (index, el) {
         if (el.nodeType === 1) {
           var classNames = value.split(/\s+/);
@@ -16,7 +16,7 @@ nutbang.fn.extend({
               }
             }
 
-            el.className = nutbang.trim(className);
+            el.className = briickless.trim(className);
           }
         }
       });
@@ -25,7 +25,7 @@ nutbang.fn.extend({
 
   removeClass: function (value) {
     return this.each(function (index, el) {
-      if (value && nutbang.isString(value)) {
+      if (value && briickless.isString(value)) {
         var classNames = value.split(/\s+/);
         if (el.nodeType === 1 && el.className) {
           if (classNames.length === 1) {
@@ -36,7 +36,7 @@ nutbang.fn.extend({
             }
           }
 
-          el.className = nutbang.trim(el.className.replace(/\s{2}/g, ' '));
+          el.className = briickless.trim(el.className.replace(/\s{2}/g, ' '));
 
           if (el.className === '') {
             el.removeAttribute('class');
@@ -57,7 +57,7 @@ nutbang.fn.extend({
         hasClasses = this.hasClass.call(this, values[i]);
       }
       return hasClasses;
-    } else if (nutbang.isString(value)) {
+    } else if (briickless.isString(value)) {
       for (i = 0; i < classNames.length; i++) {
         if (classNames[i] === value) return true;
       }
@@ -66,7 +66,7 @@ nutbang.fn.extend({
   },
 
   attr: function (name, value) {
-    if (nutbang.isObject(name)) {
+    if (briickless.isObject(name)) {
       return this.each(function () {
         for (var key in name) {
           if (this.setAttribute) {
@@ -74,13 +74,13 @@ nutbang.fn.extend({
           }
         }
       });
-    } else if ((value || value === null || value === false) && nutbang.isString(name)) {
+    } else if ((value || value === null || value === false) && briickless.isString(name)) {
       return this.each(function () {
         if (this.setAttribute) {
           this.setAttribute(name, value === null ? value + '' : value);
         }
       });
-    } else if (nutbang.isString(name)) {
+    } else if (briickless.isString(name)) {
       var attribute;
       for (var i = 0; i < this.length; i++) {
         if (this[i].getAttribute !== undefined && (attribute = this[i].getAttribute(name)) !== null) {
@@ -95,7 +95,7 @@ nutbang.fn.extend({
 
   data: function (name, value) {
     value = this.attr('data-' + name, serializeValue(value));
-    return value instanceof nutbang ? value : deserializeValue(value);
+    return value instanceof briickless ? value : deserializeValue(value);
   },
 
   removeAttr: function (name) {
@@ -112,7 +112,7 @@ nutbang.fn.extend({
 
 function serializeValue (value) {
   try {
-    return value ? (nutbang.isPlainObject(value) || nutbang.isArray(value)) &&
+    return value ? (briickless.isPlainObject(value) || briickless.isArray(value)) &&
     JSON.stringify ? JSON.stringify(value) : value : value;
   } catch (e) {
     return value;
@@ -124,7 +124,7 @@ function deserializeValue (value) {
   try {
     return value ? value === 'true' || (value === 'false' ? false :
     value === 'null' ? null : !isNaN(num = Number(value)) ? num :
-    /^[\[\{]/.test(value) ? nutbang.parseJSON(value) : value) : value;
+    /^[\[\{]/.test(value) ? briickless.parseJSON(value) : value) : value;
   } catch (e) {
     return value;
   }

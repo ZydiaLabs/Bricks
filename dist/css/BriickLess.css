@@ -1,48 +1,44 @@
 /*
-*  NutBang v0.0.1 06-02-2014 
+*  BriickLess v0.0.5 09-02-2014 
 *  Created by Giovanny Andres Gongora Granada 
-*  License GPLv3 
-*  nutbang.github.io
+*  License MIT 
+*  briickless.github.io
 */
 
-/* Navigation */
+/* Spinner */
 
-nav {
-  height: 2.5rem;
-  width: 100%;
-  background-color: #000;
-  color: #fff;
-  position: relative;
+.spinner {
+    display: inline-block;
+    -webkit-animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+        -ms-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
 }
 
-nav ul {
-  padding: 0;
-  margin: 0;
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 
-nav li {
-  display: inline;
-  float: left;
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); }
 }
 
-nav li.left {
-  display: inline;
-  float: left;
+@-ms-keyframes spin {
+    0% { -ms-transform: rotate(0deg); }
+    100% { -ms-transform: rotate(360deg); }
 }
 
-nav li.right {
-  display: inline;
-  float: right;
+@-o-keyframes spin {
+    0% { -o-transform: rotate(0deg); }
+    100% { -o-transform: rotate(360deg); }
 }
 
-nav a {
-  display: inline-block;
-  width: 100px;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px 0;
-  color: #eeeeee;
-  text-decoration: none;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 /* Default fixes */ 
 
@@ -1703,7 +1699,7 @@ input[type="checkbox"] {
   width: 8.33%;
 }
 
-/*.grid-5p {
+.grid-5p {
   width: 5%;
 }
 
@@ -1777,7 +1773,7 @@ input[type="checkbox"] {
 
 .grid-95p {
   width: 95%;
-}*/
+}
 
 @media (max-width: 30em) {
   .grid-1,
@@ -1970,6 +1966,45 @@ img.wide + img.wide {
        -moz-border-radius:.25em;
             border-radius:.25em;
 }
+/* Navigation */
+
+nav {
+  height: 2.5rem;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  float: left;
+}
+
+nav li.left {
+  display: inline;
+  float: left;
+}
+
+nav li.right {
+  display: inline;
+  float: right;
+}
+
+nav a {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0;
+  color: #eeeeee;
+  text-decoration: none;
+}
 /* Labels and Notifications */
 
 .label {
@@ -2087,41 +2122,6 @@ img.wide + img.wide {
 
 .bg.dark {
     background: #000000;
-}
-/* Spinner */
-
-.spinner {
-    display: inline-block;
-    -webkit-animation: spin 2s infinite linear;
-       -moz-animation: spin 2s infinite linear;
-        -ms-animation: spin 2s infinite linear;
-         -o-animation: spin 2s infinite linear;
-            animation: spin 2s infinite linear;
-}
-
-@-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-}
-
-@-moz-keyframes spin {
-    0% { -moz-transform: rotate(0deg); }
-    100% { -moz-transform: rotate(360deg); }
-}
-
-@-ms-keyframes spin {
-    0% { -ms-transform: rotate(0deg); }
-    100% { -ms-transform: rotate(360deg); }
-}
-
-@-o-keyframes spin {
-    0% { -o-transform: rotate(0deg); }
-    100% { -o-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 /* Text */
 

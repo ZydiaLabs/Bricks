@@ -1,22 +1,25 @@
 {
-  "name": "NutBang",
-  "version": "0.0.1",
+  "name": "BriickLess",
+  "version": "0.0.5",
   "description": "HTML5 Framework.",
   "author": {
     "name": "Giovanny Andres Gongora Granada",
-    "site": "nutbang.github.io"
+    "site": "briickless.github.io"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NutBang/NutBang"
+    "url": "https://github.com/BriickLess/BriickLess"
   },
   "license": { 
-    "type": "GPLv3"
+    "type": "MIT",
+    "url": "https://github.com/BriickLess/BriickLess/blob/master/LICENSE"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.5",
-    "grunt-contrib-cssmin": "~0.6.2"
+    "grunt-contrib-cssmin": "~0.6.2",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }

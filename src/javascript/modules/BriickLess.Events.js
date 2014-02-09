@@ -62,7 +62,7 @@ function getEventHandlers (id, event) {
     for (event in c[id]) {
       tmp = c[id][event];
       for (var i = 0, l = tmp.length; i < l; i++) {
-        if (tmp[i] && ns.length && tmp[i].ns.length && nutbang.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
+        if (tmp[i] && ns.length && tmp[i].ns.length && briickless.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
           handlers.push(tmp[i]);
         }
       }
@@ -81,7 +81,7 @@ function createEventHandler (el, event, callback, _callback) {
   var fn = function (event) {
     if (!event.liveTarget) event.liveTarget = event.target || event.srcElement;
     var data = event.data;
-    if (nutbang.isString(data) && /^[\[\{]/.test(data)) data = nutbang.parseJSON(event.data);
+    if (briickless.isString(data) && /^[\[\{]/.test(data)) data = briickless.parseJSON(event.data);
     var result = cb.apply(el, [event].concat(data));
     if (result === false) {
       if (event.stopPropagation) event.stopPropagation();
@@ -118,15 +118,15 @@ function createProxy (event) {
 function addEvent (el, events, callback, selector) {
   var fn, _callback;
 
-  if (nutbang.isString(selector)) {
+  if (briickless.isString(selector)) {
     _callback = callback;
     fn = function () {
       return (function (el, callback, selector) {
         return function (e) {
-          var match = nutbang(el).find(e.target || e.srcElement);
+          var match = briickless(el).find(e.target || e.srcElement);
           match = match.get(0) === el ? match.find(selector) : match;
           if (match.is(selector)) {
-            var event = nutbang.extend(createProxy(e), {
+            var event = briickless.extend(createProxy(e), {
               currentTarget: match.get(0)
             });
 
@@ -140,7 +140,7 @@ function addEvent (el, events, callback, selector) {
     selector = undefined;
   }
 
-  nutbang.each(events.split(/\s/), function (index, event) {
+  briickless.each(events.split(/\s/), function (index, event) {
     var parts = getEventParts(event);
 
     if (_callback !== undefined && parts.ev in mouse) {
@@ -148,7 +148,7 @@ function addEvent (el, events, callback, selector) {
       fn = function () {
         return function (e) {
           var related = e.relatedTarget;
-          if (!related || (related !== this && !nutbang.contains(this, related))) {
+          if (!related || (related !== this && !briickless.contains(this, related))) {
             return _fn.apply(this, arguments);
           }
         }
@@ -180,12 +180,12 @@ function testEventHandler (parts, callback, selector, handler) {
 function removeEvent (el, events, callback, selector) {
   var id = getEventId(el);
 
-  if (callback === undefined && nutbang.isFunction(selector)) {
+  if (callback === undefined && briickless.isFunction(selector)) {
     callback = selector;
     selector = undefined;
   }
 
-  nutbang.each(events.split(/\s/), function (index, event) {
+  briickless.each(events.split(/\s/), function (index, event) {
     var handlers = getEventHandlers(id, event)
       , parts = getEventParts(event);
 
@@ -198,7 +198,7 @@ function removeEvent (el, events, callback, selector) {
           el.removeEventListener(event, handlers[i], false);
         } else if (el.detachEvent) {
           var name = 'on' + event;
-          if (nutbang.isString(el[name])) el[name] = null;
+          if (briickless.isString(el[name])) el[name] = null;
           el.detachEvent(name, handlers[i]);
           if (opcCache[el.nodeName]) { // Remove custom event handler on IE8.
             el.detachEvent('onpropertychange', opcHandler);
@@ -215,9 +215,9 @@ function removeEvent (el, events, callback, selector) {
   delete c[id];
 }
 
-nutbang.events = nutbang.events || {};
+briickless.events = briickless.events || {};
 
-nutbang.fn.extend({
+briickless.fn.extend({
 
   on: function (events, selector, callback) {
     return this.each(function () {
@@ -237,10 +237,10 @@ nutbang.fn.extend({
 
       var parts = getEventParts(event.type || event);
 
-      event = nutbang.Event(event)
+      event = briickless.Event(event)
       event.data = data || {};
 
-      if (nutbang.isString(event.data) && !nutbang.isString(data) && JSON.stringify) {
+      if (briickless.isString(event.data) && !briickless.isString(data) && JSON.stringify) {
         event.data = JSON.stringify(data);
       }
 
@@ -257,7 +257,7 @@ nutbang.fn.extend({
                   var handlers = getEventHandlers(ev.srcElement._eventId, ev.eventName);
                   if (handlers.length) {
                     for (var i = 0, l = handlers.length; i < l; i++) {
-                      if (nutbang.isFunction(handlers[i])) handlers[i](ev);
+                      if (briickless.isFunction(handlers[i])) handlers[i](ev);
                     }
                   }
                 }
@@ -273,9 +273,9 @@ nutbang.fn.extend({
       if (!event.isPropagationStopped()) {
         var parent = el.parentNode || el.ownerDocument;
         if (parent && parent._eventId > 0) {
-          // nutbang use `liveTarget` instead of creating a own Event object that modifies `target` property.
+          // briickless use `liveTarget` instead of creating a own Event object that modifies `target` property.
           event.liveTarget = el;
-          nutbang(parent).trigger(event, data);
+          briickless(parent).trigger(event, data);
         } else {
           event.stopPropagation();
         }
@@ -285,8 +285,8 @@ nutbang.fn.extend({
 
 });
 
-nutbang.Event = function (type, props) {
-  if (!nutbang.isString(type)) {
+briickless.Event = function (type, props) {
+  if (!briickless.isString(type)) {
     if (type.type) return type;
     props = type;
     type = props.type;

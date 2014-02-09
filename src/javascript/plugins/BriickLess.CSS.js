@@ -1,13 +1,13 @@
-nutbang.fn.extend({
+briickless.fn.extend({
 
   css: function (prop, value) {
-    if (nutbang.isString(prop) && value === undefined) {
+    if (briickless.isString(prop) && value === undefined) {
       return this.length > 0 ? getPropertyValue(this[0], prop) : undefined;
     }
 
     return this.each(function () {
       if (this.style !== undefined) {
-        if (nutbang.isString(prop)) {
+        if (briickless.isString(prop)) {
           this.style[prop] = value;
         } else {
           for (var key in prop) {

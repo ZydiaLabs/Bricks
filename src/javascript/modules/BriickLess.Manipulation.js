@@ -14,7 +14,7 @@ function isNode (node) {
 }
 
 function normalize (node) {
-  if (node instanceof nutbang) {
+  if (node instanceof briickless) {
     var els = [];
     node.each(function (i, el) {
       el = normalize(el);
@@ -23,7 +23,7 @@ function normalize (node) {
     });
     return els;
   }
-  return nutbang.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
+  return briickless.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
 }
 
 function wrap (node) {
@@ -48,11 +48,11 @@ function target (el, html) {
     el;
 }
 
-nutbang.fn.extend({
+briickless.fn.extend({
 
   append: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         target(el, node).appendChild(this);
       });
     });
@@ -61,7 +61,7 @@ nutbang.fn.extend({
   prepend: function (node) {
     return this.each(function (i, el) {
       var first = target(el, node).firstChild;
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         if (first) {
           first.parentNode.insertBefore(this, first);
         } else {
@@ -73,7 +73,7 @@ nutbang.fn.extend({
 
   before: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el);
       });
     });
@@ -81,7 +81,7 @@ nutbang.fn.extend({
 
   after: function (node) {
     return this.each(function (i, el) {
-      nutbang.each(normalize(node), function () {
+      briickless.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el.nextSibling);
       });
     });
@@ -100,45 +100,45 @@ nutbang.fn.extend({
 
     return this.each(function () {
       try {
-        if ((nutbang.isString(html) || nutbang.isNumeric(html)) && !wrapTags.test(this.tagName)) {
+        if ((briickless.isString(html) || briickless.isNumeric(html)) && !wrapTags.test(this.tagName)) {
           return this.innerHTML = html;
         }
       } catch (e) {}
       var el = this;
-      nutbang.each(normalize(this), function () {
+      briickless.each(normalize(this), function () {
         return el.appendChild(this);
       });
     });
   },
 
   is: function (selector) {
-    return this[0] && nutbang.matches(this[0], selector);
+    return this[0] && briickless.matches(this[0], selector);
   },
 
   closest: function (selector, context) {
     var node = this[0];
 
-    while (node && !nutbang.matches(node, selector)) {
+    while (node && !briickless.matches(node, selector)) {
       node = node.parentNode;
       if (!node || !node.ownerDocument || node === context || node.nodeType === 11) break;
     }
 
-    return nutbang(node);
+    return briickless(node);
   },
 
   parent: function (selector) {
     var parent = this.pluck('parentNode');
-    return selector === undefined ? nutbang(parent) : nutbang(parent).filter(selector);
+    return selector === undefined ? briickless(parent) : briickless(parent).filter(selector);
   },
 
   children: function (selector) {
     var children = [];
     this.each(function () {
-      nutbang.each(slice.call(this.children), function (i, value) {
+      briickless.each(slice.call(this.children), function (i, value) {
         children.push(value);
       });
     });
-    return selector === undefined ? nutbang(children) : nutbang(children).filter(selector);
+    return selector === undefined ? briickless(children) : briickless(children).filter(selector);
   },
 
   text: function (text) {
@@ -166,7 +166,7 @@ nutbang.fn.extend({
           return;
         } else if (value === null || value === undefined) {
           value = '';
-        } else if (nutbang.isNumeric(value)) {
+        } else if (briickless.isNumeric(value)) {
           value += '';
         }
         this.value = value;
@@ -184,13 +184,13 @@ nutbang.fn.extend({
 
 });
 
-nutbang.each({
+briickless.each({
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
 }, function (key, value) {
-  nutbang.fn[key] = function (selector) {
-    return nutbang(selector)[value](this);
+  briickless.fn[key] = function (selector) {
+    return briickless(selector)[value](this);
   };
 });
