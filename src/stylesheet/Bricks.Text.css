@@ -1,69 +1,5 @@
-/* Text */
+/* Quotes */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0px;
-    font-family: inherit;
-    font-weight: bold;
-    line-height: 20px;
-    color: inherit;
-    text-rendering: optimizelegibility;
-}
-
-h1,
-h2,
-h3 {
-    line-height: 34px;
-}
-
-h1 {
-    font-size: 31px;
-}
-
-h2 {
-    font-size: 22px;
-}
-
-h3 {
-    font-size: 18px;
-}
-
-h4 {
-    font-size: 16px;
-}
-
-h5 {
-    font-size: 14px;
-}
-
-h6 {
-    font-size: 12px;
-}
-
-h1 small {
-    font-size: 24px;
-}
-
-h2 small {
-    font-size: 16px;
-}
-
-h3 small {
-    font-size: 14px;
-}
-
-h4 small {
-    font-size: 12px;
-}
-p {
-    margin: 0px;
-}
-
-/*Quotes*/
 pre, 
 .pre {
     display: block;
@@ -180,32 +116,4 @@ pre .string,
 
 .block-purple {
     border-color:#875ec4;
-}
-
-.shadow {
-    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-.shadow-less {
-    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-}
-
-.opacity-up,
-.opacity-down:hover {
-    filter:alpha(opacity=85);
-    -moz-opacity:0.85;
-    -khtml-opacity: 0.85;
-    opacity: 0.85;
-    z-index:-1;
-}
-
-.opacity-up:hover {
-    filter:alpha(opacity=1);
-    -moz-opacity:1;
-    -khtml-opacity: 1;
-    opacity: 1;
 }

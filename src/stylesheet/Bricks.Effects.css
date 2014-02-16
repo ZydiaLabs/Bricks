@@ -1,3 +1,33 @@
+/* Effects */
+
+.shadow {
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-less {
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.opacity-up,
+.opacity-down:hover {
+    filter:alpha(opacity=85);
+    -moz-opacity:0.85;
+    -khtml-opacity: 0.85;
+    opacity: 0.85;
+    z-index:-1;
+}
+
+.opacity-up:hover {
+    filter:alpha(opacity=1);
+    -moz-opacity:1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+
 /* Style for images */
 
 .img-rounded {
