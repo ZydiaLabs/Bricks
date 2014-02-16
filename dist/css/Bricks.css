@@ -1933,7 +1933,6 @@ nav {
   width: 100%;
   background-color: #000;
   color: #fff;
-  position: relative;
 }
 
 nav ul {
@@ -1941,29 +1940,45 @@ nav ul {
   margin: 0;
 }
 
-nav li {
-  display: inline;
+nav ul li {
   float: left;
+  margin-left: 10px;
 }
 
-nav li.left {
-  display: inline;
-  float: left;
-}
-
-nav li.right {
-  display: inline;
+nav ul li.right {
   float: right;
+  margin-right: 10px;
 }
 
-nav a {
+nav ul li a {
   display: inline-block;
-  width: 100px;
   text-align: center;
   text-decoration: none;
   padding: 10px 0;
   color: #eeeeee;
   text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+nav:before,
+ul:before, 
+nav:after,
+ul:after {
+  content: "";
+  display: table;
+}
+
+nav:after,
+ul:after {
+  clear: both;
+}
+
+nav,
+ul {
+  zoom: 1;
 }
 /* Labels and Notifications */
 
