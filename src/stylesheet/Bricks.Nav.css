@@ -13,11 +13,13 @@ nav ul {
 }
 
 nav ul li {
+  display: inline;
   float: left;
   margin-left: 10px;
 }
 
 nav ul li.right {
+  display: inline;
   float: right;
   margin-right: 10px;
 }
@@ -28,7 +30,6 @@ nav ul li a {
   text-decoration: none;
   padding: 10px 0;
   color: #eeeeee;
-  text-decoration: none;
 }
 
 nav ul li a:hover {

@@ -1,5 +1,5 @@
-var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i
-  , wrapMap = {
+var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i,
+    wrapMap = {
       thead: ['<table>', '</table>', 1],
       col: ['<table><colgroup>', '</colgroup></table>', 2],
       tr: ['<table><tbody>', '</tbody></table>', 2],
@@ -14,7 +14,7 @@ function isNode (node) {
 }
 
 function normalize (node) {
-  if (node instanceof briickless) {
+  if (node instanceof bricks) {
     var els = [];
     node.each(function (i, el) {
       el = normalize(el);
@@ -23,15 +23,15 @@ function normalize (node) {
     });
     return els;
   }
-  return briickless.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
+  return bricks.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
 }
 
 function wrap (node) {
   return typeof node === 'string' && node !== '' ? function () {
-    var tag = tagExp.exec(node)
-      , el = document.createElement('div')
-      , wrap = tag ? wrapMap[tag[1].toLowerCase()] : null
-      , level = wrap ? wrap[2] + 1 : 1;
+    var tag = tagExp.exec(node),
+        el = document.createElement('div'),
+        wrap = tag ? wrapMap[tag[1].toLowerCase()] : null,
+        level = wrap ? wrap[2] + 1 : 1;
     el.innerHTML = wrap ? (wrap[0] + node + wrap[1]) : node;
     while (level--) el = el.firstChild;
     return [el];
@@ -48,11 +48,11 @@ function target (el, html) {
     el;
 }
 
-briickless.fn.extend({
+bricks.fn.extend({
 
   append: function (node) {
     return this.each(function (i, el) {
-      briickless.each(normalize(node), function () {
+      bricks.each(normalize(node), function () {
         target(el, node).appendChild(this);
       });
     });
@@ -61,7 +61,7 @@ briickless.fn.extend({
   prepend: function (node) {
     return this.each(function (i, el) {
       var first = target(el, node).firstChild;
-      briickless.each(normalize(node), function () {
+      bricks.each(normalize(node), function () {
         if (first) {
           first.parentNode.insertBefore(this, first);
         } else {
@@ -73,7 +73,7 @@ briickless.fn.extend({
 
   before: function (node) {
     return this.each(function (i, el) {
-      briickless.each(normalize(node), function () {
+      bricks.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el);
       });
     });
@@ -81,7 +81,7 @@ briickless.fn.extend({
 
   after: function (node) {
     return this.each(function (i, el) {
-      briickless.each(normalize(node), function () {
+      bricks.each(normalize(node), function () {
         el.parentNode.insertBefore(this, el.nextSibling);
       });
     });
@@ -100,45 +100,46 @@ briickless.fn.extend({
 
     return this.each(function () {
       try {
-        if ((briickless.isString(html) || briickless.isNumeric(html)) && !wrapTags.test(this.tagName)) {
-          return this.innerHTML = html;
+        if ((bricks.isString(html) || bricks.isNumeric(html)) && !wrapTags.test(this.tagName)) {
+          var result = this.innerHTML = html;
+          return result;
         }
       } catch (e) {}
       var el = this;
-      briickless.each(normalize(this), function () {
+      bricks.each(normalize(this), function () {
         return el.appendChild(this);
       });
     });
   },
 
   is: function (selector) {
-    return this[0] && briickless.matches(this[0], selector);
+    return this[0] && bricks.matches(this[0], selector);
   },
 
   closest: function (selector, context) {
     var node = this[0];
 
-    while (node && !briickless.matches(node, selector)) {
+    while (node && !bricks.matches(node, selector)) {
       node = node.parentNode;
       if (!node || !node.ownerDocument || node === context || node.nodeType === 11) break;
     }
 
-    return briickless(node);
+    return bricks(node);
   },
 
   parent: function (selector) {
     var parent = this.pluck('parentNode');
-    return selector === undefined ? briickless(parent) : briickless(parent).filter(selector);
+    return selector === undefined ? bricks(parent) : bricks(parent).filter(selector);
   },
 
   children: function (selector) {
     var children = [];
     this.each(function () {
-      briickless.each(slice.call(this.children), function (i, value) {
+      bricks.each(slice.call(this.children), function (i, value) {
         children.push(value);
       });
     });
-    return selector === undefined ? briickless(children) : briickless(children).filter(selector);
+    return selector === undefined ? bricks(children) : bricks(children).filter(selector);
   },
 
   text: function (text) {
@@ -166,7 +167,7 @@ briickless.fn.extend({
           return;
         } else if (value === null || value === undefined) {
           value = '';
-        } else if (briickless.isNumeric(value)) {
+        } else if (bricks.isNumeric(value)) {
           value += '';
         }
         this.value = value;
@@ -184,13 +185,13 @@ briickless.fn.extend({
 
 });
 
-briickless.each({
+bricks.each({
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
 }, function (key, value) {
-  briickless.fn[key] = function (selector) {
-    return briickless(selector)[value](this);
+  bricks.fn[key] = function (selector) {
+    return bricks(selector)[value](this);
   };
 });

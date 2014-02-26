@@ -1,0 +1,277 @@
+
+// Colors
+// -------------------------------
+
+$light:                 #fff !default;
+$stable:                #f8f8f8 !default;
+$positive:              #4a87ee !default;
+$calm:                  #43cee6 !default;
+$balanced:              #66cc33 !default;
+$energized:             #f0b840 !default;
+$assertive:             #ef4e3a !default;
+$royal:                 #8a6de9 !default;
+$dark:                  #444 !default;
+
+
+
+// Base
+// -------------------------------
+
+$font-family-sans-serif:         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-light-sans-serif:   "Helvetica Neue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-serif:              Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:          Monaco, Menlo, Consolas, "Courier New", monospace !default;
+
+$font-family-base:               $font-family-sans-serif !default;
+$font-size-base:                 14px !default;
+$font-size-large:                18px !default;
+$font-size-small:                11px !default;
+
+$line-height-base:               1.428571429 !default; // 20/14
+$line-height-computed:           floor($font-size-base * $line-height-base) !default; // ~20px
+$line-height-large:              1.33 !default;
+$line-height-small:              1.5 !default;
+
+$headings-font-family:           $font-family-base !default;
+$headings-font-weight:           500 !default;
+$headings-line-height:           1.2 !default;
+
+$base-background-color:          #fff !default;
+$base-color:                     #000 !default;
+
+$link-color:                     $positive !default;
+$link-hover-color:               darken($link-color, 15%) !default;
+
+$content-padding:                10px !default;
+
+$padding-base-vertical:          6px !default;
+$padding-base-horizontal:        12px !default;
+
+$padding-large-vertical:         10px !default;
+$padding-large-horizontal:       16px !default;
+
+$padding-small-vertical:         5px !default;
+$padding-small-horizontal:       10px !default;
+
+$border-radius-base:             4px !default;
+$border-radius-large:            6px !default;
+$border-radius-small:            3px !default;
+
+
+
+// Icon font
+// -------------------------------
+$fa-font-path: 					'../fonts' !default;
+$fa-font-family: 				FontAwesome !default;
+$fa-version: 					4.0.3 !default;
+$fa-name: 						fontawesome !default;
+$fa-prefix: 					icon !default;
+
+
+
+// btns
+// -------------------------------
+
+$btn-color:                        #222 !default;
+$btn-block-margin:                 10px !default;
+$btn-clear-padding:                6px !default;
+$btn-border-radius:                2px !default;
+$btn-border-width:                 1px !default;
+
+$btn-font-size:                    16px !default;
+$btn-height:                       42px !default;
+$btn-padding:                      12px !default;
+$btn-icon-size:                    24px !default;
+
+$btn-large-font-size:              20px !default;
+$btn-large-height:                 54px !default;
+$btn-large-padding:                16px !default;
+$btn-large-icon-size:              32px !default;
+
+$btn-small-font-size:              12px !default;
+$btn-small-height:                 28px !default;
+$btn-small-padding:                4px !default;
+$btn-small-icon-size:              16px !default;
+
+$btn-nav-btn-font-size:         13px !default;
+$btn-nav-btn-height:            32px !default;
+$btn-nav-btn-padding:           8px !default;
+$btn-nav-btn-icon-size:         20px !default;
+
+$btn-light-bg:                     $light !default;
+$btn-light-text:                   #444 !default;
+$btn-light-border:                 #ddd !default;
+$btn-light-active-bg:              #fafafa !default;
+$btn-light-active-border:          #ccc !default;
+
+$btn-stable-bg:                    $stable !default;
+$btn-stable-text:                  #444 !default;
+$btn-stable-border:                #b2b2b2 !default;
+$btn-stable-active-bg:             #e5e5e5 !default;
+$btn-stable-active-border:         #a2a2a2 !default;
+
+$btn-positive-bg:                  $positive !default;
+$btn-positive-text:                #fff !default;
+$btn-positive-border:              darken($positive, 15%) !default;
+$btn-positive-active-bg:           darken($positive, 15%) !default;
+$btn-positive-active-border:       darken($positive, 15%) !default;
+
+$btn-calm-bg:                      $calm !default;
+$btn-calm-text:                    #fff !default;
+$btn-calm-border:                  darken($calm, 15%) !default;
+$btn-calm-active-bg:               darken($calm, 15%) !default;
+$btn-calm-active-border:           darken($calm, 15%) !default;
+
+$btn-assertive-bg:                 $assertive !default;
+$btn-assertive-text:               #fff !default;
+$btn-assertive-border:             darken($assertive, 15%) !default;
+$btn-assertive-active-bg:          darken($assertive, 15%) !default;
+$btn-assertive-active-border:      darken($assertive, 15%) !default;
+
+$btn-balanced-bg:                  $balanced !default;
+$btn-balanced-text:                #fff !default;
+$btn-balanced-border:              darken($balanced, 15%) !default;
+$btn-balanced-active-bg:           darken($balanced, 15%) !default;
+$btn-balanced-active-border:       darken($balanced, 15%) !default;
+
+$btn-energized-bg:                 $energized !default;
+$btn-energized-text:               #fff !default;
+$btn-energized-border:             darken($energized, 15%) !default;
+$btn-energized-active-bg:          darken($energized, 15%) !default;
+$btn-energized-active-border:      darken($energized, 15%) !default;
+
+$btn-royal-bg:                     $royal !default;
+$btn-royal-text:                   #fff !default;
+$btn-royal-border:                 darken($royal, 15%) !default;
+$btn-royal-active-bg:              darken($royal, 15%) !default;
+$btn-royal-active-border:          darken($royal, 15%) !default;
+
+$btn-dark-bg:                      $dark !default;
+$btn-dark-text:                    #fff !default;
+$btn-dark-border:                  #111 !default;
+$btn-dark-active-bg:               #262626 !default;
+$btn-dark-active-border:           #000 !default;
+
+$btn-default-bg:                   $btn-stable-bg !default;
+$btn-default-text:                 $btn-stable-text !default;
+$btn-default-border:               $btn-stable-border !default;
+$btn-default-active-bg:            $btn-stable-active-bg !default;
+$btn-default-active-border:        $btn-stable-active-border !default;
+
+
+// navs
+// -------------------------------
+
+$nav-height:                      44px !default;
+$nav-title-font-size:             17px !default;
+$nav-padding-portrait:            5px !default;
+$nav-padding-landscape:           5px !default;
+$nav-transparency:                1 !default;
+
+$nav-light-bg:                    rgba($btn-light-bg, $nav-transparency) !default;
+$nav-light-text:                  $btn-light-text !default;
+$nav-light-border:                $btn-light-border !default;
+$nav-light-active-bg:             $btn-light-active-bg !default;
+$nav-light-active-border:         $btn-light-active-border !default;
+
+$nav-stable-bg:                   rgba($btn-stable-bg, $nav-transparency) !default;
+$nav-stable-text:                 $btn-stable-text !default;
+$nav-stable-border:               $btn-stable-border !default;
+$nav-stable-active-bg:            $btn-stable-active-bg !default;
+$nav-stable-active-border:        $btn-stable-active-border !default;
+
+$nav-positive-bg:                 rgba($btn-positive-bg, $nav-transparency) !default;
+$nav-positive-text:               $btn-positive-text !default;
+$nav-positive-border:             $btn-positive-border !default;
+$nav-positive-active-bg:          $btn-positive-active-bg !default;
+$nav-positive-active-border:      $btn-positive-active-border !default;
+
+$nav-calm-bg:                     rgba($btn-calm-bg, $nav-transparency) !default;
+$nav-calm-text:                   $btn-calm-text !default;
+$nav-calm-border:                 $btn-calm-border !default;
+$nav-calm-active-bg:              $btn-calm-active-bg !default;
+$nav-calm-active-border:          $btn-calm-active-border !default;
+
+$nav-assertive-bg:                rgba($btn-assertive-bg, $nav-transparency) !default;
+$nav-assertive-text:              $btn-assertive-text !default;
+$nav-assertive-border:            $btn-assertive-border !default;
+$nav-assertive-active-bg:         $btn-assertive-active-bg !default;
+$nav-assertive-active-border:     $btn-assertive-active-border !default;
+
+$nav-balanced-bg:                 rgba($btn-balanced-bg, $nav-transparency) !default;
+$nav-balanced-text:               $btn-balanced-text !default;
+$nav-balanced-border:             $btn-balanced-border !default;
+$nav-balanced-active-bg:          $btn-balanced-active-bg !default;
+$nav-balanced-active-border:      $btn-balanced-active-border !default;
+
+$nav-energized-bg:                rgba($btn-energized-bg, $nav-transparency) !default;
+$nav-energized-text:              $btn-energized-text !default;
+$nav-energized-border:            $btn-energized-border !default;
+$nav-energized-active-bg:         $btn-energized-active-bg !default;
+$nav-energized-active-border:     $btn-energized-active-border !default;
+
+$nav-royal-bg:                    rgba($btn-royal-bg, $nav-transparency) !default;
+$nav-royal-text:                  $btn-royal-text !default;
+$nav-royal-border:                $btn-royal-border !default;
+$nav-royal-active-bg:             $btn-royal-active-bg !default;
+$nav-royal-active-border:         $btn-royal-active-border !default;
+
+$nav-dark-bg:                     rgba($btn-dark-bg, $nav-transparency) !default;
+$nav-dark-text:                   $btn-dark-text !default;
+$nav-dark-border:                 $btn-dark-border !default;
+$nav-dark-active-bg:              $btn-dark-active-bg !default;
+$nav-dark-active-border:          $btn-dark-active-border !default;
+
+$nav-default-bg:                  $nav-light-bg !default;
+$nav-default-text:                $nav-light-text !default;
+$nav-default-border:              $nav-light-border !default;
+$nav-default-active-bg:           $nav-light-active-bg !default;
+$nav-default-active-border:       $nav-light-active-border !default;
+
+
+
+// Icons
+// -------------------------------
+
+$icon-fill-border-radius:         6px !default;
+
+
+
+// Grids
+// -------------------------------
+
+$w-grid-1:						  100%;
+$w-grid-2:						  50%;
+$w-grid-3:						  33.33%;
+$w-grid-4:						  25%;
+$w-grid-5:						  20%;
+$w-grid-6:						  16.6666666667%;
+$w-grid-7:						  14.2857142857%;
+$w-grid-8:						  12.5%;
+$w-grid-9:						  11.1111111111%;
+$w-grid-10:						  10%;
+$w-grid-11:						  9.09090909091%;
+$w-grid-12:						  8.33%;
+
+
+// Z-Indexes
+// -------------------------------
+
+$z-index-action-sheet:            10 !default;
+$z-index-nav:                     10 !default;
+$z-index-nav-title:               0 !default;
+$z-index-nav-btn:              1 !default;
+$z-index-item:                    2 !default;
+$z-index-item-checkbox:           3 !default;
+$z-index-item-drag:               0 !default;
+$z-index-item-edit:               0 !default;
+$z-index-item-options:            1 !default;
+$z-index-item-radio:              3 !default;
+$z-index-item-reordering:         9 !default;
+$z-index-item-toggle:             3 !default;
+$z-index-menu:                    0 !default;
+$z-index-modal:                   10 !default;
+$z-index-pane:                    1 !default;
+$z-index-scroll-nav:              9999 !default;
+$z-index-tabs:                    5 !default;
+$z-index-view:                    1 !default;

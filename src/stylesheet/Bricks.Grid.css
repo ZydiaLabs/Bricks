@@ -7,7 +7,7 @@
 
 [class*='grid-'] {
   float: left;
-  padding: 0.3em;
+  padding: 0 auto;
 }
 
 [class*='grid-']:last-of-type {

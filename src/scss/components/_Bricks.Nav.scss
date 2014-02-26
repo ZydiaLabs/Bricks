@@ -1,0 +1,284 @@
+
+/**
+ * nav (Headers and Footers)
+ * --------------------------------------------------
+ */
+
+.nav {
+  @include display-flex();
+  @include translate3d(0,0,0);
+  @include user-select(none);
+  position: relative;
+  right: 0;
+  left: 0;
+  z-index: $z-index-nav;
+
+  box-sizing: border-box;
+  padding: $nav-padding-portrait;
+
+  width: 100%;
+  height: $nav-height;
+  border-width: 0;
+  border-style: solid;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+
+  background-color: $nav-default-bg;
+
+  /* border-width: 1px will actually create 2 device pixels on retina */
+  /* this nifty trick sets an actual 1px border on hi-res displays */
+  background-size: 0;
+  @media (min--moz-device-pixel-ratio: 1.5),
+         (-webkit-min-device-pixel-ratio: 1.5),
+         (min-device-pixel-ratio: 1.5),
+         (min-resolution: 144dpi),
+         (min-resolution: 1.5dppx) {
+    border: none;
+    background-image: linear-gradient(0deg, $nav-default-border, $nav-default-border 50%, transparent 50%);
+    background-position: bottom;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+  }
+
+  &.nav-clear {
+    border: none;
+    background: none;
+    color: #fff;
+
+    .btn {
+      color: #fff;
+    }
+    .title {
+      color: #fff;
+    }
+  }
+
+  &.item-input-inset {
+    .item-input-wrapper {
+      margin-top: -1px;
+
+      input {
+        padding-left: 8px;
+        height: 28px;
+      }
+    }
+  }
+
+  &.nav-light {
+    @include nav-style($nav-light-bg, $nav-light-border, $nav-light-text);
+  }
+  &.nav-stable {
+    @include nav-style($nav-stable-bg, $nav-stable-border, $nav-stable-text);
+  }
+  &.nav-positive {
+    @include nav-style($nav-positive-bg, $nav-positive-border, $nav-positive-text);
+  }
+  &.nav-calm {
+    @include nav-style($nav-calm-bg, $nav-calm-border, $nav-calm-text);
+  }
+  &.nav-assertive {
+    @include nav-style($nav-assertive-bg, $nav-assertive-border, $nav-assertive-text);
+  }
+  &.nav-balanced {
+    @include nav-style($nav-balanced-bg, $nav-balanced-border, $nav-balanced-text);
+  }
+  &.nav-energized {
+    @include nav-style($nav-energized-bg, $nav-energized-border, $nav-energized-text);
+  }
+  &.nav-royal {
+    @include nav-style($nav-royal-bg, $nav-royal-border, $nav-royal-text);
+  }
+  &.nav-dark {
+    @include nav-style($nav-dark-bg, $nav-dark-border, $nav-dark-text);
+  }
+
+  // Title inside of a nav is centered
+  .title {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $z-index-nav-title;
+    overflow: hidden;
+
+    margin: 0 10px;
+
+    min-width: 30px;
+
+    text-align: center;
+
+    // Go into ellipsis if too small
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: $nav-title-font-size;
+
+    line-height: $nav-height;
+
+    &.title-left {
+      text-align: left;
+    }
+    &.title-right {
+      text-align: right;
+    }
+  }
+
+  .title a {
+    color: inherit;
+  }
+
+  .btn {
+    z-index: $z-index-nav-btn;
+    padding: 0 $btn-nav-btn-padding;
+    min-width: initial;
+    min-height: $btn-nav-btn-height - 1;
+    font-size: $btn-nav-btn-font-size;
+    font-weight: 400;
+    line-height: $btn-nav-btn-height;
+
+    &.btn-icon:before,
+    .icon:before,
+    &.icon:before,
+    &.icon-left:before,
+    &.icon-right:before {
+      padding-right: 2px;
+      padding-left: 2px;
+      font-size: $btn-nav-btn-icon-size;
+      line-height: $btn-nav-btn-height;
+    }
+
+    &.btn-icon {
+      .icon:before,
+      &:before,
+      &.icon-left:before,
+      &.icon-right:before {
+        vertical-align: top;
+        font-size: $btn-large-icon-size;
+        line-height: $btn-nav-btn-height;
+      }
+    }
+    &.btn-clear {
+      font-size: $nav-title-font-size;
+      font-weight: 300;
+      padding-right: 2px;
+      padding-left: 2px;
+
+      .icon:before,
+      &.icon:before,
+      &.icon-left:before,
+      &.icon-right:before {
+        font-size: $btn-large-icon-size;
+        line-height: $btn-nav-btn-height;
+      }
+    }
+  }
+
+  .btn-nav > .btn, 
+  .btns > .btn {
+    min-height: $btn-nav-btn-height - 1;
+    line-height: $btn-nav-btn-height;
+  }
+
+  .btn-nav + .btn, 
+  .btn + .btn-nav {
+    margin-left: 5px;
+  }
+
+  // Place the last btn in a nav on the right of the nav
+  .title + .btn:last-child,
+  > .btn + .btn:last-child,
+  > .btn.pull-right,
+  .title + .btns {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    bottom: 5px;
+  }
+
+}
+
+// Default styles for btns inside of styled navs
+.nav-light {
+  .btn {
+    @include btn-style($nav-light-bg, $nav-light-border, $nav-light-active-bg, $nav-light-active-border, $nav-light-text);
+    @include btn-clear($nav-light-text, $nav-title-font-size);
+  }
+}
+.nav-stable {
+  .btn {
+    @include btn-style($nav-stable-bg, $nav-stable-border, $nav-stable-active-bg, $nav-stable-active-border, $nav-stable-text);
+    @include btn-clear($nav-stable-text, $nav-title-font-size);
+  }
+}
+.nav-positive {
+  .btn {
+    @include btn-style($nav-positive-bg, $nav-positive-border, $nav-positive-active-bg, $nav-positive-active-border, $nav-positive-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-calm {
+  .btn {
+    @include btn-style($nav-calm-bg, $nav-calm-border, $nav-calm-active-bg, $nav-calm-active-border, $nav-calm-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-assertive {
+  .btn {
+    @include btn-style($nav-assertive-bg, $nav-assertive-border, $nav-assertive-active-bg, $nav-assertive-active-border, $nav-assertive-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-balanced {
+  .btn {
+    @include btn-style($nav-balanced-bg, $nav-balanced-border, $nav-balanced-active-bg, $nav-balanced-active-border, $nav-balanced-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-energized {
+  .btn {
+    @include btn-style($nav-energized-bg, $nav-energized-border, $nav-energized-active-bg, $nav-energized-active-border, $nav-energized-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-royal {
+  .btn {
+    @include btn-style($nav-royal-bg, $nav-royal-border, $nav-royal-active-bg, $nav-royal-active-border, $nav-royal-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+.nav-dark {
+  .btn {
+    @include btn-style($nav-dark-bg, $nav-dark-border, $nav-dark-active-bg, $nav-dark-active-border, $nav-dark-text);
+    @include btn-clear(#fff, $nav-title-font-size);
+  }
+}
+
+// Header at top
+.nav-header {
+  top: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+}
+
+// Footer at bottom
+.nav-footer {
+  bottom: 0;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  background-position: top;
+}
+
+// Don't render padding if the nav is just for tabs
+.nav-tabs {
+  padding: 0;
+}
+
+.nav-subheader {
+  top: $nav-height;
+  display: block;
+}
+.nav-subfooter {
+  bottom: $nav-height;
+  display: block;
+}

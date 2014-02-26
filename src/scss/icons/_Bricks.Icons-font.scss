@@ -1,0 +1,188 @@
+@font-face {
+ font-family: $fa-font-family;
+ src:url("#{$fa-font-path}/#{$fa-name}-webfont.eot?v=#{$fa-version}");
+ src:url("#{$fa-font-path}/#{$fa-name}-webfont.eot?#iefix&v=#{$fa-version}") format("embedded-opentype"),
+  url("#{$fa-font-path}/#{$fa-name}-webfont.ttf?v=#{$fa-version}") format("truetype"),
+  url("#{$fa-font-path}/#{$fa-name}-webfont.woff?v=##{$fa-version}") format("woff"),
+  url("#{$fa-font-path}/#{$fa-name}-webfont.svg?v=#{$fa-version}#fontawesomeregular") format("svg");
+ font-weight: normal;
+ font-style: normal;
+}
+
+.#{$fa-prefix} {
+  display: inline-block;
+  font-family: $fa-font-family;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* makes the font 33% larger relative to the #{$fa-prefix} container */
+.#{$fa-prefix}-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.#{$fa-prefix}-2x {
+  font-size: 2em;
+}
+.#{$fa-prefix}-3x {
+  font-size: 3em;
+}
+.#{$fa-prefix}-4x {
+  font-size: 4em;
+}
+.#{$fa-prefix}-5x {
+  font-size: 5em;
+}
+.#{$fa-prefix}-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+.#{$fa-prefix}-ul {
+  padding-left: 0;
+  margin-left: 2.142857142857143em;
+  list-style-type: none;
+}
+.#{$fa-prefix}-ul > li {
+  position: relative;
+}
+.#{$fa-prefix}-li {
+  position: absolute;
+  left: -2.142857142857143em;
+  width: 2.142857142857143em;
+  top: 0.14285714285714285em;
+  text-align: center;
+}
+.#{$fa-prefix}-li.#{$fa-prefix}-lg {
+  left: -1.8571428571428572em;
+}
+.#{$fa-prefix}-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: .1em;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.#{$fa-prefix}.pull-left {
+  margin-right: .3em;
+}
+.#{$fa-prefix}.pull-right {
+  margin-left: .3em;
+}
+.#{$fa-prefix}-spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.#{$fa-prefix}-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.#{$fa-prefix}-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.#{$fa-prefix}-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.#{$fa-prefix}-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.#{$fa-prefix}-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+.#{$fa-prefix}-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.#{$fa-prefix}-stack-1x,
+.#{$fa-prefix}-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.#{$fa-prefix}-stack-1x {
+  line-height: inherit;
+}
+.#{$fa-prefix}-stack-2x {
+  font-size: 2em;
+}
+.#{$fa-prefix}-inverse {
+  color: #ffffff;
+}

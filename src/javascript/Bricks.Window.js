@@ -1,4 +1,4 @@
 
-  window.$ = window.briickless = window.bl = window.BriickLess = window.ii = window.ss = briickless;
+  window.$ = window.bricks = window.bk = bricks;
 
 })(window);

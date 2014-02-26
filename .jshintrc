@@ -1,0 +1,10 @@
+{
+  "expr": true,
+  "browser": true,
+  "multistr": true,
+  "evil": true,
+  "globals": {
+  	"Bricks": true,
+    "document": true
+  }
+}

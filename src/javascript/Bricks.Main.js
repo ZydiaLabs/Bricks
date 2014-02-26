@@ -1,15 +1,15 @@
 (function (window, undefined) {
 
-var document   = window.document
-  , _briickless   = window.briickless
-  , _$         = window.$
-  , idExp      = /^#([\w\-]*)$/
-  , classExp   = /^\.([\w\-]*)$/
-  , tagNameExp = /^[\w\-]+$/
-  , tagExp     = /^<([\w:]+)/
-  , slice      = [].slice
-  , splice     = [].splice
-  , noop       = function () {};
+var document   = window.document, 
+    _bricks   = window.bricks,
+    _$         = window.$,
+    idExp      = /^#([\w\-]*)$/,
+    classExp   = /^\.([\w\-]*)$/,
+    tagNameExp = /^[\w\-]+$/,
+    tagExp     = /^<([\w:]+)/,
+    slice      = [].slice,
+    splice     = [].splice,
+    noop       = function () {};
 
 try {
   slice.call(document.childNodes);
@@ -25,11 +25,11 @@ try {
   };
 }
 
-var briickless = function (selector, context) {
-  return new briickless.fn.find(selector, context);
+var bricks = function (selector, context) {
+  return new bricks.fn.find(selector, context);
 };
 
-briickless.fn = briickless.prototype = {
+bricks.fn = bricks.prototype = {
 
   length: 0,
 
@@ -52,9 +52,9 @@ briickless.fn = briickless.prototype = {
         if (callback.call(target[i], i, target[i]) === false) break;
       }
     } else {
-      if (target instanceof briickless) {
-        return briickless.each(slice.call(target), callback);
-      } else if (briickless.isObject(target)) {
+      if (target instanceof bricks) {
+        return bricks.each(slice.call(target), callback);
+      } else if (bricks.isObject(target)) {
         for (key in target) {
           if (target.hasOwnProperty(key) && callback.call(target[key], key, target[key]) === false) break;
         }
@@ -65,7 +65,7 @@ briickless.fn = briickless.prototype = {
   },
 
   set: function (elements) {
-    var i = 0, set = briickless();
+    var i = 0, set = bricks();
     set.selector = this.selector;
     set.context = this.context;
     for (; i < elements.length; i++) {
@@ -82,8 +82,8 @@ briickless.fn = briickless.prototype = {
       return this;
     }
 
-    if (briickless.isFunction(selector)) {
-      return briickless.ready(selector);
+    if (bricks.isFunction(selector)) {
+      return bricks.ready(selector);
     }
 
     if (selector.nodeType) {
@@ -99,23 +99,23 @@ briickless.fn = briickless.prototype = {
 
     context = this.context ? this.context : (context || document);
 
-    if (briickless.isPlainObject(context)) {
+    if (bricks.isPlainObject(context)) {
       attrs = context;
       context = document;
     }
 
-    if (context instanceof briickless) {
+    if (context instanceof bricks) {
       context = context.context;
     }
 
-    if (briickless.isString(selector)) {
+    if (bricks.isString(selector)) {
       this.selector = selector;
       if (idExp.test(selector) && context.nodeType === context.DOCUMENT_NODE) {
         els = (els = context.getElementById(selector.substr(1))) ? [els] : [];
       } else if (context.nodeType !== 1 && context.nodeType !== 9) {
         els = [];
       } else if (tagExp.test(selector)) {
-        briickless.each(normalize(selector), function () {
+        bricks.each(normalize(selector), function () {
           els.push(this);
         });
       } else {
@@ -127,7 +127,7 @@ briickless.fn = briickless.prototype = {
       }
     } else if (selector.nodeName || selector === window) {
       els = [selector];
-    } else if (briickless.isArray(selector)) {
+    } else if (bricks.isArray(selector)) {
       els = selector;
     }
 
@@ -135,7 +135,7 @@ briickless.fn = briickless.prototype = {
       this.selector = selector.selector;
       this.context = selector.context;
     } else if (this.context === undefined) {
-      if (els[0] !== undefined && !briickless.isString(els[0])) {
+      if (els[0] !== undefined && !bricks.isString(els[0])) {
         this.context = els[0];
       } else {
         this.context = document;
@@ -143,12 +143,12 @@ briickless.fn = briickless.prototype = {
     }
 
     return this.set(els).each(function () {
-      return attrs && briickless(this).attr(attrs);
+      return attrs && bricks(this).attr(attrs);
     });
   }
 };
 
-briickless.extend = function () {
+bricks.extend = function () {
   var target = arguments[0] || {};
 
   if (typeof target !== 'object' && typeof target !== 'function') {
@@ -157,7 +157,7 @@ briickless.extend = function () {
 
   if (arguments.length === 1) target = this;
 
-  briickless.fn.each(slice.call(arguments), function (i, value) {
+  bricks.fn.each(slice.call(arguments), function (i, value) {
     for (var key in value) {
       if (target[key] !== value[key]) target[key] = value[key];
     }
@@ -166,11 +166,11 @@ briickless.extend = function () {
   return target;
 };
 
-briickless.fn.find.prototype = briickless.fn;
+bricks.fn.find.prototype = bricks.fn;
 
-briickless.extend({
+bricks.extend({
 
-  each: briickless.fn.each,
+  each: bricks.fn.each,
 
   isFunction: function (obj) {
     return typeof obj === 'function';
@@ -195,7 +195,7 @@ briickless.extend({
   isPlainObject: function (obj) {
     if (!obj || !this.isObject(obj) || this.isWindow(obj) || obj.nodeType) {
       return false;
-    } else if (obj.__proto__ === Object.prototype) {
+    } else if (Object.getPrototypeOf(obj) === Object.prototype) {
       return true;
     } else {
       var key;
@@ -255,11 +255,11 @@ briickless.extend({
 
   noConflict: function (name) {
     if (name) {
-      window.briickless = _briickless;
+      window.bricks = _bricks;
     }
 
     window.$ = _$;
-    return briickless;
+    return bricks;
   },
 
   pluck: function (prop) {
@@ -271,7 +271,7 @@ briickless.extend({
   },
 
   trim: function (str) {
-    return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
+    return str === null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   }
 
 });

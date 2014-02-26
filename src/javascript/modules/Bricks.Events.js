@@ -1,21 +1,21 @@
-var _eventId = 1
-  , c = window.c = {}
-  , returnTrue = function () { return true; }
-  , returnFalse = function () { return false; }
-  , ignoreProperties = /^([A-Z]|layer[XY]$)/
-  , sepcialExp = /click|mouse/
-  , mouse = {
+var _eventId = 1,
+    c = window.c = {},
+    returnTrue = function () { return true; },
+    returnFalse = function () { return false; },
+    ignoreProperties = /^([A-Z]|layer[XY]$)/,
+    sepcialExp = /click|mouse/,
+    mouse = {
       mouseenter: 'mouseover',
       mouseleave: 'mouseout'
-    }
-  , eventMethods = {
+    },
+    eventMethods = {
       preventDefault: 'isDefaultPrevented',
       stopImmediatePropagation: 'isStopImmediatePropagation',
       stopPropagation: 'isPropagationStopped'
-    }
-  , opcHandler
-  , opcCache = {}
-  , createEvent = !!document.createEvent;
+    },
+    opcHandler,
+    opcCache = {},
+    createEvent = !!document.createEvent;
 
 function getEventParts (event) {
   var parts = ('' + event).split('.');
@@ -40,10 +40,10 @@ function inHandlers (parts, handlers) {
 }
 
 function getEventHandlers (id, event) {
-  var parts = getEventParts(event)
-    , handlers = []
-    , tmp
-    , ns;
+  var parts = getEventParts(event),
+      handlers = [],
+      tmp,
+      ns;
 
   event = realEvent(parts.ev);
   ns = parts.ns;
@@ -62,7 +62,7 @@ function getEventHandlers (id, event) {
     for (event in c[id]) {
       tmp = c[id][event];
       for (var i = 0, l = tmp.length; i < l; i++) {
-        if (tmp[i] && ns.length && tmp[i].ns.length && briickless.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
+        if (tmp[i] && ns.length && tmp[i].ns.length && bricks.inArray(ns, tmp[i].ns.split(' ')) !== -1) {
           handlers.push(tmp[i]);
         }
       }
@@ -73,15 +73,15 @@ function getEventHandlers (id, event) {
 }
 
 function createEventHandler (el, event, callback, _callback) {
-  var id = getEventId(el)
-    , handlers = getEventHandlers(id, event)
-    , parts = getEventParts(event)
-    , cb = callback || _callback;
+  var id = getEventId(el),
+      handlers = getEventHandlers(id, event),
+      parts = getEventParts(event),
+      cb = callback || _callback;
 
   var fn = function (event) {
     if (!event.liveTarget) event.liveTarget = event.target || event.srcElement;
     var data = event.data;
-    if (briickless.isString(data) && /^[\[\{]/.test(data)) data = briickless.parseJSON(event.data);
+    if (bricks.isString(data) && /^[\[\{]/.test(data)) data = bricks.parseJSON(event.data);
     var result = cb.apply(el, [event].concat(data));
     if (result === false) {
       if (event.stopPropagation) event.stopPropagation();
@@ -98,16 +98,16 @@ function createEventHandler (el, event, callback, _callback) {
 
 function createProxy (event) {
   var proxy = { originalEvent: event };
-
+  function outsideloop() {
+      this[eventMethods[name]] = returnTrue;
+      return event[name].apply(event, arguments);
+  }
   for (var key in event) {
     if (!ignoreProperties.test(key) && event[key] !== undefined) {
       proxy[key] = event[key];
     }
     for (var name in eventMethods) {
-      proxy[name] = function () {
-        this[eventMethods[name]] = returnTrue;
-        return event[name].apply(event, arguments);
-      };
+      proxy[name] = outsideloop;
       proxy[eventMethods[name]] = returnFalse;
     }
   }
@@ -118,15 +118,15 @@ function createProxy (event) {
 function addEvent (el, events, callback, selector) {
   var fn, _callback;
 
-  if (briickless.isString(selector)) {
+  if (bricks.isString(selector)) {
     _callback = callback;
     fn = function () {
       return (function (el, callback, selector) {
         return function (e) {
-          var match = briickless(el).find(e.target || e.srcElement);
+          var match = bricks(el).find(e.target || e.srcElement);
           match = match.get(0) === el ? match.find(selector) : match;
           if (match.is(selector)) {
-            var event = briickless.extend(createProxy(e), {
+            var event = bricks.extend(createProxy(e), {
               currentTarget: match.get(0)
             });
 
@@ -140,7 +140,7 @@ function addEvent (el, events, callback, selector) {
     selector = undefined;
   }
 
-  briickless.each(events.split(/\s/), function (index, event) {
+  bricks.each(events.split(/\s/), function (index, event) {
     var parts = getEventParts(event);
 
     if (_callback !== undefined && parts.ev in mouse) {
@@ -148,11 +148,11 @@ function addEvent (el, events, callback, selector) {
       fn = function () {
         return function (e) {
           var related = e.relatedTarget;
-          if (!related || (related !== this && !briickless.contains(this, related))) {
+          if (!related || (related !== this && !bricks.contains(this, related))) {
             return _fn.apply(this, arguments);
           }
-        }
-      }
+        };
+      };
     }
 
     var handler = createEventHandler(el, event, fn && fn() || callback, _callback);
@@ -180,14 +180,14 @@ function testEventHandler (parts, callback, selector, handler) {
 function removeEvent (el, events, callback, selector) {
   var id = getEventId(el);
 
-  if (callback === undefined && briickless.isFunction(selector)) {
+  if (callback === undefined && bricks.isFunction(selector)) {
     callback = selector;
     selector = undefined;
   }
 
-  briickless.each(events.split(/\s/), function (index, event) {
-    var handlers = getEventHandlers(id, event)
-      , parts = getEventParts(event);
+  bricks.each(events.split(/\s/), function (index, event) {
+    var handlers = getEventHandlers(id, event),
+        parts = getEventParts(event);
 
     event = realEvent(parts.ev);
 
@@ -198,7 +198,7 @@ function removeEvent (el, events, callback, selector) {
           el.removeEventListener(event, handlers[i], false);
         } else if (el.detachEvent) {
           var name = 'on' + event;
-          if (briickless.isString(el[name])) el[name] = null;
+          if (bricks.isString(el[name])) el[name] = null;
           el.detachEvent(name, handlers[i]);
           if (opcCache[el.nodeName]) { // Remove custom event handler on IE8.
             el.detachEvent('onpropertychange', opcHandler);
@@ -215,9 +215,9 @@ function removeEvent (el, events, callback, selector) {
   delete c[id];
 }
 
-briickless.events = briickless.events || {};
+bricks.events = bricks.events || {};
 
-briickless.fn.extend({
+bricks.fn.extend({
 
   on: function (events, selector, callback) {
     return this.each(function () {
@@ -237,10 +237,10 @@ briickless.fn.extend({
 
       var parts = getEventParts(event.type || event);
 
-      event = briickless.Event(event)
+      event = bricks.Event(event);
       event.data = data || {};
 
-      if (briickless.isString(event.data) && !briickless.isString(data) && JSON.stringify) {
+      if (bricks.isString(event.data) && !bricks.isString(data) && JSON.stringify) {
         event.data = JSON.stringify(data);
       }
 
@@ -257,7 +257,7 @@ briickless.fn.extend({
                   var handlers = getEventHandlers(ev.srcElement._eventId, ev.eventName);
                   if (handlers.length) {
                     for (var i = 0, l = handlers.length; i < l; i++) {
-                      if (briickless.isFunction(handlers[i])) handlers[i](ev);
+                      if (bricks.isFunction(handlers[i])) handlers[i](ev);
                     }
                   }
                 }
@@ -273,9 +273,9 @@ briickless.fn.extend({
       if (!event.isPropagationStopped()) {
         var parent = el.parentNode || el.ownerDocument;
         if (parent && parent._eventId > 0) {
-          // briickless use `liveTarget` instead of creating a own Event object that modifies `target` property.
+          // bricks use `liveTarget` instead of creating a own Event object that modifies `target` property.
           event.liveTarget = el;
-          briickless(parent).trigger(event, data);
+          bricks(parent).trigger(event, data);
         } else {
           event.stopPropagation();
         }
@@ -285,8 +285,8 @@ briickless.fn.extend({
 
 });
 
-briickless.Event = function (type, props) {
-  if (!briickless.isString(type)) {
+bricks.Event = function (type, props) {
+  if (!bricks.isString(type)) {
     if (type.type) return type;
     props = type;
     type = props.type;

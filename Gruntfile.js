@@ -5,16 +5,32 @@ module.exports = function(grunt) {
       build: "dist"
     },
     source: {
-      js: ['src/javascript/Bricks.Main.js'
-          ,'src/javascript/core/*'
-          ,'src/javascript/modules/*'
-          ,'src/javascript/plugins/*'
-          , 'src/javascript/Bricks.Window.js'],
-      css: ['src/stylesheet/*']
+      js: ['src/javascript/Bricks.Main.js', 
+           'src/javascript/core/*', 
+           'src/javascript/modules/*', 
+           'src/javascript/plugins/*', 
+           'src/javascript/Bricks.Window.js'],
+      scss: ['src/scss']
     },
     clean: {
       build: {
         src: ['<%= meta.build %>/*']
+      }
+    },
+    sass: {
+      options: {
+        style: 'expanded',
+        banner: '/*\n' +
+                '*  <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
+                '*  Created by <%= pkg.author.name %> \n' +
+                '*  License <%= pkg.license.type %> \n' +
+                '*  <%= pkg.author.site %>\n' +
+                '*/\n\n' 
+      },
+      dist: {
+        files: {
+          '<%= meta.build %>/css/<%= pkg.name %>.css': ['<%= source.scss %>/Import.scss']
+        }
       }
     },
     concat: { 
@@ -29,10 +45,6 @@ module.exports = function(grunt) {
       js: {
         src: ['<%= source.js %>'],
         dest: '<%= meta.build %>/js/<%= pkg.name %>.js'
-      },
-      css: {
-        src: ['<%= source.css %>'],
-        dest: '<%= meta.build %>/css/<%= pkg.name %>.css'
       }
     },
     uglify: {
@@ -51,6 +63,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    jshint: {
+      files: ['Gruntfile.js', 'src/javascript/*.js', 'src/javascript/**/*.js', 'dist/js/Bricks.js'],
+      options: {
+        jshintrc: '.jshintrc',
+        force: true
+      }
+    },
     cssmin: {
       add_banner: {
         options: {
@@ -63,7 +82,7 @@ module.exports = function(grunt) {
                 '*/\n\n'
         },
         files:{
-          '<%= meta.build %>/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
+          '<%= meta.build %>/css/<%= pkg.name %>.min.css': ['<%= meta.build %>/css/Bricks.css']
         }
       }
     },
@@ -76,6 +95,50 @@ module.exports = function(grunt) {
         flatten: true,
         filter: 'isFile'
       }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 33746,
+          protocol: 'http',
+          hostname: 'localhost',
+          base: '.',
+          debug: false,
+          livereload: true
+        }
+      }
+    },
+    watch: {
+      options: {
+        livereload: true
+      },
+      js: {
+        files: ['<%= source.js %>/*', '<%= source.js %>/**/*'],
+        tasks: ['concat', 'uglify'],
+        options: {
+          spawn: false
+        }
+      },
+      sass: {
+        files: ['<%= source.scss %>/*', '<%= source.scss %>/**/*'],
+        tasks: ['sass', 'cssmin'],
+        options: {
+          spawn: false
+        }
+      },
+      html: {
+        files: ['example/*'],
+        options: {
+          spawn: false
+        }
+      },
+      jshint: {
+        files: ['Gruntfile.js', 'src/javascript/*.js', 'src/javascript/**/*.js'],
+        tasks: ['jshint', 'concat', 'uglify'],
+        options: {
+          spawn: false
+        }
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -83,5 +146,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.registerTask('default', ['clean', 'concat','uglify', 'cssmin', 'copy']);
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.registerTask('default', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'jshint', 'connect', 'watch']);
+  grunt.registerTask('livereload', ['connect', 'watch']);
+  grunt.registerTask('travis-ci', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'jshint']);
 };

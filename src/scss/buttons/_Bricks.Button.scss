@@ -1,0 +1,216 @@
+
+/**
+ * btns
+ * --------------------------------------------------
+ */
+
+.btn {
+  // set the color defaults
+  @include btn-style($btn-default-bg, $btn-default-border, $btn-default-active-bg, $btn-default-active-border, $btn-default-text);
+
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 1px $btn-padding 0 $btn-padding;
+
+  min-width: ($btn-padding * 3) + $btn-font-size;
+  min-height: $btn-height + 5px;
+
+  border-width: $btn-border-width;
+  border-style: solid;
+  border-radius: $btn-border-radius;
+
+  vertical-align: top;
+  text-align: center;
+
+  text-overflow: ellipsis;
+  font-size: $btn-font-size;
+  line-height: $btn-height - $btn-border-width + 1px;
+
+  cursor: pointer;
+
+  &:after {
+    // used to create a larger btn "hit" area
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    bottom: -6px;
+    left: -8px;
+    content: ' ';
+  }
+
+  &.btn-block, &.btn-full {
+    margin-top: $btn-block-margin;
+    margin-bottom: $btn-block-margin;
+  }
+
+  &.btn-light {
+    @include btn-style($btn-light-bg, $btn-light-border, $btn-light-active-bg, $btn-light-active-border, $btn-light-text);
+    @include btn-clear($btn-light-border);
+    @include btn-outline($btn-light-border);
+  }
+
+  &.btn-stable {
+    @include btn-style($btn-stable-bg, $btn-stable-border, $btn-stable-active-bg, $btn-stable-active-border, $btn-stable-text);
+    @include btn-clear($btn-stable-border);
+    @include btn-outline($btn-stable-border);
+  }
+
+  &.btn-positive {
+    @include btn-style($btn-positive-bg, $btn-positive-border, $btn-positive-active-bg, $btn-positive-active-border, $btn-positive-text);
+    @include btn-clear($btn-positive-bg);
+    @include btn-outline($btn-positive-bg);
+  }
+
+  &.btn-calm {
+    @include btn-style($btn-calm-bg, $btn-calm-border, $btn-calm-active-bg, $btn-calm-active-border, $btn-calm-text);
+    @include btn-clear($btn-calm-bg);
+    @include btn-outline($btn-calm-bg);
+  }
+
+  &.btn-assertive {
+    @include btn-style($btn-assertive-bg, $btn-assertive-border, $btn-assertive-active-bg, $btn-assertive-active-border, $btn-assertive-text);
+    @include btn-clear($btn-assertive-bg);
+    @include btn-outline($btn-assertive-bg);
+  }
+
+  &.btn-balanced {
+    @include btn-style($btn-balanced-bg, $btn-balanced-border, $btn-balanced-active-bg, $btn-balanced-active-border, $btn-balanced-text);
+    @include btn-clear($btn-balanced-bg);
+    @include btn-outline($btn-balanced-bg);
+  }
+
+  &.btn-energized {
+    @include btn-style($btn-energized-bg, $btn-energized-border, $btn-energized-active-bg, $btn-energized-active-border, $btn-energized-text);
+    @include btn-clear($btn-energized-bg);
+    @include btn-outline($btn-energized-bg);
+  }
+
+  &.btn-royal {
+    @include btn-style($btn-royal-bg, $btn-royal-border, $btn-royal-active-bg, $btn-royal-active-border, $btn-royal-text);
+    @include btn-clear($btn-royal-bg);
+    @include btn-outline($btn-royal-bg);
+  }
+
+  &.btn-dark {
+    @include btn-style($btn-dark-bg, $btn-dark-border, $btn-dark-active-bg, $btn-dark-active-border, $btn-dark-text);
+    @include btn-clear($btn-dark-bg);
+    @include btn-outline($btn-dark-bg);
+  }
+}
+
+.btn-small {
+  padding: 0 $btn-small-padding;
+  min-width: $btn-small-height;
+  min-height: $btn-small-height + 3;
+  font-size: $btn-small-font-size;
+  line-height: $btn-small-height - $btn-border-width + 1;
+
+  .icon:before,
+  &.icon:before,
+  &.icon-left:before,
+  &.icon-right:before {
+    font-size: $btn-small-icon-size;
+    line-height: $btn-small-height - $btn-border-width - 1;
+  }
+}
+
+.btn-large {
+  padding: 0 $btn-large-padding;
+  min-width: ($btn-large-padding * 3) + $btn-large-font-size;
+  min-height: $btn-large-height + 5;
+  font-size: $btn-large-font-size;
+  line-height: $btn-large-height - $btn-border-width;
+
+  .icon:before,
+  &.icon:before,
+  &.icon-left:before,
+  &.icon-right:before {
+    padding-bottom: ($btn-border-width * 2);
+    font-size: $btn-large-icon-size;
+    line-height: $btn-large-height - ($btn-border-width * 2) - 1;
+  }
+}
+
+.btn-icon {
+  @include transition(opacity .1s);
+  padding: 0 6px;
+  min-width: initial;
+  border-color: transparent;
+  background: none;
+
+  &.btn:active, 
+  &.btn.active {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    opacity: 0.3;
+  }
+
+  .icon:before,
+  &.icon:before {
+    font-size: $btn-large-icon-size;
+  }
+}
+
+.btn-clear {
+  @include btn-clear($btn-default-border);
+  @include transition(opacity .1s);
+  padding: 0 $btn-clear-padding;
+  max-height: $btn-height;
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+
+  &:active, &.active {
+    opacity: 0.3;
+  }
+}
+
+.btn-outline {
+  @include btn-outline($btn-default-border);
+  @include transition(opacity .1s);
+  background: none;
+  box-shadow: none;
+}
+
+.padding > .btn.btn-block:first-child {
+  margin-top: 0;
+}
+
+.btn-block {
+  display: block;
+  clear: both;
+  
+  &:after { 
+    clear: both;
+  }
+}
+
+.btn-full,
+.btn-full > .btn {
+  display: block;
+  margin-right: 0;
+  margin-left: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-radius: 0;
+}
+
+btn.btn-block,
+btn.btn-full,
+.btn-full > btn.btn,
+input.btn.btn-block  {
+  width: 100%;
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+.btn.disabled,
+.btn[disabled] {
+  opacity: .4;
+  cursor: default !important;
+  pointer-events: none;
+}
