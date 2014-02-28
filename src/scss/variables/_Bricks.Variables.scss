@@ -236,23 +236,21 @@ $nav-default-active-border:       $nav-light-active-border !default;
 $icon-fill-border-radius:         6px !default;
 
 
-
 // Grids
 // -------------------------------
 
 $w-grid-1:						  100%;
 $w-grid-2:						  50%;
-$w-grid-3:						  33.33%;
-$w-grid-4:						  25%;
-$w-grid-5:						  20%;
-$w-grid-6:						  16.6666666667%;
+$w-grid-3:	  				      33.33%;
+$w-grid-4:	                      25%;
+$w-grid-5:	                      20%;
+$w-grid-6:	                      16.6666666667%;
 $w-grid-7:						  14.2857142857%;
 $w-grid-8:						  12.5%;
-$w-grid-9:						  11.1111111111%;
+$w-grid-9:					      11.1111111111%;
 $w-grid-10:						  10%;
 $w-grid-11:						  9.09090909091%;
 $w-grid-12:						  8.33%;
-
 
 // Z-Indexes
 // -------------------------------
@@ -275,3 +273,39 @@ $z-index-pane:                    1 !default;
 $z-index-scroll-nav:              9999 !default;
 $z-index-tabs:                    5 !default;
 $z-index-view:                    1 !default;
+
+
+
+
+// Floats
+// -------------------------------
+$default-float: left;
+$switch-float: right;
+
+
+
+// Grid Settings
+// -------------------------------
+$row-max-width: 940px !default; // 940px
+$gutter-in-px: 20px !default; // 20px
+$cols: 12 !default; // 12 Column Default Grid
+$hybrid: 16 !default;	// 16 Column Default Hybrid Grid
+
+
+
+
+// Responsiveness Settings
+// -------------------------------
+$min-device-width: 320px; // iPhone Portrait
+$tablet-device-width: 768px;	// iPad Portrait
+$document-width: $row-max-width;	// Default Document
+$max-device-width: 2880px;	// Max Document Size
+
+
+
+
+// Floats
+// -------------------------------
+$default-float: left;
+$switch-float: right
+
