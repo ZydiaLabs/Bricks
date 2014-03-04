@@ -15,5 +15,5 @@ notifications:
     channels:
       - "chat.freenode.net#bricksframework"
     template:
-      - "%{repository_slug} (%{commit}) : %{message} %{build_number} "
+      - "Results: %{repository_slug} (%{commit}) : %{message} %{build_number}"
       - "Build details: %{build_url} %{duration} %{branch}"
