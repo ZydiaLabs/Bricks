@@ -6,9 +6,7 @@ module.exports = function(grunt) {
     },
     source: {
       js: ['src/javascript/Bricks.Main.js', 
-           'src/javascript/core/*', 
-           'src/javascript/modules/*', 
-           'src/javascript/plugins/*', 
+           'src/javascript/include/*', 
            'src/javascript/Bricks.Window.js'],
       scss: ['src/scss']
     },
