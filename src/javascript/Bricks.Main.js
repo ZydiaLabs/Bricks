@@ -225,7 +225,7 @@ bricks.fn.find.prototype = bricks.fn;
 bricks.extend({
 
   // The current version of bricks being used
-  version: '{{version}}',
+  version: '1.0.0',
 
   // We sould be able to use each outside
   each: bricks.fn.each,
