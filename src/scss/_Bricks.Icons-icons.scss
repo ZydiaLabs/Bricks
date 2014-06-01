@@ -1,3 +1,6 @@
+@import "include/Bricks.Variables";
+@import "include/Bricks.Mixins";
+
 .#{$fa-prefix}-glass:before {
   content: "\f000";
 }

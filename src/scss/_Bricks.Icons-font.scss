@@ -1,3 +1,6 @@
+@import "include/Bricks.Variables";
+@import "include/Bricks.Mixins";
+
 @font-face {
  font-family: $fa-font-family;
  src:url("#{$fa-font-path}/#{$fa-name}-webfont.eot?v=#{$fa-version}");

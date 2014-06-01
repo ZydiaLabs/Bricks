@@ -2,7 +2,7 @@
   "name": "Bricks",
   "version": "0.0.5",
   "description": "HTML5 Framework.",
-  "keywords": ["bricks", "bricksframework", "framework", "sass", "css", "javascript"],
+  "keywords": ["bricks", "bricksframework", "framework", "scss", "css", "javascript"],
   "author": {
     "name": "Giovanny Andres Gongora Granada",
     "site": "bricksframework.github.io"

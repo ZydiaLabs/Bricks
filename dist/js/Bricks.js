@@ -1,5 +1,5 @@
 /*
-*  Bricks v0.0.5 09-03-2014 
+*  Bricks v0.0.5 31-05-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
@@ -232,7 +232,7 @@ bricks.fn.find.prototype = bricks.fn;
 bricks.extend({
 
   // The current version of bricks being used
-  version: '{{version}}',
+  version: '1.0.0',
 
   // We sould be able to use each outside
   each: bricks.fn.each,

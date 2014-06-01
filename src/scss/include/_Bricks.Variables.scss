@@ -239,18 +239,31 @@ $icon-fill-border-radius:         6px !default;
 // Grids
 // -------------------------------
 
-$w-grid-1:						  100%;
-$w-grid-2:						  50%;
-$w-grid-3:	  				      33.33%;
-$w-grid-4:	                      25%;
-$w-grid-5:	                      20%;
-$w-grid-6:	                      16.6666666667%;
-$w-grid-7:						  14.2857142857%;
-$w-grid-8:						  12.5%;
-$w-grid-9:					      11.1111111111%;
-$w-grid-10:						  10%;
-$w-grid-11:						  9.09090909091%;
-$w-grid-12:						  8.33%;
+// Grid fluid and fluid responsive
+$width-fl : 100%;
+$width-s-fl: 750px;
+$width-m-fl: 970px;
+$width-l-fl: 1200px;
+
+
+// Media queries
+// Smartphones (portrait and landscape)
+$phone: "only screen and (min-width: 20em) and (max-width: 30em)";
+// Smartphones (lanscape)
+$phone-land: "only screen and (max-width: 30em)";
+// Smartphone (portrait)
+$phone-port: "only screen and (max-width: 20em)";
+// iPad (portrair and landscape)
+$tablet-ipad: "only screen and (min-width: 48em) and (max-width: 64em)";
+// iPad (landscape)
+$tablet-ipad-land: "only screen and (min-width: 48em) and (max-width: 64em) and (orientation: landscape)";
+// iPad (portrait)
+$tablet-ipad-port: "only screen and (min-width: 48em) and (max-width: 64em) and (orientation : portrait)";
+// Desktop and laptos
+$desktop: "only screen and (min-width: 61.250em)";
+// Large screens
+$screen-l: "only screen and (min-width: 114.000em)";
+
 
 // Z-Indexes
 // -------------------------------

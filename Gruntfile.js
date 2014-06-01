@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= meta.build %>/css/<%= pkg.name %>.css': ['<%= source.scss %>/Import.scss']
+          '<%= meta.build %>/css/<%= pkg.name %>.css': ['<%= source.scss %>/Bricks.scss']
         }
       }
     },

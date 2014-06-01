@@ -1,0 +1,292 @@
+/**
+ * grid
+ * --------------------------------------------------
+ */
+
+/* Set the width of the grid */
+.row {
+  width: $width-fl;
+  margin: 0 auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.row-s-fl {
+  width: $width-s-fl;
+  margin: 0 auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.row-m-fl {
+  width: $width-m-fl;
+  margin: 0 auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.row-l-fl {
+  width: $width-l-fl;
+  margin: 0 auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* Attribute selector */
+[class*="col-"] {
+  float: left;
+  padding: 0.3em;
+  &:last-of-type {
+    float: right;
+  }
+}
+
+/* Main width */
+@for $i from 1 through 12 {
+  .col-fl-#{$i} {
+    width: $width-fl / $i;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-s-fl-#{$i} {
+    width: $width-s-fl / $i;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-m-fl-#{$i} {
+    width: $width-m-fl / $i;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-l-fl-#{$i} {
+    width: $width-l-fl / $i;
+  }
+}
+
+/* Landscape mobile & down */
+@include respond($phone) {
+  %width-fl {
+    width: $width-fl;
+  }
+
+  @for $i from 1 through 12 {
+    .col-fl-#{$i} {
+      @extend %width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-s-fl-#{$i} {
+      @extend %width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-m-fl-#{$i} {
+      @extend %width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-l-fl-#{$i} {
+      @extend %width-fl;
+    }
+  }
+}
+
+@include respond($phone-land) {
+
+  @for $i from 1 through 12 {
+    .col-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-s-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-m-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-l-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+}
+
+@include respond($phone-port) {
+
+  @for $i from 1 through 12 {
+    .col-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-s-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-m-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .col-l-fl-#{$i} {
+      width: $width-fl;
+    }
+  }
+}
+
+/* Portrait tablet to landscape */
+@include respond($tablet-ipad) {
+  .col-fl-4,
+  .col-fl-6,
+  .col-fl-8,
+  .col-fl-10,
+  .col-fl-12 {
+    width: $width-fl / 2;
+  }
+
+  .col-fl-1,
+  .col-fl-2,
+  .col-fl-3,
+  .col-fl-5,
+  .col-fl-7,
+  .col-fl-9,
+  .col-fl-11 {
+    width: $width-fl;
+  }
+
+  .col-s-fl-4,
+  .col-s-fl-6,
+  .col-s-fl-8,
+  .col-s-fl-10,
+  .col-s-fl-12 {
+    width: $width-fl / 2;
+  }
+
+  .col-s-fl-1,
+  .col-s-fl-2,
+  .col-s-fl-3,
+  .col-s-fl-5,
+  .col-s-fl-7,
+  .col-s-fl-9,
+  .col-s-fl-11 {
+    width: $width-fl;
+  }
+
+  .col-m-fl-4,
+  .col-m-fl-6,
+  .col-m-fl-8,
+  .col-m-fl-10,
+  .col-m-fl-12 {
+    width: $width-fl / 2;
+  }
+
+  .col-m-fl-1,
+  .col-m-fl-2,
+  .col-m-fl-3,
+  .col-m-fl-5,
+  .col-m-fl-7,
+  .col-m-fl-9,
+  .col-m-fl-11 {
+    width: $width-fl;
+  }
+
+  .col-l-fl-4,
+  .col-l-fl-6,
+  .col-l-fl-8,
+  .col-l-fl-10,
+  .col-l-fl-12 {
+    width: $width-fl / 2;
+  }
+
+  .col-l-fl-1,
+  .col-l-fl-2,
+  .col-l-fl-3,
+  .col-l-fl-5,
+  .col-l-fl-7,
+  .col-l-fl-9,
+  .col-l-fl-11 {
+    width: $width-fl;
+  }
+}
+
+/* Portrait tablet to landscape */
+@include respond($tablet-ipad-land) {
+  .col-fl-2,
+  .col-fl-7 {
+    width: $width-fl;
+  }
+
+  .col-fl-4,
+  .col-fl-8,
+  .col-fl-10,
+  .col-fl-12 {
+    width: $width-fl / 2;
+  }
+}
+
+/* Portrait tablet to landscape */
+@include respond($tablet-ipad-port) {
+  .col-fl-4,
+  .col-fl-6,
+  .col-fl-8,
+  .col-fl-10,
+  .col-fl-12 {
+    width: $width-fl / 2;
+  }
+
+  .col-fl-1,
+  .col-fl-2,
+  .col-fl-3,
+  .col-fl-5,
+  .col-fl-7,
+  .col-fl-9,
+  .col-fl-11 {
+    width: $width-fl;
+  }
+}
+/* Landscape to small desktop */
+@include respond($desktop) {
+  @for $i from 1 through 12 {
+	  .col-fl-#{$i} {
+      width: $width-fl / $i;
+    }
+  }
+}
+
+@include respond($screen-l) {
+  @for $i from 1 through 12 {
+      .col-fl-#{$i} {
+      width: $width-fl / $i;
+    }
+  }
+}
+
