@@ -4,9 +4,15 @@
  */
 
 /* Set the width of the grid */
+.container {
+  @include clearfix;
+  margin: 0 auto;
+  width: $width-container;
+}
+
 .row {
   width: $width-fl;
-  margin: 0 auto;
+  margin-right: $width-fl;
   &:after {
     content: "";
     display: table;
@@ -54,25 +60,25 @@
 }
 
 /* Main width */
-@for $i from 1 through 12 {
+@for $i from 1 through $num-columns {
   .col-fl-#{$i} {
     width: $width-fl / $i;
   }
 }
 
-@for $i from 1 through 12 {
+@for $i from 1 through $num-columns {
   .col-s-fl-#{$i} {
     width: $width-s-fl / $i;
   }
 }
 
-@for $i from 1 through 12 {
+@for $i from 1 through $num-columns {
   .col-m-fl-#{$i} {
     width: $width-m-fl / $i;
   }
 }
 
-@for $i from 1 through 12 {
+@for $i from 1 through $num-columns {
   .col-l-fl-#{$i} {
     width: $width-l-fl / $i;
   }
@@ -84,25 +90,25 @@
     width: $width-fl;
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-fl-#{$i} {
       @extend %width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-s-fl-#{$i} {
       @extend %width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-m-fl-#{$i} {
       @extend %width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-l-fl-#{$i} {
       @extend %width-fl;
     }
@@ -111,25 +117,25 @@
 
 @include respond($phone-land) {
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-s-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-m-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-l-fl-#{$i} {
       width: $width-fl;
     }
@@ -138,25 +144,25 @@
 
 @include respond($phone-port) {
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-s-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-m-fl-#{$i} {
       width: $width-fl;
     }
   }
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
     .col-l-fl-#{$i} {
       width: $width-fl;
     }
@@ -275,7 +281,7 @@
 }
 /* Landscape to small desktop */
 @include respond($desktop) {
-  @for $i from 1 through 12 {
+  @for $i from 1 through $num-columns {
 	  .col-fl-#{$i} {
       width: $width-fl / $i;
     }

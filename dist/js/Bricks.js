@@ -1,5 +1,5 @@
 /*
-*  Bricks v0.0.5 31-05-2014 
+*  Bricks v0.0.5 01-06-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io

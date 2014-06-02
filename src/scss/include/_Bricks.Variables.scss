@@ -240,10 +240,12 @@ $icon-fill-border-radius:         6px !default;
 // -------------------------------
 
 // Grid fluid and fluid responsive
+$width-container: 100%;
 $width-fl : 100%;
 $width-s-fl: 750px;
 $width-m-fl: 970px;
 $width-l-fl: 1200px;
+$num-columns: 12;
 
 
 // Media queries

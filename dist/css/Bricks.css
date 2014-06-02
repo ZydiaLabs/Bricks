@@ -1,5 +1,5 @@
 /*
-*  Bricks v0.0.5 31-05-2014 
+*  Bricks v0.0.5 01-06-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
@@ -670,9 +670,23 @@ a.btn {
  * --------------------------------------------------
  */
 /* Set the width of the grid */
+.container {
+  *zoom: 1;
+  margin: 0 auto;
+  width: 100%;
+}
+.container:before, .container:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.container:after {
+  clear: both;
+}
+
 .row {
   width: 100%;
-  margin: 0 auto;
+  margin-right: 100%;
 }
 .row:after {
   content: "";
