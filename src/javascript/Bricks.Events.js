@@ -1,67 +1,34 @@
-var _eventId = 1
-  , c = window.c = {}
-  , returnTrue = function () { return true; }
-  , returnFalse = function () { return false; }
-  , ignoreProperties = /^([A-Z]|layer[XY]$)/
-  , sepcialExp = /click|mouse/
-  , mouse = {
+var _eventId = 1,
+  c = window.c = {},
+  returnTrue = function () { return true; },
+  returnFalse = function () { return false; },
+  ignoreProperties = /^([A-Z]|layer[XY]$)/,
+  sepcialExp = /click|mouse/,
+  mouse = {
       mouseenter: 'mouseover',
       mouseleave: 'mouseout'
-    }
-  , eventMethods = {
+  },
+  eventMethods = {
       preventDefault: 'isDefaultPrevented',
       stopImmediatePropagation: 'isStopImmediatePropagation',
       stopPropagation: 'isPropagationStopped'
-    }
-  , opcHandler
-  , opcCache = {}
-  , createEvent = !!document.createEvent;
-
-/**
- * Get event parts.
- *
- * @param {String} event
- *
- * @return {Object}
- */
+  },
+  opcHandler,
+  opcCache = {},
+  createEvent = !!document.createEvent;
 
 function getEventParts (event) {
   var parts = ('' + event).split('.');
   return { ev: parts[0], ns: parts.slice(1).sort().join(' ') };
 }
 
-/**
- * Get real event.
- *
- * @param {String} event
- *
- * @return {String}
- */
-
 function realEvent (event) {
   return mouse[event] || event;
 }
 
-/**
- * Get bricks event id
- *
- * @param {Object} el The element to get bricks event id from
- *
- * @return {Number}
- */
-
 function getEventId (el) {
   return el._eventId || (el._eventId = _eventId++);
 }
-
-/**
- * Check if ns or event allreday is in the handlers array.
- *
- * @param {Object} parts
- * @param {Array} handlers
- *
- * @return {Boolean}
- */
 
 function inHandlers (parts, handlers) {
   for (var i = 0; i < handlers.length; i++) {
@@ -72,20 +39,11 @@ function inHandlers (parts, handlers) {
   return false;
 }
 
-/**
- * Get event handlers
- *
- * @param {Number} id
- * @param {String} event
- *
- * @return {Array}
- */
-
 function getEventHandlers (id, event) {
-  var parts = getEventParts(event)
-    , handlers = []
-    , tmp
-    , ns;
+  var parts = getEventParts(event),
+    handlers = [],
+    tmp,
+    ns;
 
   event = realEvent(parts.ev);
   ns = parts.ns;
@@ -114,20 +72,11 @@ function getEventHandlers (id, event) {
   return handlers;
 }
 
-/**
- * Create event handler
- *
- * @param {Object} el
- * @param {String} event
- * @param {Function} callback
- * @param {Function} _callback Orginal callback if delegated event
- */
-
 function createEventHandler (el, event, callback, _callback) {
-  var id = getEventId(el)
-    , handlers = getEventHandlers(id, event)
-    , parts = getEventParts(event)
-    , cb = callback || _callback;
+  var id = getEventId(el),
+    handlers = getEventHandlers(id, event),
+    parts = getEventParts(event),
+    cb = callback || _callback;
 
   var fn = function (event) {
     if (!event.liveTarget) event.liveTarget = event.target || event.srcElement;
@@ -147,14 +96,6 @@ function createEventHandler (el, event, callback, _callback) {
   return fn;
 }
 
-/**
- * Create event proxy for delegated events.
- *
- * @param {Object} event
- *
- * @return {Object}
- */
-
 function createProxy (event) {
   var proxy = { originalEvent: event };
 
@@ -173,16 +114,6 @@ function createProxy (event) {
 
   return proxy;
 }
-
-/**
- * Add event to element.
- * Using addEventListener or attachEvent (IE)
- *
- * @param {Object} el
- * @param {String} events
- * @param {Function} callback
- * @param {String} selector
- */
 
 function addEvent (el, events, callback, selector) {
   var fn, _callback;
@@ -238,15 +169,6 @@ function addEvent (el, events, callback, selector) {
   });
 }
 
-/**
- * Test event handler
- *
- * @param {Object} parts
- * @param {Function} callback
- * @param {String} selector
- * @param {Function} handler
- */
-
 function testEventHandler (parts, callback, selector, handler) {
   return callback === undefined &&
     (handler.selector === selector ||
@@ -254,16 +176,6 @@ function testEventHandler (parts, callback, selector, handler) {
       handler.ns === parts.ns) ||
       callback._i === handler._i;
 }
-
-/**
- * Remove event to element.
- * Using removeEventListener or detachEvent (IE)
- *
- * @param {Object} el
- * @param {String} events
- * @param {Function} callback
- * @param {String} selector
- */
 
 function removeEvent (el, events, callback, selector) {
   var id = getEventId(el);
@@ -288,7 +200,7 @@ function removeEvent (el, events, callback, selector) {
           var name = 'on' + event;
           if (bricks.isString(el[name])) el[name] = null;
           el.detachEvent(name, handlers[i]);
-          if (opcCache[el.nodeName]) { // Remove custom event handler on IE8.
+          if (opcCache[el.nodeName]) { 
             el.detachEvent('onpropertychange', opcHandler);
             delete opcCache[el.nodeName];
           }
@@ -307,43 +219,17 @@ bricks.events = bricks.events || {};
 
 bricks.fn.extend({
 
-  /**
-   * Add event to element
-   *
-   * @param {String} events
-   * @param {String} selector
-   * @param {Function} callback
-   * @return {Object}
-   */
-
   on: function (events, selector, callback) {
     return this.each(function () {
       addEvent(this, events, callback, selector);
     });
   },
 
-  /**
-   * Remove event from element
-   *
-   * @param {String} events
-   * @param {String} selector
-   * @param {Function} callback
-   * @return {Object}
-   */
-
   off: function (events, selector, callback) {
     return this.each(function () {
       removeEvent(this, events, callback, selector);
     });
   },
-
-  /**
-   * Trigger specific event for element collection
-   *
-   * @param {Object|String} eventName The event to trigger or event object
-   * @param {Object} data JSON Object to use as the event's `data` property
-   * @return {Object}
-   */
 
   trigger: function (event, data, _el) {
     return this.each(function (i, el) {
@@ -362,9 +248,9 @@ bricks.fn.extend({
         el.dispatchEvent(event);
       } else {
         if (el._eventId > 0) {
-          try { // fire event in < IE 9
+          try { 
             el.fireEvent('on' + event.type, event);
-          } catch (e) { // solution to trigger custom events in < IE 9
+          } catch (e) { 
             if (!opcCache[el.nodeName]) {
               opcHandler = opcHandler || function (ev) {
                 if (ev.eventName && ev.srcElement._eventId) {
@@ -387,7 +273,6 @@ bricks.fn.extend({
       if (!event.isPropagationStopped()) {
         var parent = el.parentNode || el.ownerDocument;
         if (parent && parent._eventId > 0) {
-          // Bricks use `liveTarget` instead of creating a own Event object that modifies `target` property.
           event.liveTarget = el;
           bricks(parent).trigger(event, data);
         } else {
@@ -398,15 +283,6 @@ bricks.fn.extend({
   }
 
 });
-
-/**
- * Create a event object
- *
- * @param {String|Object} type
- * @param {Object} props
- *
- * @return {Object}
- */
 
 bricks.Event = function (type, props) {
   if (!bricks.isString(type)) {
@@ -453,7 +329,6 @@ bricks.Event = function (type, props) {
     event.type = realEvent(type);
   }
 
-  // IE8
   event.eventName = event.type;
 
   return event;

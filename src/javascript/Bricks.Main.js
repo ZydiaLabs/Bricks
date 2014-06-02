@@ -1,17 +1,22 @@
+
+// We are going to build here some functions
+// I need to document it. I promise for the
+// next release.
+// Att: Gioyik
+
 (function (window, undefined) {
 
-var document   = window.document,
-  _bricks      = window.bricks,
-  _$         = window.$,
-  idExp      = /^#([\w\-]*)$/,
-  classExp   = /^\.([\w\-]*)$/,
+var document = window.document, 
+  _bricks = window.bricks,
+  _$ = window.$,
+  idExp = /^#([\w\-]*)$/,
+  classExp = /^\.([\w\-]*)$/,
   tagNameExp = /^[\w\-]+$/,
-  tagExp     = /^<([\w:]+)/,
-  slice      = [].slice,
-  splice     = [].splice,
-  noop       = function () {};
+  tagExp = /^<([\w:]+)/,
+  slice = [].slice,
+  splice = [].splice,
+  noop = function () {};
 
-// If slice is not available we provide a backup
 try {
   slice.call(document.childNodes);
 } catch(e) {
@@ -32,32 +37,13 @@ var bricks = function (selector, context) {
 
 bricks.fn = bricks.prototype = {
 
-  /**
-   * Default length is zero
-   */
-
   length: 0,
-
-  /**
-   * Extend `bricks.fn`
-   *
-   * @param {Object} o
-   */
 
   extend: function (o) {
     for (var k in o) {
       this[k] = o[k];
     }
   },
-
-  /**
-   * Find elements by selector
-   *
-   * @param {String|Object|Function|Array} selector
-   * @param {Object} context
-   *
-   * @return {Object}
-   */
 
   find: function (selector, context) {
     var els = [], attrs;
@@ -131,13 +117,6 @@ bricks.fn = bricks.prototype = {
     });
   },
 
-  /**
-   * Fetch property from elements
-   *
-   * @param {String} prop
-   * @return {Array}
-   */
-
   pluck: function (prop) {
     var result = [];
     this.each(function () {
@@ -145,13 +124,6 @@ bricks.fn = bricks.prototype = {
     });
     return result;
   },
-
-  /**
-   * Run callback for each element in the collection
-   *
-   * @param {Function} callback
-   * @return {Object}
-   */
 
   each: function(target, callback) {
     var i, key;
@@ -178,15 +150,7 @@ bricks.fn = bricks.prototype = {
     return target;
   },
 
-  /**
-   * Set elements to bricks object before returning `this`
-   *
-   * @param {Array} elements
-   * @return {Object}
-   */
-
   set: function (elements) {
-    // Introduce a fresh `bricks` set to prevent context from being overridden
     var i = 0, set = bricks();
     set.selector = this.selector;
     set.context = this.context;
@@ -197,10 +161,6 @@ bricks.fn = bricks.prototype = {
     return set;
   }
 };
-
-/**
- * Extend `bricks` with arguments, if the arguments length is one the extend target is `bricks`
- */
 
 bricks.extend = function () {
   var target = arguments[0] || {};
@@ -224,54 +184,24 @@ bricks.fn.find.prototype = bricks.fn;
 
 bricks.extend({
 
-  // The current version of bricks being used
-  version: '1.0.0',
-
-  // We sould be able to use each outside
   each: bricks.fn.each,
-
-  /**
-   * Trim string
-   *
-   * @param {String} str
-   * @return {String}
-   */
 
   trim: function (str) {
     return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   },
 
-  /**
-   * Check to see if a DOM element is a descendant of another DOM element.
-   *
-   * @param {Object} parent
-   * @param {Object} node
-   *
-   * @return {Boolean}
-   */
-
   contains: function (parent, node) {
     return parent.contains ? parent != node && parent.contains(node) : !!(parent.compareDocumentPosition(node) & 16);
   },
 
-  /**
-   * Check if the element matches the selector
-   *
-   * @param {Object} el
-   * @param {String} selector
-   * @return {Boolean}
-   */
-
   matches: function (el, selector) {
     if (!el || el.nodeType !== 1) return false;
 
-    // Trying to use matchesSelector if it is available
     var matchesSelector = el.webkitMatchesSelector || el.mozMatchesSelector || el.oMatchesSelector || el.matchesSelector;
     if (matchesSelector) {
       return matchesSelector.call(el, selector);
     }
 
-    // querySelectorAll fallback
     if (document.querySelectorAll !== undefined) {
       var nodes = el.parentNode.querySelectorAll(selector);
 
@@ -283,67 +213,25 @@ bricks.extend({
     return false;
   },
 
-  /**
-   * Check if the `obj` is a function
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isFunction: function (obj) {
     return typeof obj === 'function';
   },
-
-  /**
-   * Check if the `obj` is a array
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isArray: function (obj) {
     return obj instanceof Array;
   },
 
-  /**
-   * Check if the `obj` is a string
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isString: function (obj) {
     return typeof obj === 'string';
   },
-
-  /**
-   * Check if the `obj` is a number
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isNumeric: function (obj) {
     return typeof obj === 'number';
   },
 
-  /**
-   * Check if the `obj` is a object
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isObject: function (obj) {
     return obj instanceof Object && !this.isArray(obj) && !this.isFunction(obj) && !this.isWindow(obj);
   },
-
-  /**
-   * Check if `obj` is a plain object
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isPlainObject: function (obj) {
     if (!obj || !this.isObject(obj) || this.isWindow(obj) || obj.nodeType) {
@@ -357,20 +245,9 @@ bricks.extend({
     }
   },
 
-  /**
-   * Check if `obj` is a `window` object
-   */
-
   isWindow: function (obj) {
     return obj !== null && obj !== undefined && (obj === obj.window || 'setInterval' in obj);
   },
-
-  /**
-   * Parse JSON string to object.
-   *
-   * @param {String} str
-   * @return {Object|null}
-   */
 
   parseJSON: function (str) {
     if (!this.isString(str) || !str) {
@@ -383,19 +260,9 @@ bricks.extend({
       return window.JSON.parse(str);
     }
 
-    // Solution to fix JSON parse support for older browser. Not so nice but it works.
     try { return (new Function('return ' + str))(); }
     catch (e) { return null; }
   },
-
-  /**
-   * Check if given value exists in the array or not.
-   *
-   * @param {Object|String} val
-   * @param {Array} arr
-   * @param {Number} i
-   * @return {Boolean}
-   */
 
   inArray: function (val, arr, i) {
     return Array.prototype.indexOf ? arr.indexOf(val, i) : function () {
@@ -405,13 +272,6 @@ bricks.extend({
         return -1;
       }();
   },
-
-  /**
-   * Calling .noConflict will restore the window.$` to its previous value.
-   *
-   * @param {Boolean} name Restore `bricks` to it's previous value.
-   * @return {Object}
-   */
 
   noConflict: function (name) {
     if (name) {

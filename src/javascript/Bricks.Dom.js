@@ -26,8 +26,6 @@ var domReady = (function () {
     ready();
   }
 
-  // If IE is used, use the trick by Diego Perini
-  // http://javascript.nwbox.com/IEContentLoaded/
   function scrollCheck () {
     if (isReady) return;
 
@@ -54,9 +52,5 @@ var domReady = (function () {
     return isReady ? callback.call(document, bricks) : fns.push(callback);
   };
 })();
-
-/**
- * Adding domReady to bricks and bricks.fn
- */
 
 bricks.ready = bricks.fn.ready = domReady;

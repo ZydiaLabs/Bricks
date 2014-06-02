@@ -1,24 +1,29 @@
 /*
-*  Bricks v0.0.5 01-06-2014 
+*  Bricks v0.5.0 01-06-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
 */
 
+
+// We are going to build here some functions
+// I need to document it. I promise for the
+// next release.
+// Att: Gioyik
+
 (function (window, undefined) {
 
-var document   = window.document,
-  _bricks      = window.bricks,
-  _$         = window.$,
-  idExp      = /^#([\w\-]*)$/,
-  classExp   = /^\.([\w\-]*)$/,
+var document = window.document, 
+  _bricks = window.bricks,
+  _$ = window.$,
+  idExp = /^#([\w\-]*)$/,
+  classExp = /^\.([\w\-]*)$/,
   tagNameExp = /^[\w\-]+$/,
-  tagExp     = /^<([\w:]+)/,
-  slice      = [].slice,
-  splice     = [].splice,
-  noop       = function () {};
+  tagExp = /^<([\w:]+)/,
+  slice = [].slice,
+  splice = [].splice,
+  noop = function () {};
 
-// If slice is not available we provide a backup
 try {
   slice.call(document.childNodes);
 } catch(e) {
@@ -39,32 +44,13 @@ var bricks = function (selector, context) {
 
 bricks.fn = bricks.prototype = {
 
-  /**
-   * Default length is zero
-   */
-
   length: 0,
-
-  /**
-   * Extend `bricks.fn`
-   *
-   * @param {Object} o
-   */
 
   extend: function (o) {
     for (var k in o) {
       this[k] = o[k];
     }
   },
-
-  /**
-   * Find elements by selector
-   *
-   * @param {String|Object|Function|Array} selector
-   * @param {Object} context
-   *
-   * @return {Object}
-   */
 
   find: function (selector, context) {
     var els = [], attrs;
@@ -138,13 +124,6 @@ bricks.fn = bricks.prototype = {
     });
   },
 
-  /**
-   * Fetch property from elements
-   *
-   * @param {String} prop
-   * @return {Array}
-   */
-
   pluck: function (prop) {
     var result = [];
     this.each(function () {
@@ -152,13 +131,6 @@ bricks.fn = bricks.prototype = {
     });
     return result;
   },
-
-  /**
-   * Run callback for each element in the collection
-   *
-   * @param {Function} callback
-   * @return {Object}
-   */
 
   each: function(target, callback) {
     var i, key;
@@ -185,15 +157,7 @@ bricks.fn = bricks.prototype = {
     return target;
   },
 
-  /**
-   * Set elements to bricks object before returning `this`
-   *
-   * @param {Array} elements
-   * @return {Object}
-   */
-
   set: function (elements) {
-    // Introduce a fresh `bricks` set to prevent context from being overridden
     var i = 0, set = bricks();
     set.selector = this.selector;
     set.context = this.context;
@@ -204,10 +168,6 @@ bricks.fn = bricks.prototype = {
     return set;
   }
 };
-
-/**
- * Extend `bricks` with arguments, if the arguments length is one the extend target is `bricks`
- */
 
 bricks.extend = function () {
   var target = arguments[0] || {};
@@ -231,54 +191,24 @@ bricks.fn.find.prototype = bricks.fn;
 
 bricks.extend({
 
-  // The current version of bricks being used
-  version: '1.0.0',
-
-  // We sould be able to use each outside
   each: bricks.fn.each,
-
-  /**
-   * Trim string
-   *
-   * @param {String} str
-   * @return {String}
-   */
 
   trim: function (str) {
     return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   },
 
-  /**
-   * Check to see if a DOM element is a descendant of another DOM element.
-   *
-   * @param {Object} parent
-   * @param {Object} node
-   *
-   * @return {Boolean}
-   */
-
   contains: function (parent, node) {
     return parent.contains ? parent != node && parent.contains(node) : !!(parent.compareDocumentPosition(node) & 16);
   },
 
-  /**
-   * Check if the element matches the selector
-   *
-   * @param {Object} el
-   * @param {String} selector
-   * @return {Boolean}
-   */
-
   matches: function (el, selector) {
     if (!el || el.nodeType !== 1) return false;
 
-    // Trying to use matchesSelector if it is available
     var matchesSelector = el.webkitMatchesSelector || el.mozMatchesSelector || el.oMatchesSelector || el.matchesSelector;
     if (matchesSelector) {
       return matchesSelector.call(el, selector);
     }
 
-    // querySelectorAll fallback
     if (document.querySelectorAll !== undefined) {
       var nodes = el.parentNode.querySelectorAll(selector);
 
@@ -290,67 +220,25 @@ bricks.extend({
     return false;
   },
 
-  /**
-   * Check if the `obj` is a function
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isFunction: function (obj) {
     return typeof obj === 'function';
   },
-
-  /**
-   * Check if the `obj` is a array
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isArray: function (obj) {
     return obj instanceof Array;
   },
 
-  /**
-   * Check if the `obj` is a string
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isString: function (obj) {
     return typeof obj === 'string';
   },
-
-  /**
-   * Check if the `obj` is a number
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isNumeric: function (obj) {
     return typeof obj === 'number';
   },
 
-  /**
-   * Check if the `obj` is a object
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
   isObject: function (obj) {
     return obj instanceof Object && !this.isArray(obj) && !this.isFunction(obj) && !this.isWindow(obj);
   },
-
-  /**
-   * Check if `obj` is a plain object
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
 
   isPlainObject: function (obj) {
     if (!obj || !this.isObject(obj) || this.isWindow(obj) || obj.nodeType) {
@@ -364,20 +252,9 @@ bricks.extend({
     }
   },
 
-  /**
-   * Check if `obj` is a `window` object
-   */
-
   isWindow: function (obj) {
     return obj !== null && obj !== undefined && (obj === obj.window || 'setInterval' in obj);
   },
-
-  /**
-   * Parse JSON string to object.
-   *
-   * @param {String} str
-   * @return {Object|null}
-   */
 
   parseJSON: function (str) {
     if (!this.isString(str) || !str) {
@@ -390,19 +267,9 @@ bricks.extend({
       return window.JSON.parse(str);
     }
 
-    // Solution to fix JSON parse support for older browser. Not so nice but it works.
     try { return (new Function('return ' + str))(); }
     catch (e) { return null; }
   },
-
-  /**
-   * Check if given value exists in the array or not.
-   *
-   * @param {Object|String} val
-   * @param {Array} arr
-   * @param {Number} i
-   * @return {Boolean}
-   */
 
   inArray: function (val, arr, i) {
     return Array.prototype.indexOf ? arr.indexOf(val, i) : function () {
@@ -413,13 +280,6 @@ bricks.extend({
       }();
   },
 
-  /**
-   * Calling .noConflict will restore the window.$` to its previous value.
-   *
-   * @param {Boolean} name Restore `bricks` to it's previous value.
-   * @return {Object}
-   */
-
   noConflict: function (name) {
     if (name) {
       window.bricks = _bricks;
@@ -429,13 +289,8 @@ bricks.extend({
     return bricks;
   }
 });
-bricks.fn.extend({
 
-  /**
-   * Add classes to element collection
-   *
-   * @param {String} value
-   */
+bricks.fn.extend({
 
   addClass: function (value) {
     if (value && bricks.isString(value)) {
@@ -460,12 +315,6 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Remove classes from element collection
-   *
-   * @param {String} value
-   */
-
   removeClass: function (value) {
     return this.each(function (index, el) {
       if (value && bricks.isString(value)) {
@@ -489,13 +338,6 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Check if the first element in the collection has classes
-   *
-   * @param {String} value
-   * @return {Boolean}
-   */
-
   hasClass: function (value) {
     var classNames = (this[0] ? this[0] : this).className.split(/\s+/)
       , values = value.split(/\s+/)
@@ -514,16 +356,6 @@ bricks.fn.extend({
       return false;
     }
   },
-
-  /**
-   * Get attribute from element
-   * Set attribute to element collection
-   *
-   * @param {String} name
-   * @param {String|Object} value
-   *
-   * @return {Object|String}
-   */
 
   attr: function (name, value) {
     if (bricks.isObject(name)) {
@@ -555,27 +387,10 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Shortcut for data-* attributes.
-   *
-   * @param {String} name
-   * @param {String|Object} value
-   *
-   * @return {Object|String}
-   */
-
   data: function (name, value) {
     value = this.attr('data-' + name, serializeValue(value));
     return value instanceof bricks ? value : deserializeValue(value);
   },
-
-  /**
-   * Remove attributes from element collection
-   *
-   * @param {String} name
-   *
-   * @return {Object}
-   */
 
   removeAttr: function (name) {
     return this.each(function () {
@@ -589,14 +404,6 @@ bricks.fn.extend({
   }
 });
 
-/**
- * Serialize value into string
- *
- * @param {Object} value
- *
- * @return {String}
- */
-
 function serializeValue (value) {
   try {
     return value ? (bricks.isPlainObject(value) || bricks.isArray(value)) &&
@@ -605,14 +412,6 @@ function serializeValue (value) {
     return value;
   }
 }
-
-/**
- * Deserialize value from string to true, false, null, number, object or array.
- *
- * @param {String} value
- *
- * @return {Object}
- */
 
 function deserializeValue (value) {
   var num;
@@ -624,80 +423,7 @@ function deserializeValue (value) {
     return value;
   }
 }
-bricks.fn.extend({
 
-  /**
-   * Get css property
-   * Set css properties
-   *
-   * @param {String|Object} prop
-   * @param {String} value
-   * @return {String|Object}
-   */
-
-  css: function (prop, value) {
-    if (bricks.isString(prop) && value === undefined) {
-      return this.length > 0 ? getPropertyValue(this[0], prop) : undefined;
-    }
-
-    return this.each(function () {
-      if (this.style !== undefined) {
-        if (bricks.isString(prop)) {
-          this.style[prop] = value;
-        } else {
-          for (var key in prop) {
-            this.style[key] = prop[key];
-          }
-        }
-      }
-    });
-  },
-
-  /**
-   * Hide elements in collection
-   *
-   * @return {Object}
-   */
-
-  hide: function () {
-    return this.css('display', 'none');
-  },
-
-  /**
-   * Show elements in collection
-   *
-   * @return {Object}
-   */
-
-  show: function () {
-    return this.each(function () {
-      if (this.style !== undefined) {
-        try { // This don't work in IE8.
-          if (this.style.display === 'none') this.style.display = null;
-        } catch (e) {}
-        if (getPropertyValue(this, 'display') === 'none') this.style.display = 'block';
-      }
-    });
-  }
-});
-
-function getPropertyValue(el, prop) {
-  var value = '';
-  if (document.defaultView && document.defaultView.getComputedStyle) {
-    prop = prop.replace(/([A-Z])/g, '-$1').toLowerCase();
-    value = document.defaultView.getComputedStyle(el, '').getPropertyValue(prop);
-  }
-
-  if (!!value && value.length) {
-    value = value;
-  } else if (el.currentStyle) {
-    value = el.currentStyle[prop] || el.style[prop];
-  } else {
-    value = el.style[prop];
-  }
-
-  return !!value ? value : '';
-}
 var domReady = (function () {
   var addEventListener = !!document.addEventListener,
       isReady = false,
@@ -726,8 +452,6 @@ var domReady = (function () {
     ready();
   }
 
-  // If IE is used, use the trick by Diego Perini
-  // http://javascript.nwbox.com/IEContentLoaded/
   function scrollCheck () {
     if (isReady) return;
 
@@ -755,181 +479,39 @@ var domReady = (function () {
   };
 })();
 
-/**
- * Adding domReady to bricks and bricks.fn
- */
-
 bricks.ready = bricks.fn.ready = domReady;
-bricks.fn.extend({
 
-  /**
-   * Filter element collection
-   *
-   * @param {String|Function} obj
-   * @return {Object}
-   */
-
-  filter: function (obj) {
-    if (bricks.isFunction(obj)) {
-      var els = [];
-      this.each(function (index, el) {
-        if (obj.call(el, index)) {
-          els.push(el);
-        }
-      });
-      return bricks(els);
-    } else {
-      return this.filter(function () {
-        return bricks.matches(this, obj);
-      });
-    }
-  },
-
-  /**
-   * Get elements in list but not with this selector
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
-
-  not: function (selector) {
-    return this.filter(function () {
-      return !bricks.matches(this, selector);
-    });
-  },
-
-  /**
-   * Get the element at position specified by index from the current collection.
-   *
-   * @param {Number} index
-   * @return {Object}
-   */
-
-  eq: function (index) {
-    return index === -1 ? bricks(slice.call(this, this.length -1)) : bricks(slice.call(this, index, index + 1));
-  },
-
-  /**
-   * Retrieve the DOM elements matched by the bricks object.
-   *
-   * @param {Number} index
-   * @return {object}
-   */
-
-  get: function (index) {
-    return index === undefined ? slice.call(this) : this[index >= 0 ? index : index + this.length];
-  },
-
-  /**
-   * Clone elements
-   *
-   * @return {Object}
-   */
-
-  clone: function () {
-    var els = [];
-    this.each(function () {
-      els.push(this.cloneNode(true));
-    });
-    return bricks(els);
-  },
-
-  /**
-   * Toggle show/hide.
-   *
-   * @param {Boolean} state
-   * @return {Object}
-   */
-
-  toggle: function (state) {
-    return this.each(function () {
-      var el = $(this);
-      el[(state === undefined ? el.css('display') === 'none' : state) ? 'show': 'hide']();
-    });
-  },
-
-  /**
-   * Toggle class.
-   *
-   * @param {Function|String} name
-   * @param {Boolean} state
-   * @return {Object}
-   */
-
-  toggleClass: function (name, state) {
-    return this.each(function (i) {
-      var el = $(this);
-      name = bricks.isFunction(name) ? name.call(this, i, el.attr('class'), state) : bricks.isString(name) ? name : '';
-      bricks.each(name.split(/\s+/g), function (i, klass) {
-        el[(state === undefined ? !el.hasClass(klass) : state) ? 'addClass' : 'removeClass'](klass);
-      });
-    });
-  }
-});
-var _eventId = 1
-  , c = window.c = {}
-  , returnTrue = function () { return true; }
-  , returnFalse = function () { return false; }
-  , ignoreProperties = /^([A-Z]|layer[XY]$)/
-  , sepcialExp = /click|mouse/
-  , mouse = {
+var _eventId = 1,
+  c = window.c = {},
+  returnTrue = function () { return true; },
+  returnFalse = function () { return false; },
+  ignoreProperties = /^([A-Z]|layer[XY]$)/,
+  sepcialExp = /click|mouse/,
+  mouse = {
       mouseenter: 'mouseover',
       mouseleave: 'mouseout'
-    }
-  , eventMethods = {
+  },
+  eventMethods = {
       preventDefault: 'isDefaultPrevented',
       stopImmediatePropagation: 'isStopImmediatePropagation',
       stopPropagation: 'isPropagationStopped'
-    }
-  , opcHandler
-  , opcCache = {}
-  , createEvent = !!document.createEvent;
-
-/**
- * Get event parts.
- *
- * @param {String} event
- *
- * @return {Object}
- */
+  },
+  opcHandler,
+  opcCache = {},
+  createEvent = !!document.createEvent;
 
 function getEventParts (event) {
   var parts = ('' + event).split('.');
   return { ev: parts[0], ns: parts.slice(1).sort().join(' ') };
 }
 
-/**
- * Get real event.
- *
- * @param {String} event
- *
- * @return {String}
- */
-
 function realEvent (event) {
   return mouse[event] || event;
 }
 
-/**
- * Get bricks event id
- *
- * @param {Object} el The element to get bricks event id from
- *
- * @return {Number}
- */
-
 function getEventId (el) {
   return el._eventId || (el._eventId = _eventId++);
 }
-
-/**
- * Check if ns or event allreday is in the handlers array.
- *
- * @param {Object} parts
- * @param {Array} handlers
- *
- * @return {Boolean}
- */
 
 function inHandlers (parts, handlers) {
   for (var i = 0; i < handlers.length; i++) {
@@ -940,20 +522,11 @@ function inHandlers (parts, handlers) {
   return false;
 }
 
-/**
- * Get event handlers
- *
- * @param {Number} id
- * @param {String} event
- *
- * @return {Array}
- */
-
 function getEventHandlers (id, event) {
-  var parts = getEventParts(event)
-    , handlers = []
-    , tmp
-    , ns;
+  var parts = getEventParts(event),
+    handlers = [],
+    tmp,
+    ns;
 
   event = realEvent(parts.ev);
   ns = parts.ns;
@@ -982,20 +555,11 @@ function getEventHandlers (id, event) {
   return handlers;
 }
 
-/**
- * Create event handler
- *
- * @param {Object} el
- * @param {String} event
- * @param {Function} callback
- * @param {Function} _callback Orginal callback if delegated event
- */
-
 function createEventHandler (el, event, callback, _callback) {
-  var id = getEventId(el)
-    , handlers = getEventHandlers(id, event)
-    , parts = getEventParts(event)
-    , cb = callback || _callback;
+  var id = getEventId(el),
+    handlers = getEventHandlers(id, event),
+    parts = getEventParts(event),
+    cb = callback || _callback;
 
   var fn = function (event) {
     if (!event.liveTarget) event.liveTarget = event.target || event.srcElement;
@@ -1015,14 +579,6 @@ function createEventHandler (el, event, callback, _callback) {
   return fn;
 }
 
-/**
- * Create event proxy for delegated events.
- *
- * @param {Object} event
- *
- * @return {Object}
- */
-
 function createProxy (event) {
   var proxy = { originalEvent: event };
 
@@ -1041,16 +597,6 @@ function createProxy (event) {
 
   return proxy;
 }
-
-/**
- * Add event to element.
- * Using addEventListener or attachEvent (IE)
- *
- * @param {Object} el
- * @param {String} events
- * @param {Function} callback
- * @param {String} selector
- */
 
 function addEvent (el, events, callback, selector) {
   var fn, _callback;
@@ -1106,15 +652,6 @@ function addEvent (el, events, callback, selector) {
   });
 }
 
-/**
- * Test event handler
- *
- * @param {Object} parts
- * @param {Function} callback
- * @param {String} selector
- * @param {Function} handler
- */
-
 function testEventHandler (parts, callback, selector, handler) {
   return callback === undefined &&
     (handler.selector === selector ||
@@ -1122,16 +659,6 @@ function testEventHandler (parts, callback, selector, handler) {
       handler.ns === parts.ns) ||
       callback._i === handler._i;
 }
-
-/**
- * Remove event to element.
- * Using removeEventListener or detachEvent (IE)
- *
- * @param {Object} el
- * @param {String} events
- * @param {Function} callback
- * @param {String} selector
- */
 
 function removeEvent (el, events, callback, selector) {
   var id = getEventId(el);
@@ -1156,7 +683,7 @@ function removeEvent (el, events, callback, selector) {
           var name = 'on' + event;
           if (bricks.isString(el[name])) el[name] = null;
           el.detachEvent(name, handlers[i]);
-          if (opcCache[el.nodeName]) { // Remove custom event handler on IE8.
+          if (opcCache[el.nodeName]) { 
             el.detachEvent('onpropertychange', opcHandler);
             delete opcCache[el.nodeName];
           }
@@ -1175,43 +702,17 @@ bricks.events = bricks.events || {};
 
 bricks.fn.extend({
 
-  /**
-   * Add event to element
-   *
-   * @param {String} events
-   * @param {String} selector
-   * @param {Function} callback
-   * @return {Object}
-   */
-
   on: function (events, selector, callback) {
     return this.each(function () {
       addEvent(this, events, callback, selector);
     });
   },
 
-  /**
-   * Remove event from element
-   *
-   * @param {String} events
-   * @param {String} selector
-   * @param {Function} callback
-   * @return {Object}
-   */
-
   off: function (events, selector, callback) {
     return this.each(function () {
       removeEvent(this, events, callback, selector);
     });
   },
-
-  /**
-   * Trigger specific event for element collection
-   *
-   * @param {Object|String} eventName The event to trigger or event object
-   * @param {Object} data JSON Object to use as the event's `data` property
-   * @return {Object}
-   */
 
   trigger: function (event, data, _el) {
     return this.each(function (i, el) {
@@ -1230,9 +731,9 @@ bricks.fn.extend({
         el.dispatchEvent(event);
       } else {
         if (el._eventId > 0) {
-          try { // fire event in < IE 9
+          try { 
             el.fireEvent('on' + event.type, event);
-          } catch (e) { // solution to trigger custom events in < IE 9
+          } catch (e) { 
             if (!opcCache[el.nodeName]) {
               opcHandler = opcHandler || function (ev) {
                 if (ev.eventName && ev.srcElement._eventId) {
@@ -1255,7 +756,6 @@ bricks.fn.extend({
       if (!event.isPropagationStopped()) {
         var parent = el.parentNode || el.ownerDocument;
         if (parent && parent._eventId > 0) {
-          // Bricks use `liveTarget` instead of creating a own Event object that modifies `target` property.
           event.liveTarget = el;
           bricks(parent).trigger(event, data);
         } else {
@@ -1266,15 +766,6 @@ bricks.fn.extend({
   }
 
 });
-
-/**
- * Create a event object
- *
- * @param {String|Object} type
- * @param {Object} props
- *
- * @return {Object}
- */
 
 bricks.Event = function (type, props) {
   if (!bricks.isString(type)) {
@@ -1321,14 +812,12 @@ bricks.Event = function (type, props) {
     event.type = realEvent(type);
   }
 
-  // IE8
   event.eventName = event.type;
 
   return event;
 };
-
-var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i
-  , wrapMap = {
+var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i,
+  wrapMap = {
       thead: ['<table>', '</table>', 1],
       col: ['<table><colgroup>', '</colgroup></table>', 2],
       tr: ['<table><tbody>', '</tbody></table>', 2],
@@ -1338,21 +827,9 @@ var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
 wrapMap.th = wrapMap.td;
 
-/**
- * Check if given node is a node.
- *
- * @return {Boolean}
- */
-
 function isNode (node) {
   return node && node.nodeName && (node.nodeType === 1 || node.nodeType === 11);
 }
-
-/**
- * Collect the right nodes to work with.
- *
- * @return {Array}
- */
 
 function normalize (node) {
   if (node instanceof bricks) {
@@ -1367,12 +844,6 @@ function normalize (node) {
   return bricks.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
 }
 
-/**
- * Wrap html string with a `div` or wrap special tags with their containers.
- *
- * @return {Array}
- */
-
 function wrap (node) {
   return typeof node === 'string' && node !== '' ? function () {
     var tag = tagExp.exec(node)
@@ -1385,23 +856,9 @@ function wrap (node) {
   }() : isNode(node) ? [node.cloneNode(true)] : [];
 }
 
-/**
- * Compare the given element node name with the given name.
- *
- * @return {Boolean}
- */
-
 function nodeName (el, name) {
   return el.nodeName.toLowerCase() === name.toLowerCase();
 }
-
-/**
- * Find right target to use with dom manipulation methods.
- *
- * @param {Object} el
- * @param {String} html
- * @return {Object}
- */
 
 function target (el, html) {
   return nodeName(el, 'table') && tagExp.test(html) && tagExp.exec(html)[1] === 'tr' ?
@@ -1411,13 +868,6 @@ function target (el, html) {
 
 bricks.fn.extend({
 
-  /**
-   * Append node to element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
-
   append: function (node) {
     return this.each(function (i, el) {
       bricks.each(normalize(node), function () {
@@ -1425,13 +875,6 @@ bricks.fn.extend({
       });
     });
   },
-
-  /**
-   * Prepend node to element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
 
   prepend: function (node) {
     return this.each(function (i, el) {
@@ -1446,13 +889,6 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Add node befor element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
-
   before: function (node) {
     return this.each(function (i, el) {
       bricks.each(normalize(node), function () {
@@ -1460,13 +896,6 @@ bricks.fn.extend({
       });
     });
   },
-
-  /**
-   * Add node after element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
 
   after: function (node) {
     return this.each(function (i, el) {
@@ -1476,25 +905,11 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Remove element.
-   *
-   * @return {Object}
-   */
-
   remove: function () {
     return this.each(function () {
       this.parentNode.removeChild(this);
     });
   },
-
-  /**
-   * Get html from element.
-   * Set html to element.
-   *
-   * @param {Object|String} html
-   * @return {Object|String}
-   */
 
   html: function (html) {
     if (html === undefined) {
@@ -1514,24 +929,9 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Check if the first element in the element collection matches the selector
-   *
-   * @param {String|Object} selector The selector match
-   * @return {Boolean}
-   */
-
   is: function (selector) {
     return this[0] && bricks.matches(this[0], selector);
   },
-
-  /**
-   * Get the first element that matches the selector, beginning at the current element and progressing up through the DOM tree.
-   *
-   * @param {String} selector
-   * @param {Object} context
-   * @return {Object}
-   */
 
   closest: function (selector, context) {
     var node = this[0];
@@ -1544,26 +944,10 @@ bricks.fn.extend({
     return bricks(node);
   },
 
-  /**
-   * Get immediate parents of each element in the collection.
-   * If CSS selector is given, filter results to include only ones matching the selector.
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
-
   parent: function (selector) {
     var parent = this.pluck('parentNode');
     return selector === undefined ? bricks(parent) : bricks(parent).filter(selector);
   },
-
-  /**
-   * Get immediate children of each element in the current collection.
-   * If selector is given, filter the results to only include ones matching the CSS selector.
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
 
   children: function (selector) {
     var children = [];
@@ -1575,15 +959,6 @@ bricks.fn.extend({
     return selector === undefined ? bricks(children) : bricks(children).filter(selector);
   },
 
-  /**
-   * Get text for the first element in the collection
-   * Set text for every element in the collection
-   *
-   * $('div').text() => div text
-   *
-   * @param {String} text
-   * @return {Object|String}
-   */
 
   text: function (text) {
     if (text === undefined) {
@@ -1594,14 +969,6 @@ bricks.fn.extend({
       });
     }
   },
-
-  /**
-   * Get value for input/select elements
-   * Set value for input/select elements
-   *
-   * @param {String} value
-   * @return {Object|String}
-   */
 
   val: function (value) {
     if (!arguments.length) {
@@ -1626,12 +993,6 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Empty `innerHTML` for elements
-   *
-   * @return {Object}
-   */
-
   empty: function () {
     return this.each(function () {
       while (this.hasChildNodes()) {
@@ -1642,22 +1003,326 @@ bricks.fn.extend({
 
 });
 
-/**
- * Add `appendTo`, `prependTo`, `insertBefore` and `insertAfter` methods.
- */
-
 bricks.each({
+
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
-}, function (key, value) {
+
+}, 
+
+function (key, value) {
   bricks.fn[key] = function (selector) {
     return bricks(selector)[value](this);
   };
 });
+bricks.fn.extend({
 
-  // Expose bricks to the global object
-  window.$ = window.bricks = window.bs = bricks;
+  filter: function (obj) {
+    if (bricks.isFunction(obj)) {
+      var els = [];
+      this.each(function (index, el) {
+        if (obj.call(el, index)) {
+          els.push(el);
+        }
+      });
+      return bricks(els);
+    } else {
+      return this.filter(function () {
+        return bricks.matches(this, obj);
+      });
+    }
+  },
+
+  not: function (selector) {
+    return this.filter(function () {
+      return !bricks.matches(this, selector);
+    });
+  },
+
+  eq: function (index) {
+    return index === -1 ? bricks(slice.call(this, this.length -1)) : bricks(slice.call(this, index, index + 1));
+  },
+
+  get: function (index) {
+    return index === undefined ? slice.call(this) : this[index >= 0 ? index : index + this.length];
+  },
+
+  clone: function () {
+    var els = [];
+    this.each(function () {
+      els.push(this.cloneNode(true));
+    });
+    return bricks(els);
+  },
+
+  toggle: function (state) {
+    return this.each(function () {
+      var el = $(this);
+      el[(state === undefined ? el.css('display') === 'none' : state) ? 'show': 'hide']();
+    });
+  },
+
+  toggleClass: function (name, state) {
+    return this.each(function (i) {
+      var el = $(this);
+      name = bricks.isFunction(name) ? name.call(this, i, el.attr('class'), state) : bricks.isString(name) ? name : '';
+      bricks.each(name.split(/\s+/g), function (i, klass) {
+        el[(state === undefined ? !el.hasClass(klass) : state) ? 'addClass' : 'removeClass'](klass);
+      });
+    });
+  }
+});
+bricks.fn.extend({
+
+  css: function (prop, value) {
+    if (bricks.isString(prop) && value === undefined) {
+      return this.length > 0 ? getPropertyValue(this[0], prop) : undefined;
+    }
+
+    return this.each(function () {
+      if (this.style !== undefined) {
+        if (bricks.isString(prop)) {
+          this.style[prop] = value;
+        } else {
+          for (var key in prop) {
+            this.style[key] = prop[key];
+          }
+        }
+      }
+    });
+  },
+
+  hide: function () {
+    return this.css('display', 'none');
+  },
+
+  show: function () {
+    return this.each(function () {
+      if (this.style !== undefined) {
+        try { // This don't work in IE8.
+          if (this.style.display === 'none') this.style.display = null;
+        } catch (e) {}
+        if (getPropertyValue(this, 'display') === 'none') this.style.display = 'block';
+      }
+    });
+  }
+});
+
+function getPropertyValue(el, prop) {
+  var value = '';
+  if (document.defaultView && document.defaultView.getComputedStyle) {
+    prop = prop.replace(/([A-Z])/g, '-$1').toLowerCase();
+    value = document.defaultView.getComputedStyle(el, '').getPropertyValue(prop);
+  }
+
+  if (!!value && value.length) {
+    value = value;
+  } else if (el.currentStyle) {
+    value = el.currentStyle[prop] || el.style[prop];
+  } else {
+    value = el.style[prop];
+  }
+
+  return !!value ? value : '';
+}
+
+function ajaxJSONP (url, options) {
+  var name = (name = /callback\=([A-Za-z0-9\-\.]+)/.exec(url)) ? name[1] : 'jsonp' + (+new Date()),
+    el = document.createElement('script'),
+    abortTimeout = null,
+
+    cleanUp = function () {
+        if (abortTimeout !== null) clearTimeout(abortTimeout);
+        bricks(el).remove();
+        try { delete window[name]; }
+        catch (e) { window[name] = undefined; }
+    },
+
+    abort = function (error) {
+        cleanUp();
+        if (error === 'timeout') window[name] = noop;
+        if (bricks.isFunction(options.error)) options.error(error, options);
+    };
+
+  el.onerror = function () {
+    abort('error');
+  };
+
+  if (options.timeout > 0) {
+    abortTimeout = setTimeout(function () {
+      abort('timeout');
+    }, options.timeout);
+  }
+
+  window[name] = function (data) {
+    bricks(el).remove();
+    try { delete window[name]; }
+    catch (e) { window[name] = undefined; }
+    bricks.ajaxSuccess(data, null, options);
+  };
+
+  options.data = bricks.param(options.data);
+  el.src = url.replace(/\=\?/, '=' + name);
+  bricks('head')[0].appendChild(el);
+}
+
+bricks.extend({
+
+  ajax: function (url, options) {
+    options = options || bricks.ajaxSettings;
+
+    if (bricks.isObject(url)) {
+      if (bricks.isFunction(options)) {
+        url.success = url.success || options;
+      }
+      options = url;
+      url = options.url;
+    }
+
+    if (bricks.isFunction(options)) options = { success: options };
+
+    for (var opt in bricks.ajaxSettings) {
+      if (!options.hasOwnProperty(opt)) {
+        options[opt] = bricks.ajaxSettings[opt];
+      }
+    }
+
+    if (!url) return options.xhr();
+
+    var xhr = options.xhr(),
+      error = 'error',
+      abortTimeout = null,
+      jsonp = options.dataType === 'jsonp',
+      mime = {
+          html: 'text/html',
+          text: 'text/plain',
+          xml: 'application/xml, text/xml',
+          json: 'application/json'
+        },
+      params = bricks.param(options.data) !== '' ? bricks.param(options.data) : options.data;
+
+    for (var k in mime) {
+      if (url.indexOf('.' + k) !== -1 && !options.dataType) options.dataType = k;
+    }
+
+    if (jsonp || /\=\?|callback\=/.test(url)) {
+      if (!/\=\?/.test(url)) url = (url + '&callback=?').replace(/[&?]{1,2}/, '?');
+      return ajaxJSONP(url, options);
+    }
+
+    if (bricks.isFunction(options.beforeOpen)) {
+      var bc = options.beforeOpen(xhr, options);
+      if (!bc) {
+        xhr.abort();
+        return xhr;
+      }
+      xhr = bc;
+    }
+
+    if (xhr) {
+      xhr.open(options.type, url, true);
+
+      if ((mime = mime[options.dataType.toLowerCase()]) !== undefined) {
+        xhr.setRequestHeader('Accept', mime);
+        if (mime.indexOf(',') !== -1) mime = mime.split(',')[0];
+        if (xhr.overrideMimeType) xhr.overrideMimeType(mime);
+      }
+
+      if (options.contentType || options.data && options.type !== 'GET') {
+        xhr.setRequestHeader('Content-Type', (options.contentType || 'application/x-www-form-urlencoded'));
+      }
+
+      for (var key in options.headers) {
+        if (options.headers.hasOwnProperty(key)) {
+          xhr.setRequestHeader(key, options.headers[key]);
+        }
+      }
+
+      if (options.timeout > 0) {
+        abortTimeout = setTimeout(function () {
+          error = 'timeout';
+          xhr.abort();
+        }, options.timeout);
+      }
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+            if (options.success !== undefined) {
+              bricks.ajaxSuccess(null, xhr, options);
+            }
+          } else if (options.error !== undefined) {
+            if (abortTimeout !== null) clearTimeout(abortTimeout);
+            options.error(error, options, xhr);
+          }
+        }
+      };
+
+      if (bricks.isFunction(options.beforeSend)) {
+        var bs = options.beforeSend(xhr, options);
+        if (bs !== false) {
+          xhr.send(params);
+        }
+        xhr = bs;
+      } else {
+        xhr.send(params);
+      }
+
+      return xhr;
+    }
+  },
+
+  ajaxSettings: {
+
+    beforeOpen: null,
+    beforeSend: null,
+    contentType: 'application/x-www-form-urlencoded',
+    data: {},
+    dataType: '',
+    error: noop,
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    success: noop,
+    timeout: 0,
+    type: 'GET',
+    url: '',
+
+    xhr: function () {
+      var xhr = null;
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else if (window.ActiveXObject) { // < IE 9
+        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+      return xhr;
+    }
+  },
+
+  ajaxSuccess: function (data, xhr, options) {
+    var res;
+    if (xhr) {
+      if ((options.dataType === 'json' || false) && (res = bricks.parseJSON(xhr.responseText)) === null) res = xhr.responseText;
+      if (options.dataType === 'xml') res = xhr.responseXML;
+      res = res || xhr.responseText;
+    }
+    if (!res && data) res = data;
+    if (bricks.isFunction(options.success)) options.success(res);
+  },
+
+  param: function (obj, prefix) {
+    var str = [];
+    this.each(obj, function (p, v) {
+      var k = prefix ? prefix + '[' + p + ']' : p;
+      str.push(bricks.isObject(v) ? bricks.param(v, k) : encodeURIComponent(k) + '=' + encodeURIComponent(v));
+    });
+    return str.join('&').replace('%20', '+');
+  }
+});
+
+
+  window.$ = window.bricks = window.bs = window._ = bricks;
 
 })(window);

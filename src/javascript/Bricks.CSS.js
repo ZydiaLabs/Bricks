@@ -1,14 +1,5 @@
 bricks.fn.extend({
 
-  /**
-   * Get css property
-   * Set css properties
-   *
-   * @param {String|Object} prop
-   * @param {String} value
-   * @return {String|Object}
-   */
-
   css: function (prop, value) {
     if (bricks.isString(prop) && value === undefined) {
       return this.length > 0 ? getPropertyValue(this[0], prop) : undefined;
@@ -27,21 +18,9 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Hide elements in collection
-   *
-   * @return {Object}
-   */
-
   hide: function () {
     return this.css('display', 'none');
   },
-
-  /**
-   * Show elements in collection
-   *
-   * @return {Object}
-   */
 
   show: function () {
     return this.each(function () {

@@ -1,12 +1,5 @@
 bricks.fn.extend({
 
-  /**
-   * Filter element collection
-   *
-   * @param {String|Function} obj
-   * @return {Object}
-   */
-
   filter: function (obj) {
     if (bricks.isFunction(obj)) {
       var els = [];
@@ -23,46 +16,19 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Get elements in list but not with this selector
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
-
   not: function (selector) {
     return this.filter(function () {
       return !bricks.matches(this, selector);
     });
   },
 
-  /**
-   * Get the element at position specified by index from the current collection.
-   *
-   * @param {Number} index
-   * @return {Object}
-   */
-
   eq: function (index) {
     return index === -1 ? bricks(slice.call(this, this.length -1)) : bricks(slice.call(this, index, index + 1));
   },
 
-  /**
-   * Retrieve the DOM elements matched by the bricks object.
-   *
-   * @param {Number} index
-   * @return {object}
-   */
-
   get: function (index) {
     return index === undefined ? slice.call(this) : this[index >= 0 ? index : index + this.length];
   },
-
-  /**
-   * Clone elements
-   *
-   * @return {Object}
-   */
 
   clone: function () {
     var els = [];
@@ -72,27 +38,12 @@ bricks.fn.extend({
     return bricks(els);
   },
 
-  /**
-   * Toggle show/hide.
-   *
-   * @param {Boolean} state
-   * @return {Object}
-   */
-
   toggle: function (state) {
     return this.each(function () {
       var el = $(this);
       el[(state === undefined ? el.css('display') === 'none' : state) ? 'show': 'hide']();
     });
   },
-
-  /**
-   * Toggle class.
-   *
-   * @param {Function|String} name
-   * @param {Boolean} state
-   * @return {Object}
-   */
 
   toggleClass: function (name, state) {
     return this.each(function (i) {

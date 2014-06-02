@@ -6,8 +6,13 @@ module.exports = function(grunt) {
     },
     source: {
       js: ['src/javascript/Bricks.Main.js', 
-           'src/javascript/include/*', 
-           'src/javascript/Bricks.Window.js'],
+           'src/javascript/Bricks.Attributes.js',  
+           'src/javascript/Bricks.Dom.js', 
+           'src/javascript/Bricks.Events.js', 
+           'src/javascript/Bricks.Manipulation.js', 
+           'src/javascript/Bricks.Elements.js', 
+           'src/javascript/Bricks.CSS.js', 
+           'src/javascript/Bricks.Ajax.js'],
       scss: ['src/scss']
     },
     clean: {
@@ -62,7 +67,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'src/javascript/*.js', 'src/javascript/**/*.js', 'dist/js/Bricks.js'],
+      files: ['Gruntfile.js', 'dist/js/Bricks.js'],
       options: {
         jshintrc: '.jshintrc',
         force: true

@@ -1,11 +1,5 @@
 bricks.fn.extend({
 
-  /**
-   * Add classes to element collection
-   *
-   * @param {String} value
-   */
-
   addClass: function (value) {
     if (value && bricks.isString(value)) {
       return this.each(function (index, el) {
@@ -28,12 +22,6 @@ bricks.fn.extend({
       });
     }
   },
-
-  /**
-   * Remove classes from element collection
-   *
-   * @param {String} value
-   */
 
   removeClass: function (value) {
     return this.each(function (index, el) {
@@ -58,13 +46,6 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Check if the first element in the collection has classes
-   *
-   * @param {String} value
-   * @return {Boolean}
-   */
-
   hasClass: function (value) {
     var classNames = (this[0] ? this[0] : this).className.split(/\s+/)
       , values = value.split(/\s+/)
@@ -83,16 +64,6 @@ bricks.fn.extend({
       return false;
     }
   },
-
-  /**
-   * Get attribute from element
-   * Set attribute to element collection
-   *
-   * @param {String} name
-   * @param {String|Object} value
-   *
-   * @return {Object|String}
-   */
 
   attr: function (name, value) {
     if (bricks.isObject(name)) {
@@ -124,27 +95,10 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Shortcut for data-* attributes.
-   *
-   * @param {String} name
-   * @param {String|Object} value
-   *
-   * @return {Object|String}
-   */
-
   data: function (name, value) {
     value = this.attr('data-' + name, serializeValue(value));
     return value instanceof bricks ? value : deserializeValue(value);
   },
-
-  /**
-   * Remove attributes from element collection
-   *
-   * @param {String} name
-   *
-   * @return {Object}
-   */
 
   removeAttr: function (name) {
     return this.each(function () {
@@ -158,14 +112,6 @@ bricks.fn.extend({
   }
 });
 
-/**
- * Serialize value into string
- *
- * @param {Object} value
- *
- * @return {String}
- */
-
 function serializeValue (value) {
   try {
     return value ? (bricks.isPlainObject(value) || bricks.isArray(value)) &&
@@ -174,14 +120,6 @@ function serializeValue (value) {
     return value;
   }
 }
-
-/**
- * Deserialize value from string to true, false, null, number, object or array.
- *
- * @param {String} value
- *
- * @return {Object}
- */
 
 function deserializeValue (value) {
   var num;

@@ -7,6 +7,7 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../dist/css/Bricks.css">
+  <script type="text/javascript" src="../../dist/js/Bricks.js"></script>
   <style type="text/css">
     .col-fl-1{
         background:#CCC9C9;
@@ -344,7 +345,7 @@
       <div class="col-fl-12">12</div>
     </div>
 
-    <h2>Multiple grids (no glutter) (row width in % and px)</h2>
+    <h2 class="class">Multiple grids (no glutter) (row width in % and px)</h2>
 
     <div class="row-s-fl">
       <div class="col-fl-1">1</div>
@@ -382,5 +383,10 @@
       <div class="col-fl-12">12</div>
     </div>
   </div>
+
+<script type="text/javascript">
+  _("h2.class").addClass("test");
+</script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
-var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i
-  , wrapMap = {
+var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i,
+  wrapMap = {
       thead: ['<table>', '</table>', 1],
       col: ['<table><colgroup>', '</colgroup></table>', 2],
       tr: ['<table><tbody>', '</tbody></table>', 2],
@@ -9,21 +9,9 @@ var wrapTags = /^(select|fieldset|table|tbody|tfoot|td|tr|colgroup)$/i
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
 wrapMap.th = wrapMap.td;
 
-/**
- * Check if given node is a node.
- *
- * @return {Boolean}
- */
-
 function isNode (node) {
   return node && node.nodeName && (node.nodeType === 1 || node.nodeType === 11);
 }
-
-/**
- * Collect the right nodes to work with.
- *
- * @return {Array}
- */
 
 function normalize (node) {
   if (node instanceof bricks) {
@@ -38,12 +26,6 @@ function normalize (node) {
   return bricks.isString(node) ? wrap(node) : isNode(node) ? [node] : node;
 }
 
-/**
- * Wrap html string with a `div` or wrap special tags with their containers.
- *
- * @return {Array}
- */
-
 function wrap (node) {
   return typeof node === 'string' && node !== '' ? function () {
     var tag = tagExp.exec(node)
@@ -56,23 +38,9 @@ function wrap (node) {
   }() : isNode(node) ? [node.cloneNode(true)] : [];
 }
 
-/**
- * Compare the given element node name with the given name.
- *
- * @return {Boolean}
- */
-
 function nodeName (el, name) {
   return el.nodeName.toLowerCase() === name.toLowerCase();
 }
-
-/**
- * Find right target to use with dom manipulation methods.
- *
- * @param {Object} el
- * @param {String} html
- * @return {Object}
- */
 
 function target (el, html) {
   return nodeName(el, 'table') && tagExp.test(html) && tagExp.exec(html)[1] === 'tr' ?
@@ -82,13 +50,6 @@ function target (el, html) {
 
 bricks.fn.extend({
 
-  /**
-   * Append node to element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
-
   append: function (node) {
     return this.each(function (i, el) {
       bricks.each(normalize(node), function () {
@@ -96,13 +57,6 @@ bricks.fn.extend({
       });
     });
   },
-
-  /**
-   * Prepend node to element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
 
   prepend: function (node) {
     return this.each(function (i, el) {
@@ -117,13 +71,6 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Add node befor element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
-
   before: function (node) {
     return this.each(function (i, el) {
       bricks.each(normalize(node), function () {
@@ -131,13 +78,6 @@ bricks.fn.extend({
       });
     });
   },
-
-  /**
-   * Add node after element.
-   *
-   * @param {Object|String} node
-   * @return {Object}
-   */
 
   after: function (node) {
     return this.each(function (i, el) {
@@ -147,25 +87,11 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Remove element.
-   *
-   * @return {Object}
-   */
-
   remove: function () {
     return this.each(function () {
       this.parentNode.removeChild(this);
     });
   },
-
-  /**
-   * Get html from element.
-   * Set html to element.
-   *
-   * @param {Object|String} html
-   * @return {Object|String}
-   */
 
   html: function (html) {
     if (html === undefined) {
@@ -185,24 +111,9 @@ bricks.fn.extend({
     });
   },
 
-  /**
-   * Check if the first element in the element collection matches the selector
-   *
-   * @param {String|Object} selector The selector match
-   * @return {Boolean}
-   */
-
   is: function (selector) {
     return this[0] && bricks.matches(this[0], selector);
   },
-
-  /**
-   * Get the first element that matches the selector, beginning at the current element and progressing up through the DOM tree.
-   *
-   * @param {String} selector
-   * @param {Object} context
-   * @return {Object}
-   */
 
   closest: function (selector, context) {
     var node = this[0];
@@ -215,26 +126,10 @@ bricks.fn.extend({
     return bricks(node);
   },
 
-  /**
-   * Get immediate parents of each element in the collection.
-   * If CSS selector is given, filter results to include only ones matching the selector.
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
-
   parent: function (selector) {
     var parent = this.pluck('parentNode');
     return selector === undefined ? bricks(parent) : bricks(parent).filter(selector);
   },
-
-  /**
-   * Get immediate children of each element in the current collection.
-   * If selector is given, filter the results to only include ones matching the CSS selector.
-   *
-   * @param {String} selector
-   * @return {Object}
-   */
 
   children: function (selector) {
     var children = [];
@@ -246,15 +141,6 @@ bricks.fn.extend({
     return selector === undefined ? bricks(children) : bricks(children).filter(selector);
   },
 
-  /**
-   * Get text for the first element in the collection
-   * Set text for every element in the collection
-   *
-   * $('div').text() => div text
-   *
-   * @param {String} text
-   * @return {Object|String}
-   */
 
   text: function (text) {
     if (text === undefined) {
@@ -265,14 +151,6 @@ bricks.fn.extend({
       });
     }
   },
-
-  /**
-   * Get value for input/select elements
-   * Set value for input/select elements
-   *
-   * @param {String} value
-   * @return {Object|String}
-   */
 
   val: function (value) {
     if (!arguments.length) {
@@ -297,12 +175,6 @@ bricks.fn.extend({
     }
   },
 
-  /**
-   * Empty `innerHTML` for elements
-   *
-   * @return {Object}
-   */
-
   empty: function () {
     return this.each(function () {
       while (this.hasChildNodes()) {
@@ -313,16 +185,16 @@ bricks.fn.extend({
 
 });
 
-/**
- * Add `appendTo`, `prependTo`, `insertBefore` and `insertAfter` methods.
- */
-
 bricks.each({
+
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
-}, function (key, value) {
+
+}, 
+
+function (key, value) {
   bricks.fn[key] = function (selector) {
     return bricks(selector)[value](this);
   };
