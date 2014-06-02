@@ -2,7 +2,8 @@ module.exports = function(grunt) {
   grunt.initConfig({ 
     pkg: grunt.file.readJSON('package.json'),
     meta: {
-      build: "dist"
+      build: "dist",
+      package: "package"
     },
     source: {
       js: ['src/javascript/Bricks.Main.js', 
@@ -17,7 +18,7 @@ module.exports = function(grunt) {
     },
     clean: {
       build: {
-        src: ['<%= meta.build %>/*']
+        src: ['<%= meta.build %>/*', '<%= meta.package %>/*']
       }
     },
     sass: {
@@ -99,6 +100,18 @@ module.exports = function(grunt) {
         filter: 'isFile'
       }
     },
+    compress: {
+      main: {
+        options: {
+          archive: '<%= meta.package %>/Bricks.zip'
+        },
+        files: [
+          {expand: true, cwd: '<%= meta.build %>/css/', src: ['**'], dest: 'css/'},
+          {expand: true, cwd: '<%= meta.build %>/js/', src: ['**'], dest: 'js/'},
+          {expand: true, cwd: '<%= meta.build %>/fonts/', src: ['**'], dest: 'fonts/'}
+        ]
+      }
+    },
     connect: {
       server: {
         options: {
@@ -153,7 +166,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.registerTask('default', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'jshint', 'connect', 'watch']);
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.registerTask('default', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint', 'connect', 'watch']);
   grunt.registerTask('livereload', ['connect', 'watch']);
-  grunt.registerTask('travis-ci', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'jshint']);
+  grunt.registerTask('travis-ci', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint']);
 };
