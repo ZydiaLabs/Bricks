@@ -379,6 +379,89 @@
   } 
 } 
 
+@mixin container($type) {
+  @if $type == fluid {
+    .container-fluid {
+      @include clearfix;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    } @else if $type == fixed {
+      .container {
+        @include clearfix;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+}
+
+@mixin row() {
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+@mixin col($t) {
+  @for $i from 1 through $num-columns {
+    .col-#{$t}-#{$i} {
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+}
+
+@mixin col-float($q) {
+  @for $i from 1 through $num-columns {
+    .col-#{$q}-#{$i} {
+      float: left;
+    }
+  }
+}
+
+@mixin g-col($p) {
+  @for $i from 1 through $num-columns {
+    .col-#{$p}-#{$i} {
+      width: ($width-fl * $i) / $num-columns;
+    }
+  }
+}
+
+@mixin g-p-col($p) {
+  @for $i from 0 through $num-columns {
+    .pull-#{$p}-#{$i} {
+      right: ($width-fl * $i) / $num-columns;
+    }
+  }
+}
+
+@mixin g-pu-col($p) {
+  @for $i from 0 through $num-columns {
+    .push-#{$p}-#{$i} {
+      left: ($width-fl * $i) / $num-columns;
+    }
+  }
+}
+
+@mixin g-o-col($p) {
+  @for $i from 0 through $num-columns {
+    .offset-#{$p}-#{$i} {
+      margin-left: ($width-fl * $i) / $num-columns;
+    }
+  }
+}
+
 // Background sizing
 // --------------------------------------------------
 

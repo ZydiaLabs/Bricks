@@ -3,296 +3,97 @@
  * --------------------------------------------------
  */
 
-/* Set the width of the grid */
-.container {
-  @include clearfix;
-  margin: 0 auto;
-  width: $width-container;
+/* container */
+
+@include container(fluid);
+
+@include container(fixed);
+
+/* row */
+
+@include row();
+
+/* cols */
+
+@include col(x);
+
+@include col(s);
+
+@include col(m);
+
+@include col(l);
+
+/* col values for super small */
+@include g-col(x);
+
+@include col-float(x);
+
+/* col pull */
+@include g-p-col(x);
+
+/* col push */
+@include g-pu-col(x);
+
+/* col offset */
+@include g-o-col(x);
+
+/* Media Queries */
+@include respond($s-query) {
+  .container {
+    width: 750px;
+  }
+
+  /* col values for small */
+  @include g-col(s);
+
+  @include col-float(s);
+
+  /* col pull */
+  @include g-p-col(s);
+
+  /* col push */
+  @include g-pu-col(s);
+
+  /* col offset */
+  @include g-o-col(s);
 }
 
-.row {
-  width: $width-fl;
-  margin-right: $width-fl;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+@include respond($m-query) {
+  .container {
+    width: 970px;
   }
+
+  /* col values for medium */
+  @include g-col(m);
+
+  @include col-float(m);
+
+  /* col pull */
+  @include g-p-col(m);
+
+  /* col push */
+  @include g-pu-col(m);
+
+  /* col offset */
+  @include g-o-col(m);
 }
 
-.row-s-fl {
-  width: $width-s-fl;
-  margin: 0 auto;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+@include respond($l-query) {
+  .container {
+    width: 1170px;
   }
-}
+  /* col values for large */
+  @include g-col(l);
 
-.row-m-fl {
-  width: $width-m-fl;
-  margin: 0 auto;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
+  @include col-float(l);
 
-.row-l-fl {
-  width: $width-l-fl;
-  margin: 0 auto;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
+  /* col pull */
+  @include g-p-col(l);
 
-/* Attribute selector */
-[class*="col-"] {
-  float: left;
-  padding: 0.3em;
-  &:last-of-type {
-    float: right;
-  }
-}
+  /* col push */
+  @include g-pu-col(l);
 
-/* Main width */
-@for $i from 1 through $num-columns {
-  .col-fl-#{$i} {
-    width: $width-fl / $i;
-  }
-}
-
-@for $i from 1 through $num-columns {
-  .col-s-fl-#{$i} {
-    width: $width-s-fl / $i;
-  }
-}
-
-@for $i from 1 through $num-columns {
-  .col-m-fl-#{$i} {
-    width: $width-m-fl / $i;
-  }
-}
-
-@for $i from 1 through $num-columns {
-  .col-l-fl-#{$i} {
-    width: $width-l-fl / $i;
-  }
-}
-
-/* Landscape mobile & down */
-@include respond($phone) {
-  %width-fl {
-    width: $width-fl;
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-fl-#{$i} {
-      @extend %width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-s-fl-#{$i} {
-      @extend %width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-m-fl-#{$i} {
-      @extend %width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-l-fl-#{$i} {
-      @extend %width-fl;
-    }
-  }
-}
-
-@include respond($phone-land) {
-
-  @for $i from 1 through $num-columns {
-    .col-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-s-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-m-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-l-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-}
-
-@include respond($phone-port) {
-
-  @for $i from 1 through $num-columns {
-    .col-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-s-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-m-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-
-  @for $i from 1 through $num-columns {
-    .col-l-fl-#{$i} {
-      width: $width-fl;
-    }
-  }
-}
-
-/* Portrait tablet to landscape */
-@include respond($tablet-ipad) {
-  .col-fl-4,
-  .col-fl-6,
-  .col-fl-8,
-  .col-fl-10,
-  .col-fl-12 {
-    width: $width-fl / 2;
-  }
-
-  .col-fl-1,
-  .col-fl-2,
-  .col-fl-3,
-  .col-fl-5,
-  .col-fl-7,
-  .col-fl-9,
-  .col-fl-11 {
-    width: $width-fl;
-  }
-
-  .col-s-fl-4,
-  .col-s-fl-6,
-  .col-s-fl-8,
-  .col-s-fl-10,
-  .col-s-fl-12 {
-    width: $width-fl / 2;
-  }
-
-  .col-s-fl-1,
-  .col-s-fl-2,
-  .col-s-fl-3,
-  .col-s-fl-5,
-  .col-s-fl-7,
-  .col-s-fl-9,
-  .col-s-fl-11 {
-    width: $width-fl;
-  }
-
-  .col-m-fl-4,
-  .col-m-fl-6,
-  .col-m-fl-8,
-  .col-m-fl-10,
-  .col-m-fl-12 {
-    width: $width-fl / 2;
-  }
-
-  .col-m-fl-1,
-  .col-m-fl-2,
-  .col-m-fl-3,
-  .col-m-fl-5,
-  .col-m-fl-7,
-  .col-m-fl-9,
-  .col-m-fl-11 {
-    width: $width-fl;
-  }
-
-  .col-l-fl-4,
-  .col-l-fl-6,
-  .col-l-fl-8,
-  .col-l-fl-10,
-  .col-l-fl-12 {
-    width: $width-fl / 2;
-  }
-
-  .col-l-fl-1,
-  .col-l-fl-2,
-  .col-l-fl-3,
-  .col-l-fl-5,
-  .col-l-fl-7,
-  .col-l-fl-9,
-  .col-l-fl-11 {
-    width: $width-fl;
-  }
-}
-
-/* Portrait tablet to landscape */
-@include respond($tablet-ipad-land) {
-  .col-fl-2,
-  .col-fl-7 {
-    width: $width-fl;
-  }
-
-  .col-fl-4,
-  .col-fl-8,
-  .col-fl-10,
-  .col-fl-12 {
-    width: $width-fl / 2;
-  }
-}
-
-/* Portrait tablet to landscape */
-@include respond($tablet-ipad-port) {
-  .col-fl-4,
-  .col-fl-6,
-  .col-fl-8,
-  .col-fl-10,
-  .col-fl-12 {
-    width: $width-fl / 2;
-  }
-
-  .col-fl-1,
-  .col-fl-2,
-  .col-fl-3,
-  .col-fl-5,
-  .col-fl-7,
-  .col-fl-9,
-  .col-fl-11 {
-    width: $width-fl;
-  }
-}
-/* Landscape to small desktop */
-@include respond($desktop) {
-  @for $i from 1 through $num-columns {
-	  .col-fl-#{$i} {
-      width: $width-fl / $i;
-    }
-  }
-}
-
-@include respond($screen-l) {
-  @for $i from 1 through 12 {
-      .col-fl-#{$i} {
-      width: $width-fl / $i;
-    }
-  }
+  /* col offset */
+  @include g-o-col(l);
 }
 
