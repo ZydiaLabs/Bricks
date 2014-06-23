@@ -25,6 +25,14 @@ Getting Started
 ---------------
 There are some things probably you are interested on. So, let's start.
 
+### Browser support
+
+* Chrome
+* Safari 4.0.5
+* Internet Explorer 8
+* Firefox 3.5
+* Opera 10
+
 ### History
 Bricks Framework starts as an idea to create and use libraries with functions and components that you really need on your project. Most of actual frameworks are complete and covers everything, but sometimes they have more things that the ones you really need. Bricks borns from that situation. 
 
