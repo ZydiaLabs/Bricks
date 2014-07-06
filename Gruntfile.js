@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       options: {
         style: 'expanded',
         banner: '/*\n' +
-                '*  <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
+                '*  <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
                 '*  Created by <%= pkg.author.name %> \n' +
                 '*  License <%= pkg.license.type %> \n' +
                 '*  <%= pkg.author.site %>\n' +
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     concat: { 
       options: {
         banner: '/*\n' +
-                '*  <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
+                '*  <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
                 '*  Created by <%= pkg.author.name %> \n' +
                 '*  License <%= pkg.license.type %> \n' +
                 '*  <%= pkg.author.site %>\n' +
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       options: {
         report: 'gzip',
         banner: '/*\n' +
-                '*  <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
+                '*  <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
                 '*  Created by <%= pkg.author.name %> \n' +
                 '*  License <%= pkg.license.type %> \n' +
                 '*  <%= pkg.author.site %>\n' +
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
         options: {
           report: 'gzip',
         banner: '/*\n' +
-                '*  <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
+                '*  <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> \n' +
                 '*  Created by <%= pkg.author.name %> \n' +
                 '*  License <%= pkg.license.type %> \n' +
                 '*  <%= pkg.author.site %>\n' +

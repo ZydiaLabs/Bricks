@@ -1,11 +1,6 @@
 @import "include/Bricks.Variables";
 @import "include/Bricks.Mixins";
 
-/**
- * Utility Classes
- * --------------------------------------------------
- */
-
 .hidden,
 .hide {
   display: none;
@@ -15,17 +10,6 @@
 }
 .invisible {
   visibility: hidden;
-}
-
-.hide-footer {
-  .bar-footer,
-  .tabs {
-    display: none;
-  }
-  .has-footer,
-  .has-tabs {
-    bottom: 0;
-  }
 }
 
 .inline {
@@ -62,19 +46,12 @@
   &:after {
     display: table;
     content: "";
-    // Fixes Opera/contenteditable bug:
-    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0;
   }
   &:after {
     clear: both;
   }
 }
-
-/**
- * Content Padding
- * --------------------------------------------------
- */
 
 .padding {
   padding: $content-padding;
@@ -100,116 +77,9 @@
   padding-left: $content-padding;
 }
 
-
-/**
- * Rounded
- * --------------------------------------------------
- */
-
 .rounded {
   border-radius: $border-radius-base;
 }
-
-
-/**
- * Utility Colors
- * --------------------------------------------------
- * Utility colors are added to help set a naming convention. You'll
- * notice we purposely do not use words like "red" or "blue", but
- * instead have colors which represent an emotion or generic theme.
- */
-
-.light, a.light {
-  color: $light;
-}
-.light-bg {
-  background-color: $light;
-}
-.light-border {
-  border-color: $btn-light-border;
-}
-
-.stable, a.stable {
-  color: $stable;
-}
-.stable-bg {
-  background-color: $stable;
-}
-.stable-border {
-  border-color: $btn-stable-border;
-}
-
-.positive, a.positive {
-  color: $positive;
-}
-.positive-bg {
-  background-color: $positive;
-}
-.positive-border {
-  border-color: $btn-positive-border;
-}
-
-.calm, a.calm {
-  color: $calm;
-}
-.calm-bg {
-  background-color: $calm;
-}
-.calm-border {
-  border-color: $btn-calm-border;
-}
-
-.assertive, a.assertive {
-  color: $assertive;
-}
-.assertive-bg {
-  background-color: $assertive;
-}
-.assertive-border {
-  border-color: $btn-assertive-border;
-}
-
-.balanced, a.balanced {
-  color: $balanced;
-}
-.balanced-bg {
-  background-color: $balanced;
-}
-.balanced-border {
-  border-color: $btn-balanced-border;
-}
-
-.energized, a.energized {
-  color: $energized;
-}
-.energized-bg {
-  background-color: $energized;
-}
-.energized-border {
-  border-color: $btn-energized-border;
-}
-
-.royal, a.royal {
-  color: $royal;
-}
-.royal-bg {
-  background-color: $royal;
-}
-.royal-border {
-  border-color: $btn-royal-border;
-}
-
-.dark, a.dark {
-  color: $dark;
-}
-.dark-bg {
-  background-color: $dark;
-}
-.dark-border {
-  border-color: $btn-dark-border;
-}
-
-/* Effects */
 
 .shadow {
     -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
@@ -238,8 +108,6 @@
     -khtml-opacity: 1;
     opacity: 1;
 }
-
-/* Style for images */
 
 .img-rounded {
     border-radius: 5px;
@@ -379,4 +247,84 @@ img.wide + img.wide {
     -webkit-border-radius:.25em;
        -moz-border-radius:.25em;
             border-radius:.25em;
+}
+
+.bg-sea-green {
+  background: $sea-green;
+}
+
+.color-sea-green {
+  color: $sea-green;
+}
+
+.bg-green {
+  background: $green;
+}
+
+.color-green {
+  color: $green;
+}
+
+.bg-blue {
+  background: $blue;
+}
+
+.color-blue {
+  color: $blue;
+}
+
+.bg-purple {
+  background: $purple;
+}
+
+.color-purple {
+  color: $purple;
+}
+
+.bg-navy {
+  background: $navy;
+}
+
+.color-navy {
+  color: $navy;
+}
+
+.bg-yellow {
+  background: $yellow;
+}
+
+.color-yellow {
+  color: $yellow;
+}
+
+.bg-orange {
+  background: $orange;
+}
+
+.color-orange {
+  color: $orange;
+}
+
+.bg-red {
+  background: $red;
+}
+
+.color-red {
+  color: $red;
+}
+
+.bg-gray {
+  background: $gray;
+}
+
+.color-gray {
+  color: $gray;
+}
+
+.bg-blank {
+  background: $blank;
+}
+
+.color-blank {
+  color: $blank;
 }

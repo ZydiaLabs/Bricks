@@ -25,7 +25,7 @@ bricks.fn.extend({
   show: function () {
     return this.each(function () {
       if (this.style !== undefined) {
-        try { // This don't work in IE8.
+        try {
           if (this.style.display === 'none') this.style.display = null;
         } catch (e) {}
         if (getPropertyValue(this, 'display') === 'none') this.style.display = 'block';

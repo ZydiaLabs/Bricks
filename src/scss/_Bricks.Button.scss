@@ -1,218 +1,283 @@
 @import "include/Bricks.Variables";
 @import "include/Bricks.Mixins";
 
-/**
- * btns
- * --------------------------------------------------
- */
-
 .btn {
-  // set the color defaults
-  @include btn-style($btn-default-bg, $btn-default-border, $btn-default-active-bg, $btn-default-active-border, $btn-default-text);
+	display: inline-block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 5px;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-weight: 600;
+	-webkit-transition: all ease-in-out .25s;
+    -moz-transition: all ease-in-out .25s;
+    -o-transition: all ease-in-out .25s;
+    transition: all ease-in-out .25s;
+}
 
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  padding: 1px $btn-padding 0 $btn-padding;
+.btn-rnd {
+border-radius: 20px;
+}
 
-  min-width: ($btn-padding * 3) + $btn-font-size;
-  min-height: $btn-height + 5px;
+.btn-squ {
+border-radius: 0px;
+}
 
-  border-width: $btn-border-width;
-  border-style: solid;
-  border-radius: $btn-border-radius;
+.btn-3d {
+border-bottom: 4px solid rgba(0, 0, 0, 0.2)
+}
 
-  vertical-align: top;
-  text-align: center;
-
-  text-overflow: ellipsis;
-  font-size: $btn-font-size;
-  line-height: $btn-height - $btn-border-width + 1px;
-
-  cursor: pointer;
-
-  &:after {
-    // used to create a larger btn "hit" area
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    bottom: -6px;
-    left: -8px;
-    content: ' ';
-  }
-
-  &.btn-block, &.btn-full {
-    margin-top: $btn-block-margin;
-    margin-bottom: $btn-block-margin;
-  }
-
-  &.btn-light {
-    @include btn-style($btn-light-bg, $btn-light-border, $btn-light-active-bg, $btn-light-active-border, $btn-light-text);
-    @include btn-clear($btn-light-border);
-    @include btn-outline($btn-light-border);
-  }
-
-  &.btn-stable {
-    @include btn-style($btn-stable-bg, $btn-stable-border, $btn-stable-active-bg, $btn-stable-active-border, $btn-stable-text);
-    @include btn-clear($btn-stable-border);
-    @include btn-outline($btn-stable-border);
-  }
-
-  &.btn-positive {
-    @include btn-style($btn-positive-bg, $btn-positive-border, $btn-positive-active-bg, $btn-positive-active-border, $btn-positive-text);
-    @include btn-clear($btn-positive-bg);
-    @include btn-outline($btn-positive-bg);
-  }
-
-  &.btn-calm {
-    @include btn-style($btn-calm-bg, $btn-calm-border, $btn-calm-active-bg, $btn-calm-active-border, $btn-calm-text);
-    @include btn-clear($btn-calm-bg);
-    @include btn-outline($btn-calm-bg);
-  }
-
-  &.btn-assertive {
-    @include btn-style($btn-assertive-bg, $btn-assertive-border, $btn-assertive-active-bg, $btn-assertive-active-border, $btn-assertive-text);
-    @include btn-clear($btn-assertive-bg);
-    @include btn-outline($btn-assertive-bg);
-  }
-
-  &.btn-balanced {
-    @include btn-style($btn-balanced-bg, $btn-balanced-border, $btn-balanced-active-bg, $btn-balanced-active-border, $btn-balanced-text);
-    @include btn-clear($btn-balanced-bg);
-    @include btn-outline($btn-balanced-bg);
-  }
-
-  &.btn-energized {
-    @include btn-style($btn-energized-bg, $btn-energized-border, $btn-energized-active-bg, $btn-energized-active-border, $btn-energized-text);
-    @include btn-clear($btn-energized-bg);
-    @include btn-outline($btn-energized-bg);
-  }
-
-  &.btn-royal {
-    @include btn-style($btn-royal-bg, $btn-royal-border, $btn-royal-active-bg, $btn-royal-active-border, $btn-royal-text);
-    @include btn-clear($btn-royal-bg);
-    @include btn-outline($btn-royal-bg);
-  }
-
-  &.btn-dark {
-    @include btn-style($btn-dark-bg, $btn-dark-border, $btn-dark-active-bg, $btn-dark-active-border, $btn-dark-text);
-    @include btn-clear($btn-dark-bg);
-    @include btn-outline($btn-dark-bg);
-  }
+.btn-border {
+border: 4px solid rgba(0, 0, 0, 0.2)
 }
 
 .btn-small {
-  padding: 0 $btn-small-padding;
-  min-width: $btn-small-height;
-  min-height: $btn-small-height + 3;
-  font-size: $btn-small-font-size;
-  line-height: $btn-small-height - $btn-border-width + 1;
-
-  .icon:before,
-  &.icon:before,
-  &.icon-left:before,
-  &.icon-right:before {
-    font-size: $btn-small-icon-size;
-    line-height: $btn-small-height - $btn-border-width - 1;
-  }
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 10px;
+padding-right: 10px;
+font-size: 14px;
+font-weight: 500;
 }
 
 .btn-large {
-  padding: 0 $btn-large-padding;
-  min-width: ($btn-large-padding * 3) + $btn-large-font-size;
-  min-height: $btn-large-height + 5;
-  font-size: $btn-large-font-size;
-  line-height: $btn-large-height - $btn-border-width;
-
-  .icon:before,
-  &.icon:before,
-  &.icon-left:before,
-  &.icon-right:before {
-    padding-bottom: ($btn-border-width * 2);
-    font-size: $btn-large-icon-size;
-    line-height: $btn-large-height - ($btn-border-width * 2) - 1;
-  }
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 30px;
+padding-right: 30px;
+font-size: 18px;
+font-weight: 700;
 }
 
-.btn-icon {
-  @include transition(opacity .1s);
-  padding: 0 6px;
-  min-width: initial;
-  border-color: transparent;
-  background: none;
-
-  &.btn:active, 
-  &.btn.active {
-    border-color: transparent;
-    background: none;
-    box-shadow: none;
-    opacity: 0.3;
-  }
-
-  .icon:before,
-  &.icon:before {
-    font-size: $btn-large-icon-size;
-  }
+.btn-exlarge {
+padding-top: 20px;
+padding-bottom: 20px;
+padding-left: 40px;
+padding-right: 40px;
+font-size: 20px;
+font-weight: 800;
 }
 
-.btn-clear {
-  @include btn-clear($btn-default-border);
-  @include transition(opacity .1s);
-  padding: 0 $btn-clear-padding;
-  max-height: $btn-height;
-  border-color: transparent;
-  background: none;
-  box-shadow: none;
-
-  &:active, &.active {
-    opacity: 0.3;
-  }
+.btn-sea-green-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $sea-green;
+color: $sea-green;
 }
 
-.btn-outline {
-  @include btn-outline($btn-default-border);
-  @include transition(opacity .1s);
-  background: none;
-  box-shadow: none;
+.btn-sea-green-outline:hover {
+border: 3px solid $sea-green;
+color: $blank;
+background-color: $sea-green;
 }
 
-.padding > .btn.btn-block:first-child {
-  margin-top: 0;
+.btn-green-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $green;
+color: $green;
 }
 
-.btn-block {
-  display: block;
-  clear: both;
-  
-  &:after { 
-    clear: both;
-  }
+.btn-green-outline:hover {
+border: 3px solid $green;
+color: $blank;
+background-color: $green;
 }
 
-.btn-full,
-.btn-full > .btn {
-  display: block;
-  margin-right: 0;
-  margin-left: 0;
-  border-right-width: 0;
-  border-left-width: 0;
-  border-radius: 0;
+.btn-blue-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $blue;
+color: $blue;
 }
 
-btn.btn-block,
-btn.btn-full,
-.btn-full > btn.btn,
-input.btn.btn-block  {
-  width: 100%;
+.btn-blue-outline:hover {
+border: 3px solid $blue;
+color: $blank;
+background-color: $blue;
 }
 
-a.btn {
-  text-decoration: none;
+.btn-purple-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $purple;
+color: $purple;
 }
 
-.btn.disabled,
-.btn[disabled] {
-  opacity: .4;
-  cursor: default !important;
-  pointer-events: none;
+.btn-purple-outline:hover {
+border: 3px solid $purple;
+color: $blank;
+background-color: $purple;
 }
+
+.btn-navy-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $navy;
+color: $navy;
+}
+
+.btn-navy-outline:hover {
+border: 3px solid $navy;
+color: $blank;
+background-color: $navy;
+}
+
+.btn-yellow-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $yellow;
+color: $yellow;
+}
+
+.btn-yellow-outline:hover {
+border: 3px solid $yellow;
+color: $blank;
+background-color: $yellow;
+}
+
+.btn-orange-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $orange;
+color: $orange;
+}
+
+.btn-orange-outline:hover {
+border: 3px solid $orange;
+color: $blank;
+background-color: $orange;
+}
+
+.btn-red-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $red;
+color: $red;
+}
+
+.btn-red-outline:hover {
+border: 3px solid $red;
+color: $blank;
+background-color: $red;
+}
+
+.btn-gray-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $gray;
+color: $gray;
+}
+
+.btn-gray-outline:hover {
+border: 3px solid #7f8c8d;
+color: $blank;
+background-color: #7f8c8d;
+}
+
+.btn-sea-green {
+background-color: $sea-green;
+color: $blank;
+}
+
+.btn-sea-green:hover {
+background-color: #16a085;
+color: $blank;
+}
+
+.btn-green {
+	background-color: $green;
+	color: $blank;
+}
+
+.btn-green:hover {
+	background-color: #27ae60;
+	color: $blank;
+}
+
+.btn-blue {
+	background-color: $blue;
+	color: $blank;
+}
+
+.btn-blue:hover {
+	background-color: #2980b9;
+	color: $blank;
+}
+
+.btn-purple {
+	background-color: $purple;
+	color: $blank;
+}
+
+.btn-purple:hover {
+	background-color: #8e44ad;
+	color: $blank;
+}
+
+.btn-navy {
+	background-color: $navy;
+	color: $blank;
+}
+
+.btn-navy:hover {
+	background-color: #2c3e50;
+	color: $blank;
+}
+
+.btn-yellow {
+	background-color: $yellow;
+	color: $blank;
+}
+
+.btn-yellow:hover {
+	background-color: #f39c12;
+	color: $blank;
+}
+
+.btn-orange {
+	background-color: $orange;
+	color: $blank;
+}
+
+.btn-orange:hover {
+	background-color: #d35400;
+	color: $blank;
+}
+
+.btn-red {
+	background-color: $red;
+	color: $blank;
+}
+
+.btn-red:hover {
+	background-color: #c0392b;
+	color: $blank;
+}
+
+.btn-blank {
+	background-color: $blank;
+	color: #7f8c8d;
+}
+
+.btn-blank:hover {
+	background-color: #eaeaea;
+	color: #7f8c8d;
+}
+
+.btn-white {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.btn-white:hover {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.btn-gray {
+	background-color: $gray;
+	color: $blank;
+}
+
+.btn-gray:hover {
+	background-color: #7f8c8d;
+	color: $blank;
+}
+

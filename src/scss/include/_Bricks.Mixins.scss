@@ -1,7 +1,4 @@
-
-// btn Mixins
-// --------------------------------------------------
-
+// buttons
 @mixin btn-style($bg-color, $border-color, $active-bg-color, $active-border-color, $color) {
   color: $color;
   background-color: $bg-color;
@@ -52,46 +49,45 @@
   }
 }
 
+// nav
+@mixin em($property, $values...) {
+  $max: length($values);
+  $emValues: '';
 
-// nav Mixins
-// --------------------------------------------------
+  @for $i from 1 through $max {
+    @if nth($values, $i) != 'important' {
+      $value: strip-unit(nth($values, $i));
+      $emValues: #{$emValues + $value}em;
 
-@mixin nav-style($bg-color, $border-color, $color) {
-  background-color: $bg-color;
-  border-color: $border-color;
-  background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%);
+      @if $i < $max {
+        $emValues: #{$emValues + " "};
+      }
+    }
 
-  color: $color;
-
-  .title {
-    color: $color;
+    @if $i == $max {
+      @if nth($values, $i) == 'important' {
+        $emValues: #{$emValues + " !important"};
+      }
+    }
   }
+
+  #{$property}: $emValues;
 }
 
-
-
-
-// Range Mixins
-// --------------------------------------------------
-
+// Range
 @mixin range-style($track-bg-color) {
   &::-webkit-slider-thumb:before {
     background: $track-bg-color;
   }
 }
 
-
 // Clearfix
-// --------------------------------------------------
-
 @mixin clearfix {
   *zoom: 1;
   &:before,
   &:after {
     display: table;
     content: "";
-    // Fixes Opera/contenteditable bug:
-    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0;
   }
   &:after {
@@ -99,10 +95,7 @@
   }
 }
 
-
 // Placeholder text
-// --------------------------------------------------
-
 @mixin placeholder($color: $input-color-placeholder) {
   &:-moz-placeholder {
     color: $color;
@@ -115,10 +108,7 @@
   }
 }
 
-
 // Text Mixins
-// --------------------------------------------------
-
 @mixin text-size-adjust($value: none) {
   -webkit-text-size-adjust: $value; 
      -moz-text-size-adjust: $value;
@@ -132,10 +122,7 @@
   -webkit-touch-callout: $value;
 }
 
-
 // Font Mixins
-// --------------------------------------------------
-
 @mixin font-family-serif() {
   font-family: $serif-font-family;
 }
@@ -167,20 +154,14 @@
           font-smoothing: $font-smoothing;
 }
 
-
 // Appearance
-// --------------------------------------------------
-
 @mixin appearance($val) {
   -webkit-appearance: $val;
   -moz-appearance: $val;
   appearance: $val;
 }
 
-
 // Border Radius Mixins
-// --------------------------------------------------
-
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -229,18 +210,13 @@
 
 
 // Box shadows
-// --------------------------------------------------
-
 @mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
 }
 
-
 // Transition Mixins
-// --------------------------------------------------
-
 @mixin transition($transition...) {
   -webkit-transition: $transition;
      -moz-transition: $transition;
@@ -273,10 +249,7 @@
           transition: transform $properties;
 }
 
-
 // Animation Mixins
-// --------------------------------------------------
-
 @mixin animation($animation) {
  -webkit-animation: $animation;
     -moz-animation: $animation;
@@ -308,10 +281,7 @@
          animation-iteration-count: $count;
  }
 
-
 // Transformation Mixins
-// --------------------------------------------------
-
 @mixin rotate($degrees) {
   -webkit-transform: rotate($degrees);
      -moz-transform: rotate($degrees);
@@ -350,21 +320,13 @@
           transform-origin: $left $top;
 }
 
-
 // Backface visibility
-// --------------------------------------------------
-// Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden
-
 @mixin backface-visibility($visibility){
   -webkit-backface-visibility: $visibility;
           backface-visibility: $visibility;
 }
 
-
 // Background clipping
-// --------------------------------------------------
-
 @mixin background-clip($clip) {
   -webkit-background-clip: $clip;
      -moz-background-clip: $clip;
@@ -372,7 +334,6 @@
 }
 
 // Grid
-// --------------------------------------------------
 @mixin respond($media) {
   @media #{$media} {
     @content;
@@ -463,28 +424,20 @@
 }
 
 // Background sizing
-// --------------------------------------------------
-
 @mixin background-size($size) {
   -webkit-background-size: $size;
      -moz-background-size: $size;
           background-size: $size;
 }
 
-
 // Box sizing
-// --------------------------------------------------
-
 @mixin box-sizing($boxmodel) {
   -webkit-box-sizing: $boxmodel;
      -moz-box-sizing: $boxmodel;
           box-sizing: $boxmodel;
 }
 
-
 // User select
-// --------------------------------------------------
-
 @mixin user-select($select) {
   -webkit-user-select: $select;
      -moz-user-select: $select;
@@ -492,10 +445,7 @@
           user-select: $select;
 }
 
-
 // Content Columns
-// --------------------------------------------------
-
 @mixin content-columns($columnCount, $columnGap: $grid-gutter-width) {
   -webkit-column-count: $columnCount;
      -moz-column-count: $columnCount;
@@ -503,137 +453,4 @@
   -webkit-column-gap: $columnGap;
      -moz-column-gap: $columnGap;
           column-gap: $columnGap;
-}
-
-
-// Flexbox Mixins
-// --------------------------------------------------
-// http://philipwalton.github.io/solved-by-flexbox/
-// https://github.com/philipwalton/solved-by-flexbox
-
-@mixin display-flex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@mixin dislay-inline-flex {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -moz-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-@mixin flex-direction($value: row) {
-  @if $value == row-reverse {
-    -webkit-box-direction: reverse;
-    -webkit-box-orient: horizontal;
-  } @else if $value == column {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-  } @else if $value == column-reverse {
-    -webkit-box-direction: reverse;
-    -webkit-box-orient: vertical;
-  } @else {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-  }
-  -webkit-flex-direction: $value;
-  -moz-flex-direction: $value;
-  -ms-flex-direction: $value;
-  flex-direction: $value;
-}
-
-@mixin flex-wrap($value: nowrap) {
-  // No Webkit Box fallback.
-  -webkit-flex-wrap: $value;
-  -moz-flex-wrap: $value;
-  @if $value == nowrap {
-      -ms-flex-wrap: none;
-  } @else { 
-      -ms-flex-wrap: $value; 
-  }
-  flex-wrap: $value;
-}
-
-@mixin flex($fg: 1, $fs: null, $fb: null) {
-  -webkit-box-flex: $fg;
-  -webkit-flex: $fg $fs $fb;
-  -moz-box-flex: $fg;
-  -moz-flex: $fg $fs $fb;
-  -ms-flex: $fg $fs $fb;
-  flex: $fg $fs $fb;
-}
-
-@mixin flex-flow($values: (row nowrap)) {
-  // No Webkit Box fallback.
-  -webkit-flex-flow: $values;
-  -moz-flex-flow: $values;
-  -ms-flex-flow: $values;
-  flex-flow: $values;
-}
-
-@mixin align-items($value: stretch) {
-  @if $value == flex-start {
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-  } @else if $value == flex-end {
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-  } @else {
-    -webkit-box-align: $value;
-    -ms-flex-align: $value;
-  }
-  -webkit-align-items: $value;
-  -moz-align-items: $value;
-  align-items: $value;
-}
-
-@mixin align-self($value: auto) {
-  -webkit-align-self: $value;
-  -moz-align-self: $value;
-  @if $value == flex-start {
-    -ms-flex-item-align: start;
-  } @else if $value == flex-end {
-    -ms-flex-item-align: end;
-  } @else {
-    -ms-flex-item-align: $value;
-  }
-  align-self: $value;
-}
-
-@mixin align-content($value: stretch) {
-  -webkit-align-content: $value;
-  -moz-align-content: $value;
-  @if $value == flex-start {
-    -ms-flex-line-pack: start;
-  } @else if $value == flex-end {
-    -ms-flex-line-pack: end;
-  } @else {
-    -ms-flex-line-pack: $value;
-  }
-  align-content: $value;
-}
-
-@mixin justify-content($value: stretch) {
-  @if $value == flex-start {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-  } @else if $value == flex-end {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-  } @else if $value == space-between {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-  } @else {
-    -webkit-box-pack: $value;
-    -ms-flex-pack: $value;
-  }
-  -webkit-justify-content: $value;
-  -moz-justify-content: $value;
-  justify-content: $value;
 }
