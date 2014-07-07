@@ -3868,6 +3868,111 @@ a.badge:hover, a.badge:focus {
   display: none;
 }
 
+.box {
+  background-color: #f9f9f9;
+  border-color: #ededed;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 24px;
+  padding: 0px 15px;
+}
+.box h1, .box h2, .box h3, .box h4, .box h5, .box h6,
+.box .h1, .box .h2, .box .h3, .box .h4, .box .h5, .box .h6,
+.box .giga, .box .mega, .box .kilo {
+  color: inherit;
+}
+.box p {
+  margin: 10px 0;
+}
+.box pre,
+.box .pre.well {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.71429;
+  padding: 10px 15px;
+}
+
+.box header h1, .box header h2, .box header h3, .box header h4, .box header h5, .box header h6,
+.box header .h1, .box header .h2, .box header .h3, .box header .h4, .box header .h5, .box header .h6,
+.box header .giga, .box header .mega, .box header .kilo {
+  margin: 20px 0 10px;
+}
+.box header .label,
+.box header .badge {
+  margin-top: 10px;
+}
+.box[class*='bg-'] {
+  color: #fff;
+}
+.box.bg-white {
+  color: #666;
+}
+.box.bg-black {
+  border-color: #000;
+}
+.box.bg-green {
+  border-color: #208e4e;
+}
+.box.bg-light-green {
+  border-color: #208e4e;
+  color: #2ecc71;
+}
+.box.bg-blue {
+  border-color: #1d6fa5;
+}
+.box.bg-light-blue {
+  border-color: #1d6fa5;
+  color: #3498db;
+}
+.box.bg-yellow {
+  border-color: #aa8a0a;
+}
+.box.bg-light-yellow {
+  border-color: #aa8a0a;
+  color: #f1c40f;
+}
+.box.bg-red {
+  border-color: #bf2718;
+}
+.box.bg-light-red {
+  border-color: #bf2718;
+  color: #e74c3c;
+}
+
+.close {
+  color: #000;
+  filter: alpha(opacity=20);
+  float: right;
+  font-size: 22px;
+  font-size: 1.375rem;
+  line-height: 1.09091;
+  font-weight: bold;
+  opacity: .2;
+}
+.close:hover, .close:focus {
+  color: #000;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .5;
+  text-decoration: none;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+button.close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.box .close {
+  margin-top: 6px;
+}
+
 .forms label {
   display: block;
   margin-bottom: 1.6em;
