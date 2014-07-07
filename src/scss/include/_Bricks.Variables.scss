@@ -49,9 +49,6 @@ $fa-name: 						fontawesome !default;
 $fa-prefix: 					icon !default;
 
 
-// btns
-
-
 // Form
 $fieldsBottom:					1.6em !default;
 $baseFontSize: 					14 !default;
@@ -73,47 +70,56 @@ $colorLinkHover: $colorRed;
 
 
 // Grids
-$width-container: 100%;
-$width-fl : 100%;
-$width-s: 768px;
-$width-m: 960px;
-$width-l: 1170px;
-$num-columns: 12;
-$col-width-s: 34px;
-$col-width-m: 50px;
-$col-width-l: 70px;
-$glutter-width: 30px;
+$width-container: 				100%;
+$width-fl:	 					100%;
+$width-s: 						768px;
+$width-m: 						960px;
+$width-l: 						1170px;
+$num-columns: 					12;
+$col-width-s: 					34px;
+$col-width-m: 					50px;
+$col-width-l: 					70px;
+$glutter-width: 				30px;
+$row-max-width: 				940px !default;
+
+
+// Progress
+$base-font-size: 				16px !default;
+$border-radius: 				4px !default;
+
+// Label
+$base-line-height: 24px !default;
+
+// List
+$extra-small-start: 30em !default;
+$small-start: 48em !default;
 
 
 // Media queries
-$s-query: "(min-width: 768px)";
-$m-query: "(min-width: 992px)";
-$l-query: "(min-width: 1200px)";
+$s-query: 						"(min-width: 768px)";
+$m-query: 						"(min-width: 992px)";
+$l-query: 						"(min-width: 1200px)";
 
 
 // Z-Indexes
-$z-index-action-sheet:            10 !default;
-$z-index-nav:                     10 !default;
-$z-index-nav-title:               0 !default;
-$z-index-nav-btn:              1 !default;
-$z-index-item:                    2 !default;
-$z-index-item-checkbox:           3 !default;
-$z-index-item-drag:               0 !default;
-$z-index-item-edit:               0 !default;
-$z-index-item-options:            1 !default;
-$z-index-item-radio:              3 !default;
-$z-index-item-reordering:         9 !default;
-$z-index-item-toggle:             3 !default;
-$z-index-menu:                    0 !default;
-$z-index-modal:                   10 !default;
-$z-index-pane:                    1 !default;
-$z-index-scroll-nav:              9999 !default;
-$z-index-tabs:                    5 !default;
-$z-index-view:                    1 !default;
-
-
-// Grid Settings
-$row-max-width: 940px !default; // 940px
+$z-index-action-sheet:          10 !default;
+$z-index-nav:                   10 !default;
+$z-index-nav-title:             0 !default;
+$z-index-nav-btn:               1 !default;
+$z-index-item:                  2 !default;
+$z-index-item-checkbox:         3 !default;
+$z-index-item-drag:             0 !default;
+$z-index-item-edit:             0 !default;
+$z-index-item-options:          1 !default;
+$z-index-item-radio:            3 !default;
+$z-index-item-reordering:       9 !default;
+$z-index-item-toggle:           3 !default;
+$z-index-menu:                  0 !default;
+$z-index-modal:                 10 !default;
+$z-index-pane:                  1 !default;
+$z-index-scroll-nav:            9999 !default;
+$z-index-tabs:                  5 !default;
+$z-index-view:                  1 !default;
 
 
 // Responsive

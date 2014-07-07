@@ -154,6 +154,54 @@
           font-smoothing: $font-smoothing;
 }
 
+// Progress
+@mixin vendor($property, $value...) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+}
+
+@mixin font-size($font-size, $line-height:true) {
+    font-size: $font-size;
+    font-size: ($font-size / $base-font-size) * 1rem;
+    
+    @if $line-height == true {
+        line-height: ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+// List
+@mixin breakpoint($point) {
+    @if $point == extra-small {
+        @media (min-width: $extra-small-start) { @content; }
+    }
+    
+    @else if $point == small {
+        @media (min-width: $small-start) { @content; }
+    }
+    
+    @else if $point == medium {
+        @media (min-width: $medium-start) { @content; }
+    }
+    
+    @else if $point == large {
+        @media (min-width: $large-start) { @content; }
+    }
+    
+    @else if $point == extra-large {
+        @media (min-width: $extra-large-start) { @content; }
+    }
+    
+    @else if $point == high-density {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+               only screen and (min--moz-device-pixel-ratio: 1.5),
+               only screen and (-o-min-device-pixel-ratio: 3/2),
+               only screen and (min-device-pixel-ratio: 1.5) { @content; }
+    }
+}
+
 // Appearance
 @mixin appearance($val) {
   -webkit-appearance: $val;

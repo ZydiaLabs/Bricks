@@ -3600,6 +3600,274 @@ table .table-hovered tbody tr:hover td {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.progress {
+  background-color: #f9f9f9;
+  color: #fff;
+  font-size: 11px;
+  font-size: 0.6875rem;
+  height: 12px;
+  line-height: 1.182;
+  margin: 6px 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  -webkit-box-shadow: inset 0 1px 1px rgba(100, 100, 100, 0.1);
+  -moz-box-shadow: inset 0 1px 1px rgba(100, 100, 100, 0.1);
+  -ms-box-shadow: inset 0 1px 1px rgba(100, 100, 100, 0.1);
+  -o-box-shadow: inset 0 1px 1px rgba(100, 100, 100, 0.1);
+  box-shadow: inset 0 1px 1px rgba(100, 100, 100, 0.1);
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  -ms-box-sizing: initial;
+  -o-box-sizing: initial;
+  box-sizing: initial;
+}
+
+.progress-small {
+  font-size: 9px;
+  font-size: 0.5625rem;
+  height: 6px;
+  line-height: 0.875;
+}
+
+.progress-large {
+  font-size: 16px;
+  font-size: 1rem;
+  height: 25px;
+  line-height: 1.7;
+}
+
+.progress > span {
+  background-color: #2bc253;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+}
+.progress.border-radius > span {
+  border-radius: 4px;
+}
+.progress.progress-stacked > span {
+  display: inline-block;
+  float: left;
+}
+.progress.progress-stacked.border-radius > span {
+  border-radius: 0px;
+}
+.progress.progress-stacked.border-radius > span:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+.progress.progress-stacked.border-radius > span:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+.progress-striped > span:after, .progress-striped > span > span {
+  bottom: 0;
+  content: "";
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  -ms-background-size: 50px 50px;
+  -o-background-size: 50px 50px;
+  background-size: 50px 50px;
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent));
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+}
+.progress-striped.progress-animate > span:after, .progress-striped.progress-animate > span > span {
+  -webkit-animation: move 2s linear infinite;
+  -moz-animation: move 2s linear infinite;
+  -ms-animation: move 2s linear infinite;
+  -o-animation: move 2s linear infinite;
+  animation: move 2s linear infinite;
+}
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 50px 50px;
+  }
+}
+ul {
+  margin-left: 20px;
+  padding-left: 0px;
+}
+
+ol {
+  margin-left: 0px;
+  padding-left: 20px;
+}
+
+ul li,
+ol li {
+  line-height: 1.75em;
+  position: relative;
+}
+
+ul ul {
+  list-style-type: circle;
+  margin-bottom: auto;
+}
+ul ul ul {
+  list-style-type: square;
+}
+
+ol ol {
+  list-style-type: lower-latin;
+  margin-bottom: auto;
+}
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+@media (min-width: 48em) {
+  ul li ul {
+    margin-left: 20px;
+  }
+}
+.list-unstyled {
+  margin-left: 0px;
+  list-style: none;
+}
+.list-unstyled li ul {
+  list-style: none;
+}
+.list-unstyled li ul li ul {
+  list-style: none;
+}
+
+.list-line li {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0;
+}
+.list-line li:last-child,
+.list-line li li {
+  border-bottom: none;
+}
+
+.list-inline {
+  display: block;
+  margin-left: 0px;
+}
+.list-inline li {
+  border-bottom: none;
+}
+.list-inline li:last-child {
+  margin-right: 0px;
+}
+
+@media (min-width: 30em) {
+  .list-inline li {
+    display: inline;
+    margin-right: 25px;
+  }
+  .list-inline li:last-child {
+    margin-right: 0px;
+  }
+
+  .list-line.list-inline li {
+    margin-right: 15px;
+  }
+  .list-line.list-inline li:after {
+    color: #e6e8ea;
+    content: "|";
+    margin-left: 15px;
+  }
+  .list-line.list-inline li:last-child:after {
+    content: "";
+  }
+}
+.list-fill-even li,
+.list-fill-odd li {
+  padding-left: 5px;
+}
+
+.list-fill-even li:nth-child(even),
+.list-fill-odd li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0px;
+}
+
+@media (min-width: 48em) {
+  dl.horizontal {
+    overflow: hidden;
+  }
+  dl.horizontal > dt {
+    width: 160px;
+    float: left;
+    clear: both;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  dl.horizontal > dd {
+    margin-left: 180px;
+  }
+}
+.label,
+.badge {
+  background-color: #b5b5b5;
+  color: #fff;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2;
+  font-weight: bold;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.label {
+  border-radius: 4px;
+  display: inline;
+}
+
+.badge {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1px 7px;
+}
+
+.label[href]:hover, .label[href]:focus {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a.badge:hover, a.badge:focus {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.label a,
+.badge a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.label:empty,
+.badge:empty {
+  display: none;
+}
+
 .forms label {
   display: block;
   margin-bottom: 1.6em;
