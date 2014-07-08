@@ -5,7 +5,7 @@
 <h1 align="center">Bricks Framework</h1> 
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
-[![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies)
+[![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies) [![Gittip](http://img.shields.io/badge/Gittip-donate%20us!-blue.svg)](https://www.gittip.com/BricksFramework/)
 
 A powerful little framework for developers who care about what to use and how many functions are needed on a project. It is a CSS (Sass) and Javascript based framework that have just the functions and components you need on your project. Supports open web standards and brings a consistent browser environment across mobiles and desktop devices. The Javascript library is adapted for modern browsers. The syntax is modular and inspired from jQuery.
 
@@ -21,7 +21,7 @@ A powerful little framework for developers who care about what to use and how ma
  * You need an ultra-complete-all-in-one javascript library (I recommend JQuery).
  * You need many components in one css library (I recommend Bootstrap)
 
-*Current version: [1.0.0]()*
+*Current version: [1.0.1]()*
 
 
 Getting Started
@@ -50,7 +50,14 @@ Sometimes is necessary other ways to get in contact to talk and get support. You
 
 Changelog
 ---------
-### v1.0.0
+### 1.0.1
+ * Full port from css to scss
+ * Defined branding colors
+ * Blockquotes scss
+ * Tables scss
+ * Helpers scss
+
+### 1.0.0
  * Complete documentation
  * First stable version
  * Stable Javascript library and CSS components
@@ -58,16 +65,16 @@ Changelog
  * Full implementation of many functions of javascript library
  * Added tests
 
-### v0.5.0
+### 0.5.0
  * More structured code
  * Change from css to scss
  * Full integration with Travis-CI testing
  * Basic structure for Javascript library
 
-### v0.0.5
+### 0.0.5
  * We had the idea and the Github repo created.
 
-### v0.0.0
+### 0.0.0
  * We had the idea :)
 
 
