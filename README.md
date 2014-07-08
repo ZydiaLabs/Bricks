@@ -2,9 +2,7 @@
 	<img src="https://raw.githubusercontent.com/BricksFramework/artwork/master/png/bricks-color.png?raw=true" height="300px" width="300px" alt="Bricks Framework logo"/>
 </p>
 
-<p align="center">
-	<h1>Bricks Framework</h1> 
-</p>
+<h1 align="center">Bricks Framework</h1> 
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
 [![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies)
