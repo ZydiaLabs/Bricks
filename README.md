@@ -1,9 +1,9 @@
 <p align="center" style="width: 300px;">
-![Logo](https://raw.githubusercontent.com/BricksFramework/artwork/master/bricks-color.svg)
+	<img src="https://raw.githubusercontent.com/BricksFramework/artwork/master/bricks-color.svg?raw=true" alt="Bricks Framework logo"/>
 </p>
 
 <p align="center">
-# Bricks Framework 
+	<h1>Bricks Framework</h1> 
 </p>
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
