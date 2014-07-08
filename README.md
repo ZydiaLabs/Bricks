@@ -5,9 +5,9 @@
 <h1 align="center">Bricks Framework</h1> 
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
-[![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies) [![Gittip](http://img.shields.io/badge/Gittip-donate%20us!-blue.svg)](https://www.gittip.com/BricksFramework/)
+[![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies) [![Gittip](http://img.shields.io/badge/gittip-donate%20us!-blue.svg)](https://www.gittip.com/BricksFramework/)
 
-A powerful little framework for developers who care about what to use and how many functions are needed on a project. It is a CSS (Sass) and Javascript based framework that have just the functions and components you need on your project. Supports open web standards and brings a consistent browser environment across mobiles and desktop devices. The Javascript library is adapted for modern browsers. The syntax is modular and inspired from jQuery.
+A modern framework for developers who care about what to use and how many functions are needed on a project. It is a CSS (Sass) and Javascript based framework that have just the functions and components you need on your project. Supports open web standards and brings a consistent browser environment across mobiles and desktop devices. The Javascript library is adapted for modern browsers. The syntax is modular and inspired from jQuery.
 
 **Use Bricks Framework if:**
 
@@ -86,8 +86,7 @@ We will really appreciate if you tweet, blog, use, share, post, or whatever abou
 ### Support Bricks Framework
 Do you like Bricks and you are interested on support it? Those are the ways you can support Bricks Framework:
 
- * 
- *
+ * [Gittip](https://www.gittip.com/BricksFramework/)
 
 ### Credits
 Bricks is starting at this momment but there are people in back. We would like to thank:
