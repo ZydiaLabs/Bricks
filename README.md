@@ -1,5 +1,5 @@
-<p align="center" style="width: 300px;">
-	<img src="https://raw.githubusercontent.com/BricksFramework/artwork/master/bricks-color.svg?raw=true" alt="Bricks Framework logo" type="image/svg+xml"/>
+<p align="center">
+	<img src="https://raw.githubusercontent.com/BricksFramework/artwork/master/png/bricks-color.png?raw=true" style="width: 300px;" alt="Bricks Framework logo"/>
 </p>
 
 <p align="center">
