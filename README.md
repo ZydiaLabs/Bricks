@@ -1,5 +1,10 @@
-Bricks Framework 
-================
+<p align="center" style="width: 300px;">
+![Logo](https://raw.githubusercontent.com/BricksFramework/artwork/master/bricks-color.svg)
+</p>
+
+<p align="center">
+# Bricks Framework 
+</p>
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
 [![Dependency Status](https://david-dm.org/BricksFramework/Bricks.png)](https://david-dm.org/BricksFramework/Bricks) [![devDependency Status](https://david-dm.org/BricksFramework/Bricks/dev-status.png)](https://david-dm.org/BricksFramework/Bricks#info=devDependencies)
