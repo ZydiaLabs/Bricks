@@ -171,6 +171,42 @@ color: $blank;
 background-color: #7f8c8d;
 }
 
+.btn-white-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $white;
+color: $white;
+}
+
+.btn-white-outline:hover {
+border: 3px solid $white;
+color: $white;
+background-color: rgba(0, 0, 0, 0);
+}
+
+.btn-bricks-orange-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $bricks-orange;
+color: $bricks-orange;
+}
+
+.btn-bricks-orange-outline:hover {
+border: 3px solid $bricks-orange;
+color: $bricks-orange;
+background-color: rgba(0, 0, 0, 0);
+}
+
+.btn-bricks-gray-outline {
+background-color: rgba(0, 0, 0, 0);
+border: 3px solid $bricks-gray;
+color: $bricks-gray;
+}
+
+.btn-bricks-gray-outline:hover {
+border: 3px solid $bricks-gray;
+color: $bricks-gray;
+background-color: rgba(0, 0, 0, 0);
+}
+
 .btn-sea-green {
 background-color: $sea-green;
 color: $blank;
@@ -263,12 +299,32 @@ color: $blank;
 
 .btn-white {
 	background-color: #ffffff;
-	color: #000000;
+	color: $transparent;
 }
 
 .btn-white:hover {
 	background-color: #ffffff;
-	color: #000000;
+	color: $transparent;
+}
+
+.btn-bricks-orange {
+	background-color: $bricks-orange;
+	color: $transparent;
+}
+
+.btn-bricks-orange:hover {
+	background-color: $bricks-orange;
+	color: $transparent;
+}
+
+.btn-bricks-gray {
+	background-color: $bricks-gray;
+	color: $transparent;
+}
+
+.btn-bricks-gray:hover {
+	background-color: $bricks-gray;
+	color: $transparent;
 }
 
 .btn-gray {

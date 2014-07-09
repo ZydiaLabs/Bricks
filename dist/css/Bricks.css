@@ -1,5 +1,5 @@
 /*
-*  Bricks 1.0.1 08-07-2014 
+*  Bricks 1.0.1 09-07-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
@@ -290,6 +290,42 @@ input[type="checkbox"] {
   background-color: #7f8c8d;
 }
 
+.btn-white-outline {
+  background-color: transparent;
+  border: 3px solid white;
+  color: white;
+}
+
+.btn-white-outline:hover {
+  border: 3px solid white;
+  color: white;
+  background-color: transparent;
+}
+
+.btn-bricks-orange-outline {
+  background-color: transparent;
+  border: 3px solid #f36e0e;
+  color: #f36e0e;
+}
+
+.btn-bricks-orange-outline:hover {
+  border: 3px solid #f36e0e;
+  color: #f36e0e;
+  background-color: transparent;
+}
+
+.btn-bricks-gray-outline {
+  background-color: transparent;
+  border: 3px solid #303030;
+  color: #303030;
+}
+
+.btn-bricks-gray-outline:hover {
+  border: 3px solid #303030;
+  color: #303030;
+  background-color: transparent;
+}
+
 .btn-sea-green {
   background-color: #1abc9c;
   color: #ecf0f1;
@@ -382,12 +418,32 @@ input[type="checkbox"] {
 
 .btn-white {
   background-color: #ffffff;
-  color: #000000;
+  color: transparent;
 }
 
 .btn-white:hover {
   background-color: #ffffff;
-  color: #000000;
+  color: transparent;
+}
+
+.btn-bricks-orange {
+  background-color: #f36e0e;
+  color: transparent;
+}
+
+.btn-bricks-orange:hover {
+  background-color: #f36e0e;
+  color: transparent;
+}
+
+.btn-bricks-gray {
+  background-color: #303030;
+  color: transparent;
+}
+
+.btn-bricks-gray:hover {
+  background-color: #303030;
+  color: transparent;
 }
 
 .btn-gray {
