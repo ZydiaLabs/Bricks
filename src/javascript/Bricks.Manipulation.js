@@ -28,10 +28,10 @@ function normalize (node) {
 
 function wrap (node) {
   return typeof node === 'string' && node !== '' ? function () {
-    var tag = tagExp.exec(node)
-      , el = document.createElement('div')
-      , wrap = tag ? wrapMap[tag[1].toLowerCase()] : null
-      , level = wrap ? wrap[2] + 1 : 1;
+    var tag = tagExp.exec(node),
+      el = document.createElement('div'),
+      wrap = tag ? wrapMap[tag[1].toLowerCase()] : null,
+      level = wrap ? wrap[2] + 1 : 1;
     el.innerHTML = wrap ? (wrap[0] + node + wrap[1]) : node;
     while (level--) el = el.firstChild;
     return [el];
@@ -186,12 +186,10 @@ bricks.fn.extend({
 });
 
 bricks.each({
-
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
-
 }, 
 
 function (key, value) {

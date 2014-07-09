@@ -1,5 +1,5 @@
 /*
-*  Bricks 1.0.1 07-07-2014 
+*  Bricks 1.0.1 08-07-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
@@ -4838,4 +4838,57 @@ img.wide + img.wide {
 
 .color-blank {
   color: #ecf0f1;
+}
+
+.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.full {
+  width: 100%;
+}
+
+img.full {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  width: auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.weight-light {
+  font-weight: 300 !important;
+}
+
+.weight-normal {
+  font-weight: 400 !important;
+}
+
+.weight-semibold {
+  font-weight: 600 !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }

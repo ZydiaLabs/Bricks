@@ -187,7 +187,7 @@ bricks.extend({
   each: bricks.fn.each,
 
   trim: function (str) {
-    return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
+    return str === null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   },
 
   contains: function (parent, node) {
@@ -236,7 +236,7 @@ bricks.extend({
   isPlainObject: function (obj) {
     if (!obj || !this.isObject(obj) || this.isWindow(obj) || obj.nodeType) {
       return false;
-    } else if (obj.__proto__ === Object.prototype) {
+    } else if (Object.getPrototypeOf(obj) === Object.prototype) {
       return true;
     } else {
       var key;

@@ -47,9 +47,9 @@ bricks.fn.extend({
   },
 
   hasClass: function (value) {
-    var classNames = (this[0] ? this[0] : this).className.split(/\s+/)
-      , values = value.split(/\s+/)
-      , i = 0;
+    var classNames = (this[0] ? this[0] : this).className.split(/\s+/),
+      values = value.split(/\s+/),
+      i = 0;
 
     if (values.length > 1) {
       var hasClasses = false;

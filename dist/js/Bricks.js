@@ -1,5 +1,5 @@
 /*
-*  Bricks 1.0.1 07-07-2014 
+*  Bricks 1.0.1 08-07-2014 
 *  Created by Giovanny Andres Gongora Granada 
 *  License MIT 
 *  bricksframework.github.io
@@ -194,7 +194,7 @@ bricks.extend({
   each: bricks.fn.each,
 
   trim: function (str) {
-    return str == null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
+    return str === null ? '' : str.trim ? str.trim() : ('' + str).replace(/^\s+|\s+$/g, '');
   },
 
   contains: function (parent, node) {
@@ -243,7 +243,7 @@ bricks.extend({
   isPlainObject: function (obj) {
     if (!obj || !this.isObject(obj) || this.isWindow(obj) || obj.nodeType) {
       return false;
-    } else if (obj.__proto__ === Object.prototype) {
+    } else if (Object.getPrototypeOf(obj) === Object.prototype) {
       return true;
     } else {
       var key;
@@ -339,9 +339,9 @@ bricks.fn.extend({
   },
 
   hasClass: function (value) {
-    var classNames = (this[0] ? this[0] : this).className.split(/\s+/)
-      , values = value.split(/\s+/)
-      , i = 0;
+    var classNames = (this[0] ? this[0] : this).className.split(/\s+/),
+      values = value.split(/\s+/),
+      i = 0;
 
     if (values.length > 1) {
       var hasClasses = false;
@@ -634,8 +634,8 @@ function addEvent (el, events, callback, selector) {
           if (!related || (related !== this && !bricks.contains(this, related))) {
             return _fn.apply(this, arguments);
           }
-        }
-      }
+        };
+      };
     }
 
     var handler = createEventHandler(el, event, fn && fn() || callback, _callback);
@@ -669,8 +669,8 @@ function removeEvent (el, events, callback, selector) {
   }
 
   bricks.each(events.split(/\s/), function (index, event) {
-    var handlers = getEventHandlers(id, event)
-      , parts = getEventParts(event);
+    var handlers = getEventHandlers(id, event),
+      parts = getEventParts(event);
 
     event = realEvent(parts.ev);
 
@@ -720,7 +720,7 @@ bricks.fn.extend({
 
       var parts = getEventParts(event.type || event);
 
-      event = bricks.Event(event)
+      event = bricks.Event(event);
       event.data = data || {};
 
       if (bricks.isString(event.data) && !bricks.isString(data) && JSON.stringify) {
@@ -846,10 +846,10 @@ function normalize (node) {
 
 function wrap (node) {
   return typeof node === 'string' && node !== '' ? function () {
-    var tag = tagExp.exec(node)
-      , el = document.createElement('div')
-      , wrap = tag ? wrapMap[tag[1].toLowerCase()] : null
-      , level = wrap ? wrap[2] + 1 : 1;
+    var tag = tagExp.exec(node),
+      el = document.createElement('div'),
+      wrap = tag ? wrapMap[tag[1].toLowerCase()] : null,
+      level = wrap ? wrap[2] + 1 : 1;
     el.innerHTML = wrap ? (wrap[0] + node + wrap[1]) : node;
     while (level--) el = el.firstChild;
     return [el];
@@ -1004,12 +1004,10 @@ bricks.fn.extend({
 });
 
 bricks.each({
-
   appendTo: 'append',
   prependTo: 'prepend',
   insertBefore: 'before',
   insertAfter: 'after'
-
 }, 
 
 function (key, value) {

@@ -151,8 +151,8 @@ function addEvent (el, events, callback, selector) {
           if (!related || (related !== this && !bricks.contains(this, related))) {
             return _fn.apply(this, arguments);
           }
-        }
-      }
+        };
+      };
     }
 
     var handler = createEventHandler(el, event, fn && fn() || callback, _callback);
@@ -186,8 +186,8 @@ function removeEvent (el, events, callback, selector) {
   }
 
   bricks.each(events.split(/\s/), function (index, event) {
-    var handlers = getEventHandlers(id, event)
-      , parts = getEventParts(event);
+    var handlers = getEventHandlers(id, event),
+      parts = getEventParts(event);
 
     event = realEvent(parts.ev);
 
@@ -237,7 +237,7 @@ bricks.fn.extend({
 
       var parts = getEventParts(event.type || event);
 
-      event = bricks.Event(event)
+      event = bricks.Event(event);
       event.data = data || {};
 
       if (bricks.isString(event.data) && !bricks.isString(data) && JSON.stringify) {
