@@ -298,8 +298,8 @@ input[type="checkbox"] {
 
 .btn-white-outline:hover {
   border: 3px solid white;
-  color: white;
-  background-color: transparent;
+  color: transparent;
+  background-color: white;
 }
 
 .btn-bricks-orange-outline {
@@ -310,8 +310,8 @@ input[type="checkbox"] {
 
 .btn-bricks-orange-outline:hover {
   border: 3px solid #f36e0e;
-  color: #f36e0e;
-  background-color: transparent;
+  color: white;
+  background-color: #f36e0e;
 }
 
 .btn-bricks-gray-outline {
@@ -322,8 +322,8 @@ input[type="checkbox"] {
 
 .btn-bricks-gray-outline:hover {
   border: 3px solid #303030;
-  color: #303030;
-  background-color: transparent;
+  color: white;
+  background-color: #303030;
 }
 
 .btn-sea-green {
@@ -418,32 +418,32 @@ input[type="checkbox"] {
 
 .btn-white {
   background-color: #ffffff;
-  color: transparent;
+  color: black;
 }
 
 .btn-white:hover {
   background-color: #ffffff;
-  color: transparent;
+  color: black;
 }
 
 .btn-bricks-orange {
   background-color: #f36e0e;
-  color: transparent;
+  color: white;
 }
 
 .btn-bricks-orange:hover {
-  background-color: #f36e0e;
-  color: transparent;
+  background-color: #D5620F;
+  color: white;
 }
 
 .btn-bricks-gray {
   background-color: #303030;
-  color: transparent;
+  color: white;
 }
 
 .btn-bricks-gray:hover {
-  background-color: #303030;
-  color: transparent;
+  background-color: #272727;
+  color: white;
 }
 
 .btn-gray {
