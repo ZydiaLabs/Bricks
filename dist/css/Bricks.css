@@ -297,9 +297,8 @@ input[type="checkbox"] {
 }
 
 .btn-white-outline:hover {
-  border: 3px solid white;
-  color: transparent;
-  background-color: white;
+  border: 3px solid #ecf0f1;
+  color: #ecf0f1;
 }
 
 .btn-bricks-orange-outline {
@@ -4302,7 +4301,7 @@ input[type="search"] {
 }
 
 .nav-right ul li {
-  margin-right: 0;
+  margin-right: 20px;
   margin-left: strip-unit(1.6)em;
 }
 
@@ -4427,41 +4426,41 @@ input[type="search"] {
   right: .5em;
 }
 
-.breadcrumbs {
+.nav-bc {
   margin-bottom: strip-unit(1.6)em;
   *zoom: 1;
 }
-.breadcrumbs:before, .breadcrumbs:after {
+.nav-bc:before, .nav-bc:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.breadcrumbs:after {
+.nav-bc:after {
   clear: both;
 }
 
-.breadcrumbs ul {
+.nav-bc ul {
   font-size: .9em;
   color: rgba(0, 0, 0, 0.4);
   list-style: none;
   margin: 0;
   *zoom: 1;
 }
-.breadcrumbs ul:before, .breadcrumbs ul:after {
+.nav-bc ul:before, .nav-bc ul:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.breadcrumbs ul:after {
+.nav-bc ul:after {
   clear: both;
 }
 
-.bc ul li {
+.nav-bc ul li {
   float: left;
   margin-right: 3px;
 }
 
-.bc li + li:before {
+.nav-bc li + li:before {
   content: " > ";
   color: #aaa;
   font-size: 12px;

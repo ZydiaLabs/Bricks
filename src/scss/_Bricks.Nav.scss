@@ -21,7 +21,7 @@
     @include em('margin-right', $baseLineInEms);
 }
 .nav-right ul li {
-    margin-right: 0;
+    margin-right: 20px;
     @include em('margin-left', $baseLineInEms);
 }
 .nav ul li a,
@@ -125,22 +125,22 @@
     right: .5em;
 }
 
-.breadcrumbs {
+.nav-bc {
     @include em('margin-bottom', $baseLineInEms);
     @include clearfix;
 }
-.breadcrumbs ul {
+.nav-bc ul {
     font-size: .9em;
     color: rgba(0, 0, 0, .4);
     list-style: none;
     margin: 0;
     @include clearfix;
 }
-.bc ul li {
+.nav-bc ul li {
     float: left;
     margin-right: 3px;
 }
-.bc li + li:before {
+.nav-bc li + li:before {
     content: " > ";
     color: #aaa;
     font-size: 12px;
