@@ -48,6 +48,28 @@ Bricks is opensource, so feel free to fork this project to help us to improve it
 Sometimes is necessary other ways to get in contact to talk and get support. You can send us a tweet to [@BricksFramework](https://twitter.com/BricksFramework) on Twitter, visit us on irc (#bricksframework) at freenode channel or filling a new [issue](https://github.com/BricksFramework/Bricks/issues?milestone=none&page=1&state=open).
 
 
+Build
+-----
+### Dependencies:
+You need some dependencies to start building Bricks Framework:
+ * NodeJS
+ * NPM
+ * Grunt: ´npm install grunt-cli -g´
+
+### Building
+A few steps to build a Bricks Framework release:
+ * Clone the repo: ´git clone https://github.com/BricksFramework/Bricks´
+ * Install node dependencies: ´npm install´
+ * Run grunt to start the build: ´grunt´
+ * If everything is ready, you could get a copy in ´dist´ and ´package´ folder.
+
+### Livereload
+If you change any ´sass´ file, automaticly grunt will compile and minify it. Same thing with ´javascript´ files. Additional, it runs a localserver (http://localhost:33746) to see the examples, if you change a ´sass´, ´javascript´ or ´html´ file, the localserver will reaload to see the latest changes you made.
+
+### CI
+We use Travis CI to test every commit and pull request. You can check it at [Bricks Framework Travis CI homepage](https://www.travis-ci.org/BricksFramework/Bricks).
+
+
 Changelog
 ---------
 ### 1.0.1
