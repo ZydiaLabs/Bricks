@@ -69,6 +69,9 @@ If you change any ´sass´ file, automaticly grunt will compile and minify it. S
 ### CI
 We use Travis CI to test every commit and pull request. You can check it at [Bricks Framework Travis CI homepage](https://www.travis-ci.org/BricksFramework/Bricks).
 
+Contribute
+----------
+Bricks Framework is open source and open to any change you think is necessary. If you have changes or submissions that could improve it, we will really appreciate. So, fork this project, makes changes and create a pull request.
 
 Changelog
 ---------
@@ -116,8 +119,6 @@ Bricks is starting at this momment but there are people in back. We would like t
  * [Giovanny Gongora](https://github.com/Gioyik) - Creator and founder
  * You for being about to stargaze or fork this project on GitHub
  * Everyone who has kindly reported issues or made pull requests
-
-More will come in the future...
 
 ### License
 Bricks is licensed under MIT. See [LICENSE](https://github.com/BricksFramework/Bricks/blob/master/LICENSE.md) for more information.

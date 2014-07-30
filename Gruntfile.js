@@ -167,7 +167,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.registerTask('default', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint']);
+  grunt.registerTask('dev', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint', 'connect', 'watch']);
   grunt.registerTask('livereload', ['connect', 'watch']);
   grunt.registerTask('travis-ci', ['clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy', 'compress', 'jshint']);
 };
