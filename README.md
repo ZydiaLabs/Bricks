@@ -1,7 +1,3 @@
-<p align="center">
-	<img src="https://raw.githubusercontent.com/BricksFramework/artwork/master/png/bricks-color.png?raw=true" height="300px" width="300px" alt="Bricks Framework logo"/>
-</p>
-
 <h1 align="center">Bricks Framework</h1> 
 
 [![Build Status](https://travis-ci.org/BricksFramework/Bricks.png)](https://travis-ci.org/BricksFramework/Bricks) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
@@ -20,6 +16,9 @@ A modern framework for developers who care about what to use and how many functi
 
  * You need an ultra-complete-all-in-one javascript library (I recommend JQuery).
  * You need many components in one css library (I recommend Bootstrap)
+
+
+[![NPM](https://nodei.co/npm/bricks-framework.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/bricks-framework/)
 
 *Current version: [1.0.1]()*
 
